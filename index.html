@@ -1,1084 +1,646 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta charset="UTF-8">
+<title>Guatiquesos - Pedidos</title>
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+<style>
 
-  <title>Guatiquesos - Pedidos</title>
+:root{
+    --accent1:#ff7f50;
+    --accent2:#ffce00;
+    --bg:#fffbea;
+    --green:#25D366;
+    --dark:#222;
+    --white:#fff;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:Inter,ui-sans-serif,system-ui,-apple-system,
+    "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background:var(--bg);
+    color:var(--dark);
+}
 
 
-  <style>
+/* =====================================================
+   HEADER
+===================================================== */
 
-    :root {
+header{
+    background:linear-gradient(
+        90deg,
+        var(--accent1),
+        var(--accent2)
+    );
 
-      --accent1: #ff7f50;
-      --accent2: #ffce00;
-      --bg: #fffbea;
-      --green: #25D366;
-      --dark: #222;
-      --white: #fff;
+    text-align:center;
+    padding:1rem 0;
 
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+}
+
+.logo-header{
+    height:150px;
+    max-width:90%;
+    object-fit:contain;
+    transition:transform .2s;
+}
+
+.logo-header:hover{
+    transform:scale(1.05);
+}
+
+
+/* =====================================================
+   CONTENIDO
+===================================================== */
+
+main{
+    max-width:1100px;
+    margin:18px auto;
+    padding:0 12px;
+}
+
+h2{
+    text-align:center;
+    color:var(--accent1);
+    margin:25px 0 18px;
+}
+
+
+/* =====================================================
+   PRODUCTOS
+===================================================== */
+
+.productos,
+.bebidas-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(
+        auto-fit,
+        minmax(220px,1fr)
+    );
+
+    gap:14px;
+}
+
+.card{
+    background:var(--white);
+    border-radius:12px;
+    padding:12px;
+
+    box-shadow:
+    0 6px 18px rgba(0,0,0,.06);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+    transition:
+    transform .15s,
+    box-shadow .15s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+
+    box-shadow:
+    0 10px 28px rgba(0,0,0,.12);
+}
+
+.card img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+    border-radius:8px;
+    margin-bottom:8px;
+    background:var(--bg);
+}
+
+.card h3{
+    margin:6px 0;
+    font-size:1.02rem;
+}
+
+.precio{
+    color:var(--accent1);
+    font-weight:800;
+    margin-bottom:6px;
+}
+
+.descripcion-corta{
+    color:#555;
+    font-size:.92rem;
+    min-height:40px;
+    margin-bottom:8px;
+}
+
+.card button{
+    background:var(--accent2);
+    border:none;
+    padding:9px 10px;
+    border-radius:8px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.card button:hover{
+    background:var(--accent1);
+    color:white;
+    transform:scale(1.03);
+}
+
+
+/* =====================================================
+   BEBIDAS
+===================================================== */
+
+.bebidas-seccion{
+    margin-top:45px;
+}
+
+
+/* =====================================================
+   BOTÓN CARRITO
+===================================================== */
+
+.cart-btn{
+    position:fixed;
+
+    left:18px;
+    bottom:18px;
+
+    background:var(--green);
+    color:white;
+
+    border:none;
+
+    padding:12px 14px;
+
+    border-radius:12px;
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,.2);
+
+    font-weight:800;
+    cursor:pointer;
+
+    z-index:1200;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    text-align:center;
+    padding:12px;
+    margin-top:25px;
+
+    background:var(--accent2);
+
+    font-weight:700;
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal{
+    display:none;
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    align-items:center;
+    justify-content:center;
+
+    padding:18px;
+
+    z-index:1100;
+}
+
+.modal-content{
+    width:100%;
+    max-width:640px;
+
+    max-height:86vh;
+
+    overflow-y:auto;
+
+    background:var(--bg);
+
+    border-radius:12px;
+
+    padding:14px;
+
+    box-shadow:
+    0 16px 40px rgba(0,0,0,.25);
+
+    animation:aparecer .25s ease;
+}
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:scale(.92);
     }
 
-
-    * {
-
-      box-sizing: border-box;
-
+    to{
+        opacity:1;
+        transform:scale(1);
     }
 
+}
 
-    html {
+.modal-header{
+    display:flex;
+    gap:12px;
+    align-items:center;
+}
 
-      scroll-behavior: smooth;
+.modal img{
+    width:140px;
+    height:110px;
 
+    object-fit:cover;
+
+    border-radius:8px;
+}
+
+.modal h3{
+    margin:0;
+    font-size:1.15rem;
+}
+
+
+/* =====================================================
+   GRUPOS
+===================================================== */
+
+.group{
+    background:rgba(255,255,255,.65);
+
+    padding:10px;
+
+    border-radius:8px;
+
+    margin-top:10px;
+
+    border:
+    1px solid rgba(255,127,80,.15);
+}
+
+.group h4{
+    margin:5px 0 8px;
+
+    color:var(--accent1);
+
+    font-size:.98rem;
+}
+
+.group-description{
+    font-size:.82rem;
+    color:#666;
+    margin-bottom:6px;
+}
+
+label.inline{
+    display:flex;
+    gap:8px;
+    align-items:center;
+
+    padding:5px 0;
+
+    cursor:pointer;
+}
+
+label.inline input{
+    cursor:pointer;
+}
+
+.extra-price{
+    margin-left:auto;
+
+    font-weight:800;
+
+    color:var(--accent1);
+}
+
+
+/* =====================================================
+   INFORMACIÓN SANGUINARIO
+===================================================== */
+
+.counter-info{
+    background:#fff8d7;
+
+    border:
+    1px solid #ffe16b;
+
+    padding:8px;
+
+    border-radius:8px;
+
+    margin-top:10px;
+    margin-bottom:8px;
+
+    font-size:.88rem;
+
+    font-weight:700;
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.error-message{
+    display:none;
+
+    background:#ffe1e1;
+
+    color:#b30000;
+
+    border:
+    1px solid #ff9d9d;
+
+    padding:9px;
+
+    border-radius:8px;
+
+    margin-top:10px;
+
+    font-weight:700;
+}
+
+
+/* =====================================================
+   TEXTAREA
+===================================================== */
+
+textarea{
+    width:100%;
+
+    min-height:66px;
+
+    resize:none;
+
+    padding:8px;
+
+    border-radius:8px;
+
+    border:
+    1px solid #dcdcdc;
+
+    margin-top:8px;
+
+    font-family:inherit;
+}
+
+
+/* =====================================================
+   BOTONES MODAL
+===================================================== */
+
+.modal-actions{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:8px;
+
+    margin-top:12px;
+}
+
+.btn-secondary{
+    background:var(--accent1);
+
+    color:white;
+
+    border:none;
+
+    padding:9px 12px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:700;
+}
+
+.btn-primary{
+    background:var(--green);
+
+    color:white;
+
+    border:none;
+
+    padding:9px 12px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:800;
+}
+
+.btn-secondary:hover,
+.btn-primary:hover{
+    transform:scale(1.03);
+}
+
+
+/* =====================================================
+   TOTAL MODAL
+===================================================== */
+
+.order-total{
+    margin-top:12px;
+
+    padding:10px;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    font-weight:800;
+}
+
+
+/* =====================================================
+   CARRITO
+===================================================== */
+
+.cart-panel{
+    position:fixed;
+
+    left:0;
+    top:0;
+
+    height:100vh;
+
+    width:360px;
+
+    max-width:92%;
+
+    background:white;
+
+    box-shadow:
+    8px 0 30px rgba(0,0,0,.2);
+
+    z-index:1300;
+
+    transform:translateX(-100%);
+
+    transition:transform .25s;
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+.cart-panel.open{
+    transform:translateX(0);
+}
+
+.cart-header{
+    padding:12px;
+
+    border-bottom:
+    1px solid #eee;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.cart-body{
+    padding:12px;
+
+    overflow-y:auto;
+
+    flex:1;
+}
+
+.cart-item{
+    display:flex;
+
+    gap:8px;
+
+    padding:8px;
+
+    border-radius:8px;
+
+    background:var(--bg);
+
+    margin-bottom:8px;
+
+    align-items:flex-start;
+}
+
+.cart-item .meta{
+    flex:1;
+}
+
+.cart-item h4{
+    margin:0 0 4px;
+
+    font-size:.96rem;
+}
+
+.cart-item p{
+    margin:0;
+
+    font-size:.88rem;
+
+    color:#444;
+}
+
+.cart-footer{
+    padding:12px;
+
+    border-top:
+    1px solid #eee;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+}
+
+.small-muted{
+    font-size:.9rem;
+    color:#666;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:520px){
+
+    .logo-header{
+        height:110px;
     }
 
-
-    body {
-
-      margin: 0;
-
-      font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        "Segoe UI",
-        Roboto,
-        "Helvetica Neue",
-        Arial,
-        sans-serif;
-
-      background: var(--bg);
-
-      color: var(--dark);
-
+    .modal img{
+        display:none;
     }
 
-
-    /* =====================================================
-       HEADER
-    ===================================================== */
-
-    header {
-
-      background:
-        linear-gradient(
-          90deg,
-          var(--accent1),
-          var(--accent2)
-        );
-
-      text-align: center;
-
-      padding: 1rem 0;
-
-      box-shadow:
-        0 2px 8px rgba(0,0,0,0.15);
-
+    .modal-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:6px;
     }
 
-
-    .logo-header {
-
-      height: 150px;
-
-      max-width: 90%;
-
-      object-fit: contain;
-
-      transition:
-        transform .2s;
-
+    .cart-panel{
+        width:100%;
+        max-width:100%;
     }
 
-
-    .logo-header:hover {
-
-      transform:
-        scale(1.05);
-
+    .modal-actions{
+        flex-direction:column;
     }
 
-
-    /* =====================================================
-       CONTENIDO
-    ===================================================== */
-
-    main {
-
-      max-width: 1100px;
-
-      margin:
-        18px auto;
-
-      padding:
-        0 12px;
-
+    .btn-secondary,
+    .btn-primary{
+        width:100%;
     }
 
+}
 
-    h2 {
-
-      text-align: center;
-
-      color:
-        var(--accent1);
-
-      margin:
-        25px 0 18px;
-
-    }
-
-
-    /* =====================================================
-       PRODUCTOS
-    ===================================================== */
-
-    .productos,
-    .bebidas-grid {
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(
-          auto-fit,
-          minmax(220px, 1fr)
-        );
-
-      gap: 14px;
-
-    }
-
-
-    .card {
-
-      background:
-        var(--white);
-
-      border-radius:
-        12px;
-
-      padding:
-        12px;
-
-      box-shadow:
-        0 6px 18px
-        rgba(0,0,0,0.06);
-
-      display:
-        flex;
-
-      flex-direction:
-        column;
-
-      justify-content:
-        space-between;
-
-      transition:
-        transform .15s,
-        box-shadow .15s;
-
-    }
-
-
-    .card:hover {
-
-      transform:
-        translateY(-6px);
-
-      box-shadow:
-        0 10px 28px
-        rgba(0,0,0,0.12);
-
-    }
-
-
-    .card img {
-
-      width: 100%;
-
-      height: 150px;
-
-      object-fit: cover;
-
-      border-radius:
-        8px;
-
-      margin-bottom:
-        8px;
-
-      background:
-        var(--bg);
-
-    }
-
-
-    .card h3 {
-
-      margin:
-        6px 0;
-
-      font-size:
-        1.02rem;
-
-    }
-
-
-    .precio {
-
-      color:
-        var(--accent1);
-
-      font-weight:
-        800;
-
-      margin-bottom:
-        6px;
-
-    }
-
-
-    .descripcion-corta {
-
-      color:
-        #555;
-
-      font-size:
-        .92rem;
-
-      min-height:
-        40px;
-
-      margin-bottom:
-        8px;
-
-    }
-
-
-    .card button {
-
-      background:
-        var(--accent2);
-
-      border:
-        none;
-
-      padding:
-        9px 10px;
-
-      border-radius:
-        8px;
-
-      font-weight:
-        700;
-
-      cursor:
-        pointer;
-
-      transition:
-        .2s;
-
-    }
-
-
-    .card button:hover {
-
-      background:
-        var(--accent1);
-
-      color:
-        white;
-
-      transform:
-        scale(1.03);
-
-    }
-
-
-    /* =====================================================
-       BOTÓN CARRITO
-    ===================================================== */
-
-    .cart-btn {
-
-      position:
-        fixed;
-
-      left:
-        18px;
-
-      bottom:
-        18px;
-
-      background:
-        var(--green);
-
-      color:
-        white;
-
-      border:
-        none;
-
-      padding:
-        12px 14px;
-
-      border-radius:
-        12px;
-
-      box-shadow:
-        0 8px 20px
-        rgba(0,0,0,0.2);
-
-      font-weight:
-        800;
-
-      cursor:
-        pointer;
-
-      z-index:
-        1200;
-
-    }
-
-
-    /* =====================================================
-       FOOTER
-    ===================================================== */
-
-    footer {
-
-      text-align:
-        center;
-
-      padding:
-        12px;
-
-      margin-top:
-        25px;
-
-      background:
-        var(--accent2);
-
-      font-weight:
-        700;
-
-    }
-
-
-    /* =====================================================
-       MODAL
-    ===================================================== */
-
-    .modal {
-
-      display:
-        none;
-
-      position:
-        fixed;
-
-      inset:
-        0;
-
-      background:
-        rgba(0,0,0,0.55);
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      padding:
-        18px;
-
-      z-index:
-        1100;
-
-    }
-
-
-    .modal-content {
-
-      width:
-        100%;
-
-      max-width:
-        640px;
-
-      max-height:
-        86vh;
-
-      overflow-y:
-        auto;
-
-      background:
-        var(--bg);
-
-      border-radius:
-        12px;
-
-      padding:
-        14px;
-
-      box-shadow:
-        0 16px 40px
-        rgba(0,0,0,0.25);
-
-      animation:
-        aparecer .25s ease;
-
-    }
-
-
-    @keyframes aparecer {
-
-      from {
-
-        opacity:
-          0;
-
-        transform:
-          scale(.92);
-
-      }
-
-      to {
-
-        opacity:
-          1;
-
-        transform:
-          scale(1);
-
-      }
-
-    }
-
-
-    .modal-header {
-
-      display:
-        flex;
-
-      gap:
-        12px;
-
-      align-items:
-        center;
-
-    }
-
-
-    .modal img {
-
-      width:
-        140px;
-
-      height:
-        110px;
-
-      object-fit:
-        cover;
-
-      border-radius:
-        8px;
-
-    }
-
-
-    .modal h3 {
-
-      margin:
-        0;
-
-      font-size:
-        1.15rem;
-
-    }
-
-
-    .modal .precio {
-
-      margin:
-        2px 0 0;
-
-    }
-
-
-    /* =====================================================
-       GRUPOS
-    ===================================================== */
-
-    .group {
-
-      background:
-        rgba(255,255,255,.65);
-
-      padding:
-        10px;
-
-      border-radius:
-        8px;
-
-      margin-top:
-        10px;
-
-      border:
-        1px solid
-        rgba(255,127,80,.15);
-
-    }
-
-
-    .group h4 {
-
-      margin:
-        5px 0 8px;
-
-      color:
-        var(--accent1);
-
-      font-size:
-        .98rem;
-
-    }
-
-
-    .group-description {
-
-      font-size:
-        .82rem;
-
-      color:
-        #666;
-
-      margin-bottom:
-        6px;
-
-    }
-
-
-    label.inline {
-
-      display:
-        flex;
-
-      gap:
-        8px;
-
-      align-items:
-        center;
-
-      padding:
-        5px 0;
-
-      cursor:
-        pointer;
-
-    }
-
-
-    label.inline input {
-
-      cursor:
-        pointer;
-
-    }
-
-
-    .extra-price {
-
-      margin-left:
-        auto;
-
-      font-weight:
-        800;
-
-      color:
-        var(--accent1);
-
-    }
-
-
-    /* =====================================================
-       CONTADORES
-    ===================================================== */
-
-    .counter-info {
-
-      background:
-        #fff8d7;
-
-      border:
-        1px solid
-        #ffe16b;
-
-      padding:
-        8px;
-
-      border-radius:
-        8px;
-
-      margin-bottom:
-        8px;
-
-      font-size:
-        .88rem;
-
-      font-weight:
-        700;
-
-    }
-
-
-    .error-message {
-
-      display:
-        none;
-
-      background:
-        #ffe1e1;
-
-      color:
-        #b30000;
-
-      border:
-        1px solid
-        #ff9d9d;
-
-      padding:
-        9px;
-
-      border-radius:
-        8px;
-
-      margin-top:
-        10px;
-
-      font-weight:
-        700;
-
-    }
-
-
-    /* =====================================================
-       COMENTARIOS
-    ===================================================== */
-
-    textarea {
-
-      width:
-        100%;
-
-      min-height:
-        66px;
-
-      resize:
-        none;
-
-      padding:
-        8px;
-
-      border-radius:
-        8px;
-
-      border:
-        1px solid
-        #dcdcdc;
-
-      margin-top:
-        8px;
-
-      font-family:
-        inherit;
-
-    }
-
-
-    /* =====================================================
-       BOTONES MODAL
-    ===================================================== */
-
-    .modal-actions {
-
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      gap:
-        8px;
-
-      margin-top:
-        12px;
-
-    }
-
-
-    .btn-secondary {
-
-      background:
-        var(--accent1);
-
-      color:
-        white;
-
-      border:
-        none;
-
-      padding:
-        9px 12px;
-
-      border-radius:
-        8px;
-
-      cursor:
-        pointer;
-
-      font-weight:
-        700;
-
-    }
-
-
-    .btn-primary {
-
-      background:
-        var(--green);
-
-      color:
-        white;
-
-      border:
-        none;
-
-      padding:
-        9px 12px;
-
-      border-radius:
-        8px;
-
-      cursor:
-        pointer;
-
-      font-weight:
-        800;
-
-    }
-
-
-    .btn-secondary:hover,
-    .btn-primary:hover {
-
-      transform:
-        scale(1.03);
-
-    }
-
-
-    /* =====================================================
-       CARRITO
-    ===================================================== */
-
-    .cart-panel {
-
-      position:
-        fixed;
-
-      left:
-        0;
-
-      top:
-        0;
-
-      height:
-        100vh;
-
-      width:
-        360px;
-
-      max-width:
-        92%;
-
-      background:
-        white;
-
-      box-shadow:
-        8px 0 30px
-        rgba(0,0,0,.2);
-
-      z-index:
-        1300;
-
-      transform:
-        translateX(-100%);
-
-      transition:
-        transform .25s;
-
-      display:
-        flex;
-
-      flex-direction:
-        column;
-
-    }
-
-
-    .cart-panel.open {
-
-      transform:
-        translateX(0);
-
-    }
-
-
-    .cart-header {
-
-      padding:
-        12px;
-
-      border-bottom:
-        1px solid #eee;
-
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      align-items:
-        center;
-
-    }
-
-
-    .cart-body {
-
-      padding:
-        12px;
-
-      overflow-y:
-        auto;
-
-      flex:
-        1;
-
-    }
-
-
-    .cart-item {
-
-      display:
-        flex;
-
-      gap:
-        8px;
-
-      padding:
-        8px;
-
-      border-radius:
-        8px;
-
-      background:
-        var(--bg);
-
-      margin-bottom:
-        8px;
-
-      align-items:
-        flex-start;
-
-    }
-
-
-    .cart-item .meta {
-
-      flex:
-        1;
-
-    }
-
-
-    .cart-item h4 {
-
-      margin:
-        0 0 4px;
-
-      font-size:
-        .96rem;
-
-    }
-
-
-    .cart-item p {
-
-      margin:
-        0;
-
-      font-size:
-        .88rem;
-
-      color:
-        #444;
-
-    }
-
-
-    .cart-footer {
-
-      padding:
-        12px;
-
-      border-top:
-        1px solid #eee;
-
-      display:
-        flex;
-
-      flex-direction:
-        column;
-
-      gap:
-        8px;
-
-    }
-
-
-    .small-muted {
-
-      font-size:
-        .9rem;
-
-      color:
-        #666;
-
-    }
-
-
-    /* =====================================================
-       TOTAL MODAL
-    ===================================================== */
-
-    .order-total {
-
-      margin-top:
-        12px;
-
-      padding:
-        10px;
-
-      border-radius:
-        8px;
-
-      background:
-        #fff;
-
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      align-items:
-        center;
-
-      font-weight:
-        800;
-
-    }
-
-
-    /* =====================================================
-       BEBIDAS
-    ===================================================== */
-
-    .bebidas-seccion {
-
-      margin-top:
-        45px;
-
-    }
-
-
-    /* =====================================================
-       RESPONSIVE
-    ===================================================== */
-
-    @media (max-width: 520px) {
-
-      .logo-header {
-
-        height:
-          110px;
-
-      }
-
-
-      .modal img {
-
-        display:
-          none;
-
-      }
-
-
-      .modal-header {
-
-        flex-direction:
-          column;
-
-        align-items:
-          flex-start;
-
-        gap:
-          6px;
-
-      }
-
-
-      .cart-panel {
-
-        width:
-          100%;
-
-        max-width:
-          100%;
-
-      }
-
-
-      .modal-actions {
-
-        flex-direction:
-          column;
-
-      }
-
-
-      .btn-secondary,
-      .btn-primary {
-
-        width:
-          100%;
-
-      }
-
-    }
-
-  </style>
-
+</style>
 </head>
 
 
@@ -1091,11 +653,12 @@
 
 <header>
 
-  <img
-    src="Guatiquesos/images/SoloelContorno.png"
-    alt="Guatiquesos"
-    class="logo-header"
-  >
+    <img
+        src="Guatiquesos/images/SoloelContorno.png"
+        alt="Guatiquesos"
+        class="logo-header"
+        onerror="this.style.display='none';"
+    >
 
 </header>
 
@@ -1106,24 +669,33 @@
 
 <main>
 
-  <h2>Pancitos</h2>
 
-  <section
-    class="productos"
-    id="productosPanes"
-  ></section>
+    <!-- =================================================
+         PANES
+    ================================================== -->
 
-
-  <section class="bebidas-seccion">
-
-    <h2>Bebidas</h2>
+    <h2>Pancitos</h2>
 
     <section
-      class="bebidas-grid"
-      id="productosBebidas"
-    ></section>
+        class="productos"
+        id="productosPanes">
+    </section>
 
-  </section>
+
+    <!-- =================================================
+         BEBIDAS
+    ================================================== -->
+
+    <section class="bebidas-seccion">
+
+        <h2>Bebidas</h2>
+
+        <section
+            class="bebidas-grid"
+            id="productosBebidas">
+        </section>
+
+    </section>
 
 </main>
 
@@ -1133,11 +705,12 @@
 ===================================================== -->
 
 <button
-  class="cart-btn"
-  id="openCart"
-  type="button"
->
-  🛒 Ver carrito (0)
+    class="cart-btn"
+    id="openCart"
+    type="button">
+
+    🛒 Ver carrito (0)
+
 </button>
 
 
@@ -1147,121 +720,121 @@
 
 <footer>
 
-  © 2026 Guatiquesos -
-  Hecho con amor y sabor 🧡
+    © 2026 Guatiquesos -
+    Hecho con amor y sabor 🧡
 
 </footer>
 
 
 <!-- =====================================================
-     MODAL
+     MODAL PEDIDO
 ===================================================== -->
 
 <div
-  class="modal"
-  id="pedidoModal"
-  aria-hidden="true"
->
+    class="modal"
+    id="pedidoModal"
+    aria-hidden="true">
 
-  <div
-    class="modal-content"
-    role="dialog"
-    aria-modal="true"
-  >
+    <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true">
 
-    <div class="modal-header">
 
-      <img
-        id="pedidoImg"
-        src=""
-        alt=""
-      >
+        <div class="modal-header">
 
-      <div>
+            <img
+                id="pedidoImg"
+                src=""
+                alt=""
+                onerror="this.style.display='none';"
+            >
 
-        <h3 id="pedidoTitle">
-          Producto
-        </h3>
+            <div>
 
-        <div
-          id="pedidoPrice"
-          class="precio"
-        >
+                <h3 id="pedidoTitle">
+                    Producto
+                </h3>
+
+                <div
+                    id="pedidoPrice"
+                    class="precio">
+                </div>
+
+            </div>
+
         </div>
 
-      </div>
+
+        <form id="pedidoForm">
+
+            <div
+                id="ingredientesContainer">
+            </div>
+
+
+            <div
+                id="errorMessage"
+                class="error-message">
+            </div>
+
+
+            <div class="order-total">
+
+                <span>
+                    Total del producto:
+                </span>
+
+                <span id="modalTotal">
+                    $0.00
+                </span>
+
+            </div>
+
+
+            <label
+                style="
+                display:block;
+                margin-top:10px;
+                ">
+
+                Comentarios adicionales
+
+            </label>
+
+
+            <textarea
+                id="pedidoNotas"
+                placeholder="Ej: sin cebolla, más salsa...">
+            </textarea>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    id="closePedido">
+
+                    Cancelar
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn-primary"
+                    id="addToCartBtn">
+
+                    Agregar al carrito
+
+                </button>
+
+            </div>
+
+        </form>
 
     </div>
-
-
-    <form id="pedidoForm">
-
-      <div
-        id="ingredientesContainer"
-      ></div>
-
-
-      <div
-        id="errorMessage"
-        class="error-message"
-      ></div>
-
-
-      <div class="order-total">
-
-        <span>
-          Total del producto:
-        </span>
-
-        <span id="modalTotal">
-          $0.00
-        </span>
-
-      </div>
-
-
-      <label
-        style="
-          display:block;
-          margin-top:10px;
-        "
-      >
-
-        Comentarios adicionales
-
-      </label>
-
-
-      <textarea
-        id="pedidoNotas"
-        placeholder="Ej: sin cebolla, más salsa..."
-      ></textarea>
-
-
-      <div class="modal-actions">
-
-        <button
-          type="button"
-          class="btn-secondary"
-          id="closePedido"
-        >
-          Cancelar
-        </button>
-
-
-        <button
-          type="button"
-          class="btn-primary"
-          id="addToCartBtn"
-        >
-          Agregar al carrito
-        </button>
-
-      </div>
-
-    </form>
-
-  </div>
 
 </div>
 
@@ -1271,129 +844,131 @@
 ===================================================== -->
 
 <div
-  class="cart-panel"
-  id="cartPanel"
-  aria-hidden="true"
->
-
-  <div class="cart-header">
-
-    <strong>
-      🛒 Carrito de pedidos
-    </strong>
+    class="cart-panel"
+    id="cartPanel"
+    aria-hidden="true">
 
 
-    <button
-      id="closeCartBtn"
-      type="button"
-      style="
-        background:none;
-        border:none;
-        font-weight:800;
-        cursor:pointer;
-        font-size:18px;
-      "
-    >
-      ✕
-    </button>
+    <div class="cart-header">
 
-  </div>
+        <strong>
+            🛒 Carrito de pedidos
+        </strong>
 
 
-  <div
-    class="cart-body"
-    id="cartBody"
-  >
+        <button
+            id="closeCartBtn"
+            type="button"
+            style="
+            background:none;
+            border:none;
+            font-weight:800;
+            cursor:pointer;
+            font-size:18px;
+            ">
 
-    <p class="small-muted">
-      No hay pedidos aún.
-    </p>
+            ✕
 
-  </div>
+        </button>
 
+    </div>
 
-  <div class="cart-footer">
 
     <div
-      style="
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-      "
-    >
+        class="cart-body"
+        id="cartBody">
 
-      <div>
+        <p class="small-muted">
+            No hay pedidos aún.
+        </p>
 
-        <div class="small-muted">
-          Total:
-        </div>
+    </div>
+
+
+    <div class="cart-footer">
 
         <div
-          id="cartSubtotal"
-          style="
-            font-weight:800;
-            font-size:1.05rem;
-          "
-        >
-          $0.00
+            style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            ">
+
+            <div>
+
+                <div class="small-muted">
+                    Total:
+                </div>
+
+                <div
+                    id="cartSubtotal"
+                    style="
+                    font-weight:800;
+                    font-size:1.05rem;
+                    ">
+
+                    $0.00
+
+                </div>
+
+            </div>
+
         </div>
 
-      </div>
+
+        <div
+            style="
+            display:flex;
+            gap:8px;
+            margin-top:8px;
+            ">
+
+            <button
+                id="clearCart"
+                type="button"
+                style="
+                flex:1;
+                background:#ff7f50;
+                color:#fff;
+                border:none;
+                padding:10px;
+                border-radius:8px;
+                font-weight:800;
+                cursor:pointer;
+                ">
+
+                Vaciar
+
+            </button>
+
+
+            <button
+                id="sendWhatsApp"
+                type="button"
+                style="
+                flex:1;
+                background:#25D366;
+                color:#fff;
+                border:none;
+                padding:10px;
+                border-radius:8px;
+                font-weight:900;
+                cursor:pointer;
+                ">
+
+                WhatsApp
+
+            </button>
+
+        </div>
 
     </div>
-
-
-    <div
-      style="
-        display:flex;
-        gap:8px;
-        margin-top:8px;
-      "
-    >
-
-      <button
-        id="clearCart"
-        type="button"
-        style="
-          flex:1;
-          background:#ff7f50;
-          color:#fff;
-          border:none;
-          padding:10px;
-          border-radius:8px;
-          font-weight:800;
-          cursor:pointer;
-        "
-      >
-        Vaciar
-      </button>
-
-
-      <button
-        id="sendWhatsApp"
-        type="button"
-        style="
-          flex:1;
-          background:#25D366;
-          color:#fff;
-          border:none;
-          padding:10px;
-          border-radius:8px;
-          font-weight:900;
-          cursor:pointer;
-        "
-      >
-        WhatsApp
-      </button>
-
-    </div>
-
-  </div>
 
 </div>
 
 
 <script>
+
 
 /* =====================================================
    CONFIGURACIÓN
@@ -1403,204 +978,192 @@ const WHATSAPP_NUMBER = "584122492361";
 
 
 /* =====================================================
-   PANES
+   PRODUCTOS
 ===================================================== */
 
 const PRODUCTS = [
 
-  {
-    name: "Gemini",
-    price: 3.50,
-    image: "Guatiquesos/images/gemini.jpg.jpeg",
-    description: "Queso a elección y jamón a elección."
-  },
+    {
+        name:"Gemini",
+        price:3.50,
+        image:"Guatiquesos/images/gemini.jpg.jpeg",
+        description:"Queso a elección y jamón a elección."
+    },
 
-  {
-    name: "El Odiosito",
-    price: 5.50,
-    image: "Guatiquesos/images/odiosito.jpeg",
-    description: "Queso amarillo a elección, chorizo seco o salchichón."
-  },
+    {
+        name:"El Odiosito",
+        price:5.50,
+        image:"Guatiquesos/images/odiosito.jpeg",
+        description:"Queso amarillo a elección, chorizo seco o salchichón."
+    },
 
-  {
-    name: "Italiano",
-    price: 5.50,
-    image: "Guatiquesos/images/italiano.jpg.jpeg",
-    description: "Queso mozzarella, peperoni y pan de orégano."
-  },
+    {
+        name:"Italiano",
+        price:5.50,
+        image:"Guatiquesos/images/italiano.jpg.jpeg",
+        description:"Queso mozzarella, peperoni y pan de orégano."
+    },
 
-  {
-    name: "Marino",
-    price: 6.00,
-    image: "Guatiquesos/images/marino.jpeg",
-    description: "Queso crema y una lata de atún Margarita."
-  },
+    {
+        name:"Marino",
+        price:6.00,
+        image:"Guatiquesos/images/marino.jpeg",
+        description:"Queso crema y una lata de atún Margarita."
+    },
 
-  {
-    name: "Endiablado",
-    price: 6.00,
-    image: "Guatiquesos/images/diblo.jpeg",
-    description: "Una lata de Diablitos Underwood y queso a elección."
-  },
+    {
+        name:"Endiablado",
+        price:6.00,
+        image:"Guatiquesos/images/diblo.jpeg",
+        description:"Una lata de Diablitos Underwood y queso a elección."
+    },
 
-  {
-    name: "Chorizon",
-    price: 6.00,
-    image: "Guatiquesos/images/chorison.jpeg",
-    description: "Chorizo de ajo, picante o ahumado y queso a elección."
-  },
+    {
+        name:"Chorizon",
+        price:6.00,
+        image:"Guatiquesos/images/chorison.jpeg",
+        description:"Chorizo de ajo, picante o ahumado y queso a elección."
+    },
 
-  {
-    name: "Guatidino",
-    price: 6.50,
-    image: "Guatiquesos/images/guatidino.jpeg",
-    description: "Granjero de pollo, queso americano y jamón ahumado."
-  },
+    {
+        name:"Guatidino",
+        price:6.50,
+        image:"Guatiquesos/images/guatidino.jpeg",
+        description:"Granjero de pollo, queso americano y jamón ahumado."
+    },
 
-  {
-    name: "Sanguinario",
-    price: 6.50,
-    image: "Guatiquesos/images/sanguinario.jpeg",
-    description:
-      "Tres contornos: 1 queso + 1 jamón + 1 delicatessen."
-  },
+    {
+        name:"Sanguinario",
+        price:6.50,
+        image:"Guatiquesos/images/sanguinario.jpeg",
+        description:"Tres contornos: 1 queso + 1 jamón + 1 embutido/delicatessen."
+    },
 
-  {
-    name: "Chuletazo",
-    price: 6.50,
-    image: "Guatiquesos/images/chuletaso.jpeg",
-    description: "100 g de chuleta ahumada y queso americano."
-  },
+    {
+        name:"Chuletazo",
+        price:6.50,
+        image:"Guatiquesos/images/chuletaso.jpeg",
+        description:"100 g de chuleta ahumada y queso americano."
+    },
 
-  {
-    name: "Doble Sanguinario",
-    price: 6.50,
-    image: "Guatiquesos/images/sanguinario.jpeg",
-    description:
-      "Cuatro contornos: 1 queso + 1 jamón + 2 delicatessen."
-  },
+    {
+        name:"Doble Sanguinario",
+        price:6.50,
+        image:"Guatiquesos/images/sanguinario.jpeg",
+        description:"Cuatro contornos: 1 queso + 1 jamón + 2 embutidos/delicatessen."
+    },
 
-  {
-    name: "Polloneitor",
-    price: 7.50,
-    image: "Guatiquesos/images/pollineitor.jpg.jpeg",
-    description: "200 g de pechuga de pollo y queso amarillo."
-  },
+    {
+        name:"Polloneitor",
+        price:7.50,
+        image:"Guatiquesos/images/pollineitor.jpg.jpeg",
+        description:"200 g de pechuga de pollo y queso amarillo."
+    },
 
-  {
-    name: "Pesto Prime",
-    price: 7.50,
-    image: "Guatiquesos/images/pesto.jpeg",
-    description:
-      "Mortadela italiana con pistacho, queso telita, tomates a la vinagreta, rúcula y pesto."
-  },
+    {
+        name:"Pesto Prime",
+        price:7.50,
+        image:"Guatiquesos/images/pesto.jpeg",
+        description:"Mortadela italiana con pistacho, queso telita, tomates a la vinagreta, rúcula y pesto."
+    },
 
-  {
-    name: "Bacon Bite",
-    price: 6.50,
-    image: "Guatiquesos/images/baconbite.jpeg",
-    description: "Queso a elección y 70 g de tocineta Plumrose."
-  },
+    {
+        name:"Bacon Bite",
+        price:6.50,
+        image:"Guatiquesos/images/baconbite.jpeg",
+        description:"Queso a elección y 70 g de tocineta Plumrose."
+    },
 
-  {
-    name: "Roast Beef",
-    price: 7.50,
-    image: "Guatiquesos/images/roast.jpeg",
-    description: "100 g de roast beef y queso americano."
-  },
+    {
+        name:"Roast Beef",
+        price:7.50,
+        image:"Guatiquesos/images/roast.jpeg",
+        description:"100 g de roast beef y queso americano."
+    },
 
-  {
-    name: "Selva Negra",
-    price: 7.50,
-    image: "Guatiquesos/images/selva.jpeg",
-    description: "100 g de selva negra y queso americano."
-  },
+    {
+        name:"Selva Negra",
+        price:7.50,
+        image:"Guatiquesos/images/selva.jpeg",
+        description:"100 g de selva negra y queso americano."
+    },
 
-  {
-    name: "Pollo & Mar",
-    price: 8.80,
-    image: "Guatiquesos/images/pollimar.jpeg",
-    description:
-      "75 g de pollo, 75 g de camarón salteado y queso mozzarella."
-  },
+    {
+        name:"Pollo & Mar",
+        price:8.80,
+        image:"Guatiquesos/images/pollimar.jpeg",
+        description:"75 g de pollo, 75 g de camarón salteado y queso mozzarella."
+    },
 
-  {
-    name: "Pastrami",
-    price: 8.00,
-    image: "Guatiquesos/images/pastrami.jpeg",
-    description: "100 g de pastrami y queso americano."
-  },
+    {
+        name:"Pastrami",
+        price:8.00,
+        image:"Guatiquesos/images/pastrami.jpeg",
+        description:"100 g de pastrami y queso americano."
+    },
 
-  {
-    name: "Camaroncin",
-    price: 8.00,
-    image: "Guatiquesos/images/cama.jpeg",
-    description:
-      "150 g de camarón al ajillo, queso crema, americano y pecorino."
-  },
+    {
+        name:"Camaroncin",
+        price:8.00,
+        image:"Guatiquesos/images/cama.jpeg",
+        description:"150 g de camarón al ajillo, queso crema, americano y pecorino."
+    },
 
-  {
-    name: "El Cesar",
-    price: 8.00,
-    image: "Guatiquesos/images/cesar.jpeg",
-    description:
-      "Pollo crispy, tocineta, ensalada César, aceite de oliva y pan de sésamo negro."
-  },
+    {
+        name:"El Cesar",
+        price:8.00,
+        image:"Guatiquesos/images/cesar.jpeg",
+        description:"Pollo crispy, tocineta, ensalada César, aceite de oliva y pan de sésamo negro."
+    },
 
-  {
-    name: "Inquisidor",
-    price: 10.50,
-    image: "Guatiquesos/images/inqui.jpeg",
-    description:
-      "Queso guayanés, jamón ahumado, chorizo de ajo, pollo, chuleta ahumada y tocineta."
-  },
+    {
+        name:"Inquisidor",
+        price:10.50,
+        image:"Guatiquesos/images/inqui.jpeg",
+        description:"Queso guayanés, jamón ahumado, chorizo de ajo, pollo, chuleta ahumada y tocineta."
+    },
 
-  {
-    name: "Mar y Tierra",
-    price: 9.00,
-    image: "Guatiquesos/images/maritierra.jpeg",
-    description:
-      "50 g de pollo, 50 g de carne, 50 g de camarón salteado y queso mozzarella."
-  },
+    {
+        name:"Mar y Tierra",
+        price:9.00,
+        image:"Guatiquesos/images/maritierra.jpeg",
+        description:"50 g de pollo, 50 g de carne, 50 g de camarón salteado y queso mozzarella."
+    },
 
-  {
-    name: "Comete Este",
-    price: 8.00,
-    image: "Guatiquesos/images/comete_este.jpg.jpeg",
-    description: "120 g de pernil y queso americano."
-  },
+    {
+        name:"Comete Este",
+        price:8.00,
+        image:"Guatiquesos/images/comete_este.jpg.jpeg",
+        description:"120 g de pernil y queso americano."
+    },
 
-  {
-    name: "Polli Carne",
-    price: 8.00,
-    image: "Guatiquesos/images/pollicarne.jpeg",
-    description:
-      "75 g de pechuga de pollo, 75 g de carne y queso americano."
-  },
+    {
+        name:"Polli Carne",
+        price:8.00,
+        image:"Guatiquesos/images/pollicarne.jpeg",
+        description:"75 g de pechuga de pollo, 75 g de carne y queso americano."
+    },
 
-  {
-    name: "Octopus",
-    price: 12.50,
-    image: "Guatiquesos/images/octo.jpeg",
-    description:
-      "150 g de pulpo, queso mozzarella, miel picante y Siracha."
-  },
+    {
+        name:"Octopus",
+        price:12.50,
+        image:"Guatiquesos/images/octo.jpeg",
+        description:"150 g de pulpo, queso mozzarella, miel picante y Siracha."
+    },
 
-  {
-    name: "Pulpo Camarón",
-    price: 9.00,
-    image: "Guatiquesos/images/pulpocamaron.jpeg",
-    description:
-      "80 g de camarón salteado, 50 g de pulpo y queso mozzarella."
-  },
+    {
+        name:"Pulpo Camarón",
+        price:9.00,
+        image:"Guatiquesos/images/pulpocamaron.jpeg",
+        description:"80 g de camarón salteado, 50 g de pulpo y queso mozzarella."
+    },
 
-  {
-    name: "Salmoncin",
-    price: 10.50,
-    image: "Guatiquesos/images/salmon.jpeg",
-    description:
-      "100 g de salmón fresco y queso crema."
-  }
+    {
+        name:"Salmoncin",
+        price:10.50,
+        image:"Guatiquesos/images/salmon.jpeg",
+        description:"100 g de salmón fresco y queso crema."
+    }
 
 ];
 
@@ -1611,26 +1174,26 @@ const PRODUCTS = [
 
 const BEVERAGES = [
 
-  {
-    name: "Refresco de 1L",
-    price: 1.50,
-    image: "Guatiquesos/images/1L.jpg",
-    description: "Refresco Pepsi Cola 1L."
-  },
+    {
+        name:"Refresco de 1L",
+        price:1.50,
+        image:"Guatiquesos/images/1L.jpg",
+        description:"Refresco Pepsi Cola 1L."
+    },
 
-  {
-    name: "Refresco de 1.5L",
-    price: 2.00,
-    image: "Guatiquesos/images/15.jpg",
-    description: "Refresco Pepsi Cola 1.5L."
-  },
+    {
+        name:"Refresco de 1.5L",
+        price:2.00,
+        image:"Guatiquesos/images/15.jpg",
+        description:"Refresco Pepsi 1.5L."
+    },
 
-  {
-    name: "Refresco de 2L",
-    price: 1.50,
-    image: "Guatiquesos/images/2L.png",
-    description: "Refresco de 2 litros."
-  }
+    {
+        name:"Refresco de 2L",
+        price:1.50,
+        image:"Guatiquesos/images/2L.png",
+        description:"Refresco de 2 litros."
+    }
 
 ];
 
@@ -1641,91 +1204,90 @@ const BEVERAGES = [
 
 const CATEGORIES = [
 
-  {
-    title: "Tipo de Pan",
-    name: "tipo_pan",
-    type: "radio",
-    items: [
-      "Blanco",
-      "Avena",
-      "Orégano",
-      "Sésamo Negro",
-      "Ajonjolí"
-    ]
-  },
+    {
+        title:"Tipo de Pan",
+        name:"tipo_pan",
+        type:"radio",
 
-  {
-    title: "Vegetales",
-    name: "vegetales",
-    type: "checkbox",
-    items: [
-      "Lechuga",
-      "Tomate",
-      "Cebolla",
-      "Alfalfa",
-      "Maíz"
-    ]
-  },
+        items:[
+            "Blanco",
+            "Avena",
+            "Orégano",
+            "Sésamo Negro",
+            "Ajonjolí"
+        ]
+    },
 
-  {
-    title: "Salsas",
-    name: "salsas",
-    type: "checkbox",
-    items: [
-      "Mayonesa",
-      "Mostaza",
-      "BBQ",
-      "Ketchup",
-      "Ají Dulce",
-      "Mostaza Miel",
-      "Ajo",
-      "Mayo Albahaca",
-      "Alioli",
-      "Big Mac",
-      "Ahumada",
-      "Cheddar",
-      "Ajoporro",
-      "Tártara",
-      "Siracha",
-      "Picante",
-      "Miel Picante",
-      "Pimentón Ahumado",
-      "Maíz",
-      "Guasacaca"
-    ]
-  },
+    {
+        title:"Vegetales",
+        name:"vegetales",
+        type:"checkbox",
 
-  /*
-     QUESOS SIEMPRE RADIO.
+        items:[
+            "Lechuga",
+            "Tomate",
+            "Cebolla",
+            "Alfalfa",
+            "Maíz"
+        ]
+    },
 
-     SOLO SE PUEDE ELEGIR UN QUESO.
-  */
+    {
+        title:"Salsas",
+        name:"salsas",
+        type:"checkbox",
 
-  {
-    title: "Quesos",
-    name: "quesos",
-    type: "radio",
-    items: [
-      "Amarillo",
-      "Mozzarella",
-      "Paisa",
-      "Facilista",
-      "Guayanes",
-      "Crema"
-    ]
-  },
+        items:[
+            "Mayonesa",
+            "Mostaza",
+            "BBQ",
+            "Ketchup",
+            "Ají Dulce",
+            "Mostaza Miel",
+            "Ajo",
+            "Mayo Albahaca",
+            "Alioli",
+            "Big Mac",
+            "Ahumada",
+            "Cheddar",
+            "Ajoporro",
+            "Tártara",
+            "Siracha",
+            "Picante",
+            "Miel Picante",
+            "Pimentón Ahumado",
+            "Maíz",
+            "Guasacaca"
+        ]
+    },
 
-  {
-    title: "Jamones",
-    name: "jamones",
-    type: "radio",
-    items: [
-      "Pierna",
-      "Ahumado",
-      "Pavo",
-      "Pavo Ahumado"
-    ]
-  }
+    {
+        title:"Quesos",
+        name:"quesos",
+        type:"radio",
+
+        items:[
+            "Amarillo",
+            "Mozzarella",
+            "Paisa",
+            "Facilista",
+            "Guayanes",
+            "Crema"
+        ]
+    },
+
+    {
+        title:"Jamones",
+        name:"jamones",
+        type:"radio",
+
+        items:[
+            "Pierna",
+            "Ahumado",
+            "Pavo",
+            "Pavo Ahumado"
+        ]
+    }
 
 ];
 
@@ -1736,15 +1298,15 @@ const CATEGORIES = [
 
 const DELICATESSEN_ITEMS = [
 
-  "Salami",
-  "Salchichón",
-  "Chorizo Seco",
-  "Selva Negra",
-  "Roast Beef",
-  "Pepperoni",
-  "Pastrami",
-  "Granjero",
-  "Tapara"
+    "Salami",
+    "Salchichón",
+    "Chorizo Seco",
+    "Selva Negra",
+    "Roast Beef",
+    "Pepperoni",
+    "Pastrami",
+    "Granjero",
+    "Tapara"
 
 ];
 
@@ -1755,48 +1317,51 @@ const DELICATESSEN_ITEMS = [
 
 const EXTRA_GROUPS = [
 
-  {
-    title: "Sencillos",
-    price: 1.00,
-    items: [
-      "Aceitunas Negras",
-      "Aceitunas Verdes",
-      "Pepinillos",
-      "Vegetales"
-    ]
-  },
+    {
+        title:"Sencillos",
+        price:1.00,
 
-  {
-    title: "No tan sencillos",
-    price: 1.50,
-    items: [
-      "Queso",
-      "Jamón",
-      "Delicatessen",
-      "Chorizo de Ajo",
-      "Chorizo Picante",
-      "Chorizo Ahumado",
-      "Tocineta",
-      "Chuleta Ahumada"
-    ]
-  },
+        items:[
+            "Aceitunas Negras",
+            "Aceitunas Verdes",
+            "Pepinillos",
+            "Vegetales"
+        ]
+    },
 
-  {
-    title: "Deliciosos",
-    price: 3.00,
-    items: [
-      "Atún Margarita",
-      "Diablitos Underwood",
-      "Roast Beef",
-      "Selva Negra",
-      "Pastrami",
-      "Granjero",
-      "Pernil",
-      "Pechuga de Pollo",
-      "Carne",
-      "Cochino Fresco"
-    ]
-  }
+    {
+        title:"No tan sencillos",
+        price:1.50,
+
+        items:[
+            "Queso",
+            "Jamón",
+            "Delicatessen",
+            "Chorizo de Ajo",
+            "Chorizo Picante",
+            "Chorizo Ahumado",
+            "Tocineta",
+            "Chuleta Ahumada"
+        ]
+    },
+
+    {
+        title:"Deliciosos",
+        price:3.00,
+
+        items:[
+            "Atún Margarita",
+            "Diablitos Underwood",
+            "Roast Beef",
+            "Selva Negra",
+            "Pastrami",
+            "Granjero",
+            "Pernil",
+            "Pechuga de Pollo",
+            "Carne",
+            "Cochino Fresco"
+        ]
+    }
 
 ];
 
@@ -1815,120 +1380,118 @@ let currentProduct = null;
 ===================================================== */
 
 const productosPanes =
-  document.getElementById("productosPanes");
+document.getElementById("productosPanes");
 
 const productosBebidas =
-  document.getElementById("productosBebidas");
+document.getElementById("productosBebidas");
 
 const pedidoModal =
-  document.getElementById("pedidoModal");
+document.getElementById("pedidoModal");
 
 const pedidoImg =
-  document.getElementById("pedidoImg");
+document.getElementById("pedidoImg");
 
 const pedidoTitle =
-  document.getElementById("pedidoTitle");
+document.getElementById("pedidoTitle");
 
 const pedidoPrice =
-  document.getElementById("pedidoPrice");
+document.getElementById("pedidoPrice");
 
 const ingredientesContainer =
-  document.getElementById("ingredientesContainer");
+document.getElementById("ingredientesContainer");
 
 const pedidoNotas =
-  document.getElementById("pedidoNotas");
+document.getElementById("pedidoNotas");
 
 const modalTotal =
-  document.getElementById("modalTotal");
+document.getElementById("modalTotal");
 
 const addToCartBtn =
-  document.getElementById("addToCartBtn");
+document.getElementById("addToCartBtn");
 
 const closePedido =
-  document.getElementById("closePedido");
+document.getElementById("closePedido");
 
 const cartBtn =
-  document.getElementById("openCart");
+document.getElementById("openCart");
 
 const cartPanel =
-  document.getElementById("cartPanel");
+document.getElementById("cartPanel");
 
 const cartBody =
-  document.getElementById("cartBody");
+document.getElementById("cartBody");
 
 const closeCartBtn =
-  document.getElementById("closeCartBtn");
+document.getElementById("closeCartBtn");
 
 const cartSubtotalEl =
-  document.getElementById("cartSubtotal");
+document.getElementById("cartSubtotal");
 
 const clearCartBtn =
-  document.getElementById("clearCart");
+document.getElementById("clearCart");
 
 const sendWhatsAppBtn =
-  document.getElementById("sendWhatsApp");
+document.getElementById("sendWhatsApp");
 
 const errorMessage =
-  document.getElementById("errorMessage");
+document.getElementById("errorMessage");
 
 
 /* =====================================================
    MONEDA
 ===================================================== */
 
-function currency(number) {
+function currency(number){
 
-  return "$" +
-    Number(number).toFixed(2);
-
-}
-
-
-/* =====================================================
-   IDENTIFICAR SANGUINARIOS
-===================================================== */
-
-function isSanguinario(product) {
-
-  if (!product) {
-    return false;
-  }
-
-  return (
-    product.name === "Sanguinario" ||
-    product.name === "Doble Sanguinario"
-  );
+    return "$" + Number(number).toFixed(2);
 
 }
 
 
 /* =====================================================
-   CONTORNOS REQUERIDOS
+   ID
 ===================================================== */
 
-function getRequiredContours(product) {
+function generateId(){
 
-  if (!product) {
+    return Date.now() +
+    Math.random()
+    .toString(36)
+    .substring(2,8);
+
+}
+
+
+/* =====================================================
+   SANGUINARIO
+===================================================== */
+
+function isSanguinario(product){
+
+    return product &&
+    (
+        product.name === "Sanguinario" ||
+        product.name === "Doble Sanguinario"
+    );
+
+}
+
+
+function getRequiredContours(product){
+
+    if(!product){
+        return 0;
+    }
+
+    if(product.name === "Sanguinario"){
+        return 3;
+    }
+
+    if(product.name === "Doble Sanguinario"){
+        return 4;
+    }
+
     return 0;
-  }
-
-  if (
-    product.name === "Sanguinario"
-  ) {
-
-    return 3;
-
-  }
-
-  if (
-    product.name === "Doble Sanguinario"
-  ) {
-
-    return 4;
-
-  }
-
-  return 0;
 
 }
 
@@ -1937,55 +1500,65 @@ function getRequiredContours(product) {
    RENDER PANES
 ===================================================== */
 
-function renderProducts() {
+function renderProducts(){
 
-  productosPanes.innerHTML = "";
+    productosPanes.innerHTML = "";
 
-  PRODUCTS.forEach(product => {
+    if(PRODUCTS.length === 0){
 
-    const card =
-      document.createElement("div");
+        productosPanes.innerHTML =
+        "<p>No hay panes disponibles.</p>";
 
-    card.className = "card";
+        return;
+    }
 
-    card.innerHTML = `
+    PRODUCTS.forEach(product => {
 
-      <img
-        src="${product.image}"
-        alt="${escapeHtml(product.name)}"
-      >
+        const card =
+        document.createElement("div");
 
-      <h3>
-        ${escapeHtml(product.name)}
-      </h3>
+        card.className = "card";
 
-      <p class="precio">
-        ${currency(product.price)}
-      </p>
+        card.innerHTML = `
 
-      <p class="descripcion-corta">
-        ${escapeHtml(product.description)}
-      </p>
+            <img
+                src="${product.image}"
+                alt="${escapeHtml(product.name)}"
+                onerror="this.onerror=null;this.src='';this.style.background='#fff8d7';"
+            >
 
-      <button
-        type="button"
-        class="pedir-btn"
-      >
-        Pedir
-      </button>
+            <h3>
+                ${escapeHtml(product.name)}
+            </h3>
 
-    `;
+            <p class="precio">
+                ${currency(product.price)}
+            </p>
 
-    card
-      .querySelector(".pedir-btn")
-      .addEventListener(
-        "click",
-        () => openPedidoModal(product)
-      );
+            <p class="descripcion-corta">
+                ${escapeHtml(product.description)}
+            </p>
 
-    productosPanes.appendChild(card);
+            <button
+                type="button"
+                class="pedir-btn">
 
-  });
+                Pedir
+
+            </button>
+
+        `;
+
+        card
+        .querySelector(".pedir-btn")
+        .addEventListener(
+            "click",
+            () => openPedidoModal(product)
+        );
+
+        productosPanes.appendChild(card);
+
+    });
 
 }
 
@@ -1994,79 +1567,78 @@ function renderProducts() {
    RENDER BEBIDAS
 ===================================================== */
 
-function renderBeverages() {
+function renderBeverages(){
 
-  productosBebidas.innerHTML = "";
+    productosBebidas.innerHTML = "";
 
-  if (
-    BEVERAGES.length === 0
-  ) {
+    if(BEVERAGES.length === 0){
 
-    productosBebidas.innerHTML = `
+        productosBebidas.innerHTML = `
 
-      <p
-        style="
-          grid-column:1/-1;
-          text-align:center;
-          color:#666;
-          padding:20px;
-        "
-      >
-        Próximamente agregaremos nuestras bebidas.
-      </p>
+            <p
+                style="
+                grid-column:1/-1;
+                text-align:center;
+                color:#666;
+                padding:20px;
+                ">
 
-    `;
+                Próximamente agregaremos nuestras bebidas.
 
-    return;
+            </p>
 
-  }
+        `;
 
+        return;
+    }
 
-  BEVERAGES.forEach(beverage => {
+    BEVERAGES.forEach(beverage => {
 
-    const card =
-      document.createElement("div");
+        const card =
+        document.createElement("div");
 
-    card.className = "card";
+        card.className = "card";
 
-    card.innerHTML = `
+        card.innerHTML = `
 
-      <img
-        src="${beverage.image}"
-        alt="${escapeHtml(beverage.name)}"
-      >
+            <img
+                src="${beverage.image}"
+                alt="${escapeHtml(beverage.name)}"
+                onerror="this.onerror=null;this.src='';this.style.background='#fff8d7';"
+            >
 
-      <h3>
-        ${escapeHtml(beverage.name)}
-      </h3>
+            <h3>
+                ${escapeHtml(beverage.name)}
+            </h3>
 
-      <p class="precio">
-        ${currency(beverage.price)}
-      </p>
+            <p class="precio">
+                ${currency(beverage.price)}
+            </p>
 
-      <p class="descripcion-corta">
-        ${escapeHtml(beverage.description)}
-      </p>
+            <p class="descripcion-corta">
+                ${escapeHtml(beverage.description)}
+            </p>
 
-      <button
-        type="button"
-        class="agregar-bebida"
-      >
-        Agregar
-      </button>
+            <button
+                type="button"
+                class="agregar-bebida">
 
-    `;
+                Agregar
 
-    card
-      .querySelector(".agregar-bebida")
-      .addEventListener(
-        "click",
-        () => addBeverageToCart(beverage)
-      );
+            </button>
 
-    productosBebidas.appendChild(card);
+        `;
 
-  });
+        card
+        .querySelector(".agregar-bebida")
+        .addEventListener(
+            "click",
+            () => addBeverageToCart(beverage)
+        );
+
+        productosBebidas.appendChild(card);
+
+    });
 
 }
 
@@ -2075,210 +1647,147 @@ function renderBeverages() {
    AGREGAR BEBIDA
 ===================================================== */
 
-function addBeverageToCart(beverage) {
+function addBeverageToCart(beverage){
 
-  const id =
-    Date.now() +
-    Math.random()
-      .toString(36)
-      .substring(2, 8);
+    CART.push({
 
+        id:generateId(),
 
-  CART.push({
+        type:"beverage",
 
-    id: id,
+        productName:beverage.name,
 
-    type: "beverage",
+        basePrice:beverage.price,
 
-    productName:
-      beverage.name,
+        img:beverage.image,
 
-    basePrice:
-      beverage.price,
+        selections:{},
 
-    img:
-      beverage.image,
+        notes:"",
 
-    selections: {},
+        extrasTotal:0,
 
-    notes: "",
-
-    extrasTotal: 0,
-
-    subtotal:
-      beverage.price
-
-  });
-
-
-  updateCartUI();
-
-  alert(
-    "¡Bebida agregada al carrito! 🥤"
-  );
-
-}
-
-
-/* =====================================================
-   ABRIR MODAL DEL PAN
-===================================================== */
-
-function openPedidoModal(product) {
-
-  currentProduct =
-    product;
-
-
-  pedidoImg.src =
-    product.image;
-
-  pedidoImg.alt =
-    product.name;
-
-  pedidoTitle.textContent =
-    product.name;
-
-  pedidoPrice.textContent =
-    currency(product.price);
-
-
-  ingredientesContainer.innerHTML =
-    "";
-
-  errorMessage.style.display =
-    "none";
-
-  errorMessage.textContent =
-    "";
-
-  pedidoNotas.value =
-    "";
-
-
-  /*
-     CATEGORÍAS NORMALES
-  */
-
-  createNormalCategories();
-
-
-  /*
-     SANGUINARIO Y DOBLE SANGUINARIO
-  */
-
-  if (
-    isSanguinario(product)
-  ) {
-
-    createSanguinarioInfo();
-
-    createSpecialDelicatessen();
-
-  }
-
-
-  /*
-     EXTRAS
-
-     IMPORTANTE:
-     El apartado de delicatessen
-     PAGADA NO se crea aquí.
-
-     Solo aparecerá cuando
-     el cliente marque el extra
-     "Delicatessen".
-  */
-
-  createExtras();
-
-
-  modalTotal.textContent =
-    currency(product.price);
-
-
-  pedidoModal.style.display =
-    "flex";
-
-  pedidoModal.setAttribute(
-    "aria-hidden",
-    "false"
-  );
-
-}
-
-
-/* =====================================================
-   CATEGORÍAS NORMALES
-===================================================== */
-
-function createNormalCategories() {
-
-  CATEGORIES.forEach(category => {
-
-    const group =
-      document.createElement("div");
-
-    group.className =
-      "group";
-
-
-    const title =
-      document.createElement("h4");
-
-    title.textContent =
-      category.title;
-
-    group.appendChild(title);
-
-
-    category.items.forEach(item => {
-
-      const label =
-        document.createElement("label");
-
-      label.className =
-        "inline";
-
-
-      const input =
-        document.createElement("input");
-
-      input.type =
-        category.type;
-
-      input.name =
-        category.name;
-
-      input.value =
-        item;
-
-
-      input.addEventListener(
-        "change",
-        updateModalTotal
-      );
-
-
-      const span =
-        document.createElement("span");
-
-      span.textContent =
-        item;
-
-
-      label.appendChild(input);
-
-      label.appendChild(span);
-
-      group.appendChild(label);
+        subtotal:beverage.price
 
     });
 
+    updateCartUI();
 
-    ingredientesContainer.appendChild(group);
+    alert("¡Bebida agregada al carrito! 🥤");
 
-  });
+}
+
+
+/* =====================================================
+   ABRIR MODAL
+===================================================== */
+
+function openPedidoModal(product){
+
+    currentProduct = product;
+
+    pedidoImg.style.display = "block";
+
+    pedidoImg.src = product.image;
+
+    pedidoImg.alt = product.name;
+
+    pedidoTitle.textContent = product.name;
+
+    pedidoPrice.textContent =
+    currency(product.price);
+
+    ingredientesContainer.innerHTML = "";
+
+    errorMessage.style.display = "none";
+
+    errorMessage.textContent = "";
+
+    pedidoNotas.value = "";
+
+    renderCategories();
+
+    if(isSanguinario(product)){
+
+        createSanguinarioInfo();
+
+        createSpecialDelicatessen();
+
+    }
+
+    createExtras();
+
+    modalTotal.textContent =
+    currency(product.price);
+
+    pedidoModal.style.display = "flex";
+
+    pedidoModal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+}
+
+
+/* =====================================================
+   CATEGORÍAS
+===================================================== */
+
+function renderCategories(){
+
+    CATEGORIES.forEach(category => {
+
+        const group =
+        document.createElement("div");
+
+        group.className = "group";
+
+        const title =
+        document.createElement("h4");
+
+        title.textContent =
+        category.title;
+
+        group.appendChild(title);
+
+        category.items.forEach(item => {
+
+            const label =
+            document.createElement("label");
+
+            label.className = "inline";
+
+            const input =
+            document.createElement("input");
+
+            input.type = category.type;
+
+            input.name = category.name;
+
+            input.value = item;
+
+            input.addEventListener(
+                "change",
+                updateModalTotal
+            );
+
+            const span =
+            document.createElement("span");
+
+            span.textContent = item;
+
+            label.appendChild(input);
+
+            label.appendChild(span);
+
+            group.appendChild(label);
+
+        });
+
+        ingredientesContainer.appendChild(group);
+
+    });
 
 }
 
@@ -2287,148 +1796,118 @@ function createNormalCategories() {
    INFORMACIÓN SANGUINARIO
 ===================================================== */
 
-function createSanguinarioInfo() {
+function createSanguinarioInfo(){
 
-  const required =
-    getRequiredContours(
-      currentProduct
-    );
+    const required =
+    getRequiredContours(currentProduct);
 
-
-  const info =
+    const info =
     document.createElement("div");
 
-  info.className =
-    "counter-info";
+    info.className = "counter-info";
 
+    info.innerHTML = `
 
-  info.innerHTML = `
+        <strong>${escapeHtml(currentProduct.name)}</strong>
 
-    <strong>${escapeHtml(currentProduct.name)}</strong>
+        <br><br>
 
-    <br><br>
+        Debes seleccionar exactamente
+        <strong>${required} contornos</strong> en total.
 
-    Debes seleccionar exactamente
-    <strong>${required} contornos</strong> en total.
+        <br><br>
 
-    <br><br>
+        1 queso + 1 jamón +
+        ${required - 2} embutido(s)/delicatessen.
 
-    1 queso + 1 jamón +
-    ${
-      required - 2
-    }
-    delicatessen.
+        <br><br>
 
-    <br><br>
+        Roast Beef, Selva Negra y Pastrami
+        están incluidos sin costo adicional.
 
-    <strong>
-      Roast Beef, Selva Negra y Pastrami
-      están incluidos GRATIS.
-    </strong>
+    `;
 
-  `;
-
-
-  ingredientesContainer.appendChild(info);
+    ingredientesContainer.appendChild(info);
 
 }
 
 
 /* =====================================================
    DELICATESSEN GRATIS
-   SOLO PARA SANGUINARIO Y DOBLE
 ===================================================== */
 
-function createSpecialDelicatessen() {
+function createSpecialDelicatessen(){
 
-  const group =
+    const group =
     document.createElement("div");
 
-  group.className =
-    "group";
+    group.className = "group";
 
-  group.id =
-    "freeDelicatessenGroup";
+    group.id = "freeDelicatessenGroup";
 
-
-  const title =
+    const title =
     document.createElement("h4");
 
-  title.textContent =
-    "Embutidos / Delicatessen incluidos GRATIS";
+    title.textContent =
+    "Embutidos / Delicatessen incluidos";
 
-  group.appendChild(title);
+    group.appendChild(title);
 
-
-  const description =
+    const description =
     document.createElement("div");
 
-  description.className =
+    description.className =
     "group-description";
 
-  description.textContent =
-    "Selecciona la delicatessen que ocupará tus contornos. No tiene costo adicional.";
+    description.textContent =
+    "Selecciona el embutido que ocupará uno de tus contornos. Sin costo adicional.";
 
-  group.appendChild(description);
+    group.appendChild(description);
 
+    DELICATESSEN_ITEMS.forEach(item => {
 
-  DELICATESSEN_ITEMS.forEach(item => {
+        const label =
+        document.createElement("label");
 
-    const label =
-      document.createElement("label");
+        label.className = "inline";
 
-    label.className =
-      "inline";
+        const input =
+        document.createElement("input");
 
+        input.type = "checkbox";
 
-    const input =
-      document.createElement("input");
+        input.name = "contorno_deli";
 
-    input.type =
-      "checkbox";
+        input.value = item;
 
-    input.name =
-      "contorno_deli";
+        input.addEventListener(
+            "change",
+            handleContourSelection
+        );
 
-    input.value =
-      item;
+        const span =
+        document.createElement("span");
 
+        span.textContent = item;
 
-    input.addEventListener(
-      "change",
-      handleContourSelection
-    );
+        const price =
+        document.createElement("span");
 
+        price.className = "extra-price";
 
-    const span =
-      document.createElement("span");
+        price.textContent = "GRATIS";
 
-    span.textContent =
-      item;
+        label.appendChild(input);
 
+        label.appendChild(span);
 
-    const price =
-      document.createElement("span");
+        label.appendChild(price);
 
-    price.className =
-      "extra-price";
+        group.appendChild(label);
 
-    price.textContent =
-      "GRATIS";
+    });
 
-
-    label.appendChild(input);
-
-    label.appendChild(span);
-
-    label.appendChild(price);
-
-    group.appendChild(label);
-
-  });
-
-
-  ingredientesContainer.appendChild(group);
+    ingredientesContainer.appendChild(group);
 
 }
 
@@ -2437,164 +1916,118 @@ function createSpecialDelicatessen() {
    EXTRAS
 ===================================================== */
 
-function createExtras() {
+function createExtras(){
 
-  const extrasMainGroup =
+    const mainGroup =
     document.createElement("div");
 
-  extrasMainGroup.className =
-    "group";
+    mainGroup.className = "group";
 
-  extrasMainGroup.id =
-    "extrasGroup";
+    mainGroup.id = "extrasGroup";
 
-
-  const extrasTitle =
+    const title =
     document.createElement("h4");
 
-  extrasTitle.textContent =
-    "Extras";
+    title.textContent = "Extras";
 
-  extrasMainGroup.appendChild(
-    extrasTitle
-  );
+    mainGroup.appendChild(title);
 
+    EXTRA_GROUPS.forEach(groupData => {
 
-  EXTRA_GROUPS.forEach(groupData => {
+        const subgroup =
+        document.createElement("div");
 
-    const subgroup =
-      document.createElement("div");
+        subgroup.style.marginTop = "10px";
 
-    subgroup.style.marginTop =
-      "10px";
+        const subgroupTitle =
+        document.createElement("strong");
 
+        subgroupTitle.style.display = "block";
 
-    const subgroupTitle =
-      document.createElement("strong");
+        subgroupTitle.style.marginBottom = "5px";
 
-    subgroupTitle.style.display =
-      "block";
+        subgroupTitle.textContent =
+        `${groupData.title} — ${currency(groupData.price)}`;
 
-    subgroupTitle.style.marginBottom =
-      "5px";
+        subgroup.appendChild(subgroupTitle);
 
-    subgroupTitle.textContent =
-      `${groupData.title} — ${currency(groupData.price)}`;
+        groupData.items.forEach(item => {
 
+            const label =
+            document.createElement("label");
 
-    subgroup.appendChild(
-      subgroupTitle
-    );
+            label.className = "inline";
 
+            const input =
+            document.createElement("input");
 
-    groupData.items.forEach(item => {
+            input.type = "checkbox";
 
-      const label =
-        document.createElement("label");
+            input.name = "extras";
 
-      label.className =
-        "inline";
+            input.value = item;
 
+            input.dataset.price =
+            groupData.price;
 
-      const input =
-        document.createElement("input");
+            input.addEventListener(
+                "change",
+                handleExtraChange
+            );
 
-      input.type =
-        "checkbox";
+            const span =
+            document.createElement("span");
 
-      input.name =
-        "extras";
+            span.textContent = item;
 
-      input.value =
-        item;
+            const price =
+            document.createElement("span");
 
-      input.dataset.price =
-        groupData.price;
+            price.className = "extra-price";
 
+            price.textContent =
+            `+${currency(groupData.price)}`;
 
-      input.addEventListener(
-        "change",
-        handleExtraChange
-      );
+            label.appendChild(input);
 
+            label.appendChild(span);
 
-      const span =
-        document.createElement("span");
+            label.appendChild(price);
 
-      span.textContent =
-        item;
+            subgroup.appendChild(label);
 
+        });
 
-      const price =
-        document.createElement("span");
-
-      price.className =
-        "extra-price";
-
-      price.textContent =
-        `+${currency(groupData.price)}`;
-
-
-      label.appendChild(input);
-
-      label.appendChild(span);
-
-      label.appendChild(price);
-
-      subgroup.appendChild(label);
+        mainGroup.appendChild(subgroup);
 
     });
 
-
-    extrasMainGroup.appendChild(
-      subgroup
-    );
-
-  });
-
-
-  ingredientesContainer.appendChild(
-    extrasMainGroup
-  );
+    ingredientesContainer.appendChild(mainGroup);
 
 }
 
 
 /* =====================================================
-   CAMBIO DE EXTRAS
+   EXTRA DELICATESSEN
 ===================================================== */
 
-function handleExtraChange(event) {
+function handleExtraChange(event){
 
-  /*
-     DELICATESSEN PAGADA
+    if(event.target.value === "Delicatessen"){
 
-     Solo aparece cuando se marca
-     el extra Delicatessen.
-  */
+        if(event.target.checked){
 
-  if (
-    event.target.value ===
-    "Delicatessen"
-  ) {
+            showPaidDelicatessen();
 
-    if (
-      event.target.checked
-    ) {
+        }else{
 
-      showPaidDelicatessen();
+            hidePaidDelicatessen();
 
-    }
-    else {
-
-      hidePaidDelicatessen();
+        }
 
     }
 
-  }
-
-
-  updateModalTotal();
+    updateModalTotal();
 
 }
 
@@ -2603,492 +2036,300 @@ function handleExtraChange(event) {
    MOSTRAR DELICATESSEN PAGADA
 ===================================================== */
 
-function showPaidDelicatessen() {
+function showPaidDelicatessen(){
 
-  /*
-     Si ya existe, no hacer nada.
-  */
+    if(document.getElementById(
+        "paidDelicatessenGroup"
+    )){
+        return;
+    }
 
-  if (
-    document.getElementById(
-      "paidDelicatessenGroup"
-    )
-  ) {
-
-    return;
-
-  }
-
-
-  const group =
+    const group =
     document.createElement("div");
 
-  group.className =
-    "group";
+    group.className = "group";
 
-  group.id =
-    "paidDelicatessenGroup";
+    group.id = "paidDelicatessenGroup";
 
-
-  const title =
+    const title =
     document.createElement("h4");
 
-  title.textContent =
+    title.textContent =
     "Delicatessen";
 
-  group.appendChild(title);
+    group.appendChild(title);
 
-
-  const description =
+    const description =
     document.createElement("div");
 
-  description.className =
+    description.className =
     "group-description";
 
-  description.textContent =
-    "Selecciona la delicatessen que deseas agregar por el precio del extra.";
+    description.textContent =
+    "Selecciona la delicatessen que deseas agregar.";
 
-  group.appendChild(description);
+    group.appendChild(description);
+
+    DELICATESSEN_ITEMS.forEach(item => {
+
+        const label =
+        document.createElement("label");
+
+        label.className = "inline";
+
+        const input =
+        document.createElement("input");
+
+        input.type = "radio";
+
+        input.name =
+        "delicatessen_extra";
+
+        input.value = item;
+
+        const span =
+        document.createElement("span");
+
+        span.textContent = item;
+
+        label.appendChild(input);
+
+        label.appendChild(span);
+
+        group.appendChild(label);
+
+    });
+
+    const extrasGroup =
+    document.getElementById("extrasGroup");
+
+    if(extrasGroup){
+
+        ingredientesContainer.insertBefore(
+            group,
+            extrasGroup
+        );
+
+    }else{
+
+        ingredientesContainer.appendChild(group);
+
+    }
+
+}
 
 
-  DELICATESSEN_ITEMS.forEach(item => {
+/* =====================================================
+   OCULTAR DELICATESSEN
+===================================================== */
 
-    const label =
-      document.createElement("label");
+function hidePaidDelicatessen(){
 
-    label.className =
-      "inline";
-
-
-    const input =
-      document.createElement("input");
-
-    input.type =
-      "radio";
-
-    input.name =
-      "delicatessen_extra";
-
-    input.value =
-      item;
-
-
-    const span =
-      document.createElement("span");
-
-    span.textContent =
-      item;
-
-
-    label.appendChild(input);
-
-    label.appendChild(span);
-
-    group.appendChild(label);
-
-  });
-
-
-  /*
-     Colocar el apartado
-     inmediatamente DESPUÉS
-     de Extras.
-  */
-
-  const extrasGroup =
+    const group =
     document.getElementById(
-      "extrasGroup"
+        "paidDelicatessenGroup"
     );
 
-
-  if (
-    extrasGroup
-  ) {
-
-    extrasGroup.after(group);
-
-  }
-  else {
-
-    ingredientesContainer.appendChild(
-      group
-    );
-
-  }
+    if(group){
+        group.remove();
+    }
 
 }
 
 
 /* =====================================================
-   OCULTAR DELICATESSEN PAGADA
+   CONTORNOS SANGUINARIO
 ===================================================== */
 
-function hidePaidDelicatessen() {
-
-  const group =
-    document.getElementById(
-      "paidDelicatessenGroup"
-    );
-
-
-  if (
-    group
-  ) {
-
-    group.remove();
-
-  }
-
-}
-
-
-/* =====================================================
-   SELECCIÓN DELICATESSEN SANGUINARIO
-===================================================== */
-
-function handleContourSelection(event) {
-
-  if (
-    !currentProduct ||
-    !isSanguinario(currentProduct)
-  ) {
-
-    return;
-
-  }
-
-
-  const required =
-    getRequiredContours(
-      currentProduct
-    );
-
-
-  const maxDeli =
-    required - 2;
-
-
-  const selected =
-    document.querySelectorAll(
-      'input[name="contorno_deli"]:checked'
-    );
-
-
-  if (
-    selected.length >
-    maxDeli
-  ) {
-
-    event.target.checked =
-      false;
-
-
-    alert(
-      `${currentProduct.name} solo permite ${maxDeli} delicatessen como contorno(s) incluido(s).`
-    );
-
-  }
-
-
-  updateModalTotal();
-
-}
-
-
-/* =====================================================
-   SABER SI SE MARCÓ DELICATESSEN COMO EXTRA
-===================================================== */
-
-function getSelectedExtraDelicatessen() {
-
-  const input =
-    document.querySelector(
-      'input[name="extras"][value="Delicatessen"]'
-    );
-
-
-  return !!(
-    input &&
-    input.checked
-  );
-
-}
-
-
-/* =====================================================
-   CALCULAR TOTAL
-===================================================== */
-
-function calculateModalTotal() {
-
-  if (
-    !currentProduct
-  ) {
-
-    return 0;
-
-  }
-
-
-  let total =
-    currentProduct.price;
-
-
-  const selectedExtras =
-    document.querySelectorAll(
-      'input[name="extras"]:checked'
-    );
-
-
-  selectedExtras.forEach(extra => {
-
-    total +=
-      Number(
-        extra.dataset.price || 0
-      );
-
-  });
-
-
-  return Number(
-    total.toFixed(2)
-  );
-
-}
-
-
-/* =====================================================
-   ACTUALIZAR TOTAL
-===================================================== */
-
-function updateModalTotal() {
-
-  modalTotal.textContent =
-    currency(
-      calculateModalTotal()
-    );
-
-}
-
-
-/* =====================================================
-   VALIDAR PRODUCTO
-===================================================== */
-
-function validateCurrentProduct() {
-
-  if (
-    !currentProduct
-  ) {
-
-    return {
-
-      valid: false,
-
-      message:
-        "No se ha seleccionado ningún producto."
-
-    };
-
-  }
-
-
-  /*
-     TODOS LOS PANES
-
-     Máximo 1 queso.
-     El radio ya impide
-     seleccionar más de uno.
-  */
-
-  const selectedCheese =
-    document.querySelectorAll(
-      'input[name="quesos"]:checked'
-    );
-
-
-  if (
-    selectedCheese.length >
-    1
-  ) {
-
-    return {
-
-      valid: false,
-
-      message:
-        "Solo puedes seleccionar un tipo de queso."
-
-    };
-
-  }
-
-
-  /*
-     SANGUINARIO / DOBLE
-  */
-
-  if (
-    isSanguinario(
-      currentProduct
-    )
-  ) {
+function handleContourSelection(event){
+
+    if(!currentProduct){
+        return;
+    }
 
     const required =
-      getRequiredContours(
-        currentProduct
-      );
+    getRequiredContours(currentProduct);
 
+    const maxDeli =
+    required - 2;
+
+    const selected =
+    document.querySelectorAll(
+        'input[name="contorno_deli"]:checked'
+    );
+
+    if(selected.length > maxDeli){
+
+        event.target.checked = false;
+
+        alert(
+            `Este pan solo permite ${maxDeli} embutido(s)/delicatessen.`
+        );
+
+    }
+
+    updateModalTotal();
+
+}
+
+
+/* =====================================================
+   EXTRA DELICATESSEN SELECCIONADA
+===================================================== */
+
+function getSelectedExtraDelicatessen(){
+
+    const input =
+    document.querySelector(
+        'input[name="extras"][value="Delicatessen"]'
+    );
+
+    return !!(
+        input &&
+        input.checked
+    );
+
+}
+
+
+/* =====================================================
+   TOTAL MODAL
+===================================================== */
+
+function calculateModalTotal(){
+
+    if(!currentProduct){
+        return 0;
+    }
+
+    let total =
+    currentProduct.price;
+
+    const extras =
+    document.querySelectorAll(
+        'input[name="extras"]:checked'
+    );
+
+    extras.forEach(extra => {
+
+        total += Number(
+            extra.dataset.price || 0
+        );
+
+    });
+
+    return Number(
+        total.toFixed(2)
+    );
+
+}
+
+
+function updateModalTotal(){
+
+    modalTotal.textContent =
+    currency(
+        calculateModalTotal()
+    );
+
+}
+
+
+/* =====================================================
+   VALIDACIÓN
+===================================================== */
+
+function validateCurrentProduct(){
+
+    if(!currentProduct){
+
+        return {
+            valid:false,
+            message:"No se ha seleccionado ningún producto."
+        };
+
+    }
+
+
+    /* SOLO UN QUESO */
 
     const cheeseCount =
-      document.querySelectorAll(
+    document.querySelectorAll(
         'input[name="quesos"]:checked'
-      ).length;
+    ).length;
 
+    if(cheeseCount > 1){
 
-    const hamCount =
-      document.querySelectorAll(
-        'input[name="jamones"]:checked'
-      ).length;
-
-
-    const deliCount =
-      document.querySelectorAll(
-        'input[name="contorno_deli"]:checked'
-      ).length;
-
-
-    /*
-       QUESO
-    */
-
-    if (
-      cheeseCount !== 1
-    ) {
-
-      return {
-
-        valid: false,
-
-        message:
-          `${currentProduct.name} requiere exactamente 1 tipo de queso.`
-
-      };
+        return {
+            valid:false,
+            message:"Solo puedes seleccionar un tipo de queso."
+        };
 
     }
 
 
-    /*
-       JAMÓN
-    */
+    /* SANGUINARIO */
 
-    if (
-      hamCount !== 1
-    ) {
+    if(isSanguinario(currentProduct)){
 
-      return {
+        const required =
+        getRequiredContours(currentProduct);
 
-        valid: false,
+        const hamCount =
+        document.querySelectorAll(
+            'input[name="jamones"]:checked'
+        ).length;
 
-        message:
-          `${currentProduct.name} requiere exactamente 1 tipo de jamón.`
+        const deliCount =
+        document.querySelectorAll(
+            'input[name="contorno_deli"]:checked'
+        ).length;
 
-      };
-
-    }
-
-
-    /*
-       DELICATESSEN
-    */
-
-    if (
-      deliCount !==
-      required - 2
-    ) {
-
-      return {
-
-        valid: false,
-
-        message:
-          `${currentProduct.name} requiere exactamente ${required - 2} delicatessen como contorno(s) incluido(s).`
-
-      };
-
-    }
+        const totalContours =
+        cheeseCount +
+        hamCount +
+        deliCount;
 
 
-    /*
-       TOTAL DE CONTORNOS
-    */
+        if(cheeseCount !== 1){
 
-    const totalContours =
-      cheeseCount +
-      hamCount +
-      deliCount;
+            return {
+                valid:false,
+                message:
+                `Para ${currentProduct.name} debes seleccionar exactamente 1 tipo de queso.`
+            };
+
+        }
 
 
-    if (
-      totalContours !==
-      required
-    ) {
+        if(hamCount !== 1){
 
-      return {
+            return {
+                valid:false,
+                message:
+                `Para ${currentProduct.name} debes seleccionar exactamente 1 tipo de jamón.`
+            };
 
-        valid: false,
+        }
 
-        message:
-          `${currentProduct.name} requiere exactamente ${required} contornos.`
 
-      };
+        if(totalContours !== required){
+
+            return {
+                valid:false,
+                message:
+                `${currentProduct.name} requiere exactamente ${required} contornos: 1 queso + 1 jamón + ${required - 2} embutido(s)/delicatessen.`
+            };
+
+        }
 
     }
 
-  }
 
-
-  /*
-     SI SE SELECCIONÓ EL EXTRA
-     DELICATESSEN, DEBE ELEGIR
-     UNA DELICATESSEN.
-  */
-
-  if (
-    getSelectedExtraDelicatessen()
-  ) {
-
-    const paidDeli =
-      document.querySelectorAll(
-        'input[name="delicatessen_extra"]:checked'
-      );
-
-
-    if (
-      paidDeli.length !== 1
-    ) {
-
-      return {
-
-        valid: false,
-
-        message:
-          "Selecciona una delicatessen para el extra que agregaste."
-
-      };
-
-    }
-
-  }
-
-
-  return {
-
-    valid: true,
-
-    message: ""
-
-  };
+    return {
+        valid:true,
+        message:""
+    };
 
 }
 
@@ -3097,12 +2338,12 @@ function validateCurrentProduct() {
    MOSTRAR ERROR
 ===================================================== */
 
-function showError(message) {
+function showError(message){
 
-  errorMessage.textContent =
+    errorMessage.textContent =
     message;
 
-  errorMessage.style.display =
+    errorMessage.style.display =
     "block";
 
 }
@@ -3112,18 +2353,17 @@ function showError(message) {
    CERRAR MODAL
 ===================================================== */
 
-function closePedidoModal() {
+function closePedidoModal(){
 
-  pedidoModal.style.display =
+    pedidoModal.style.display =
     "none";
 
-  pedidoModal.setAttribute(
-    "aria-hidden",
-    "true"
-  );
+    pedidoModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
 
-  currentProduct =
-    null;
+    currentProduct = null;
 
 }
 
@@ -3132,229 +2372,171 @@ function closePedidoModal() {
    AGREGAR PAN AL CARRITO
 ===================================================== */
 
-function addCurrentToCart() {
+function addCurrentToCart(){
 
-  const validation =
+    const validation =
     validateCurrentProduct();
 
+    if(!validation.valid){
 
-  if (
-    !validation.valid
-  ) {
-
-    showError(
-      validation.message
-    );
-
-    return;
-
-  }
-
-
-  const selections = {};
-
-
-  /*
-     CATEGORÍAS
-  */
-
-  CATEGORIES.forEach(category => {
-
-    const selected =
-      document.querySelectorAll(
-        `input[name="${category.name}"]:checked`
-      );
-
-
-    selections[
-      category.title
-    ] =
-      Array.from(selected)
-        .map(
-          input =>
-            input.value
+        showError(
+            validation.message
         );
 
-  });
+        return;
+
+    }
 
 
-  /*
-     DELICATESSEN GRATIS
-  */
-
-  if (
-    isSanguinario(
-      currentProduct
-    )
-  ) {
-
-    const selectedDeli =
-      document.querySelectorAll(
-        'input[name="contorno_deli"]:checked'
-      );
+    const selections = {};
 
 
-    selections[
-      "Embutidos / Delicatessen incluidos GRATIS"
-    ] =
-      Array.from(
-        selectedDeli
-      ).map(
-        input =>
-          input.value
-      );
+    /* CATEGORÍAS */
 
-  }
+    CATEGORIES.forEach(category => {
 
+        const selected =
+        document.querySelectorAll(
+            `input[name="${category.name}"]:checked`
+        );
 
-  /*
-     DELICATESSEN PAGADA
-  */
-
-  if (
-    getSelectedExtraDelicatessen()
-  ) {
-
-    const selectedPaidDeli =
-      document.querySelectorAll(
-        'input[name="delicatessen_extra"]:checked'
-      );
-
-
-    selections[
-      "Delicatessen extra"
-    ] =
-      Array.from(
-        selectedPaidDeli
-      ).map(
-        input =>
-          input.value
-      );
-
-  }
-
-
-  /*
-     EXTRAS
-  */
-
-  const selectedExtras =
-    document.querySelectorAll(
-      'input[name="extras"]:checked'
-    );
-
-
-  const extras = [];
-
-  let extrasTotal =
-    0;
-
-
-  selectedExtras.forEach(input => {
-
-    const price =
-      Number(
-        input.dataset.price || 0
-      );
-
-
-    extras.push({
-
-      name:
-        input.value,
-
-      price:
-        price
+        selections[category.title] =
+        Array.from(selected)
+        .map(input => input.value);
 
     });
 
 
-    extrasTotal +=
-      price;
+    /* DELICATESSEN GRATIS */
 
-  });
+    if(isSanguinario(currentProduct)){
+
+        const selectedDeli =
+        document.querySelectorAll(
+            'input[name="contorno_deli"]:checked'
+        );
+
+        selections[
+            "Embutidos / Delicatessen incluidos"
+        ] =
+        Array.from(selectedDeli)
+        .map(input => input.value);
+
+    }
 
 
-  selections["Extras"] =
+    /* DELICATESSEN PAGADA */
+
+    if(getSelectedExtraDelicatessen()){
+
+        const selectedPaidDeli =
+        document.querySelectorAll(
+            'input[name="delicatessen_extra"]:checked'
+        );
+
+        if(selectedPaidDeli.length){
+
+            selections[
+                "Delicatessen extra"
+            ] =
+            Array.from(selectedPaidDeli)
+            .map(input => input.value);
+
+        }
+
+    }
+
+
+    /* EXTRAS */
+
+    const selectedExtras =
+    document.querySelectorAll(
+        'input[name="extras"]:checked'
+    );
+
+    const extras = [];
+
+    let extrasTotal = 0;
+
+    selectedExtras.forEach(input => {
+
+        const price =
+        Number(
+            input.dataset.price || 0
+        );
+
+        extras.push({
+
+            name:input.value,
+
+            price:price
+
+        });
+
+        extrasTotal += price;
+
+    });
+
+    selections["Extras"] =
     extras;
 
 
-  /*
-     TOTAL
-  */
+    /* TOTAL */
 
-  const subtotal =
+    const subtotal =
     Number(
-      (
-        currentProduct.price +
-        extrasTotal
-      ).toFixed(2)
+        (
+            currentProduct.price +
+            extrasTotal
+        ).toFixed(2)
     );
 
 
-  /*
-     NOTAS
-  */
+    /* NOTAS */
 
-  const notes =
+    const notes =
     pedidoNotas.value.trim();
 
 
-  /*
-     ID
-  */
+    /* GUARDAR */
 
-  const id =
-    Date.now() +
-    Math.random()
-      .toString(36)
-      .substring(2, 8);
+    CART.push({
 
+        id:generateId(),
 
-  /*
-     GUARDAR
-  */
+        type:"bread",
 
-  CART.push({
+        productName:
+        currentProduct.name,
 
-    id:
-      id,
+        basePrice:
+        currentProduct.price,
 
-    type:
-      "bread",
+        img:
+        currentProduct.image,
 
-    productName:
-      currentProduct.name,
+        selections:
+        selections,
 
-    basePrice:
-      currentProduct.price,
+        notes:
+        notes,
 
-    img:
-      currentProduct.image,
+        extrasTotal:
+        extrasTotal,
 
-    selections:
-      selections,
+        subtotal:
+        subtotal
 
-    notes:
-      notes,
-
-    extrasTotal:
-      extrasTotal,
-
-    subtotal:
-      subtotal
-
-  });
+    });
 
 
-  updateCartUI();
+    updateCartUI();
 
-  closePedidoModal();
+    closePedidoModal();
 
-
-  alert(
-    "¡Producto agregado al carrito! 🛒"
-  );
+    alert(
+        "¡Producto agregado al carrito! 🛒"
+    );
 
 }
 
@@ -3363,72 +2545,45 @@ function addCurrentToCart() {
    RESUMEN
 ===================================================== */
 
-function buildSummaryText(selections) {
+function buildSummaryText(selections){
 
-  const lines = [];
+    const lines = [];
 
+    Object.entries(selections)
+    .forEach(([category,values]) => {
 
-  Object.entries(
-    selections
-  ).forEach(
-    ([category, values]) => {
+        if(category === "Extras"){
 
+            if(values && values.length){
 
-      /*
-         EXTRAS
-      */
+                const extraText =
+                values
+                .map(extra =>
+                    `${extra.name} (+${currency(extra.price)})`
+                )
+                .join(", ");
 
-      if (
-        category === "Extras"
-      ) {
+                lines.push(
+                    `Extras: ${extraText}`
+                );
 
-        if (
-          values &&
-          values.length
-        ) {
+            }
 
-          const extraText =
-            values
-              .map(
-                extra =>
-                  `${extra.name} (+${currency(extra.price)})`
-              )
-              .join(", ");
+            return;
+        }
 
 
-          lines.push(
-            `Extras: ${extraText}`
-          );
+        if(values && values.length){
+
+            lines.push(
+                `${category}: ${values.join(", ")}`
+            );
 
         }
 
-        return;
+    });
 
-      }
-
-
-      /*
-         RESTO
-      */
-
-      if (
-        values &&
-        values.length
-      ) {
-
-        lines.push(
-          `${category}: ${values.join(", ")}`
-        );
-
-      }
-
-    }
-  );
-
-
-  return lines.join(
-    " • "
-  );
+    return lines.join(" • ");
 
 }
 
@@ -3437,281 +2592,250 @@ function buildSummaryText(selections) {
    ACTUALIZAR CARRITO
 ===================================================== */
 
-function updateCartUI() {
+function updateCartUI(){
 
-  cartBtn.textContent =
+    cartBtn.textContent =
     `🛒 Ver carrito (${CART.length})`;
 
+    cartBody.innerHTML = "";
 
-  cartBody.innerHTML =
-    "";
+    if(CART.length === 0){
+
+        cartBody.innerHTML = `
+
+            <p class="small-muted">
+                No hay pedidos aún.
+            </p>
+
+        `;
+
+        cartSubtotalEl.textContent =
+        "$0.00";
+
+        return;
+    }
 
 
-  if (
-    CART.length === 0
-  ) {
+    let total = 0;
 
-    cartBody.innerHTML = `
 
-      <p class="small-muted">
-        No hay pedidos aún.
-      </p>
+    CART.forEach(item => {
 
-    `;
+        total += Number(item.subtotal);
+
+        const div =
+        document.createElement("div");
+
+        div.className = "cart-item";
+
+
+        /* BEBIDA */
+
+        if(item.type === "beverage"){
+
+            div.innerHTML = `
+
+                <div
+                    style="
+                    width:64px;
+                    height:56px;
+                    flex-shrink:0;
+                    ">
+
+                    <img
+                        src="${item.img}"
+                        alt="${escapeHtml(item.productName)}"
+                        style="
+                        width:64px;
+                        height:56px;
+                        object-fit:cover;
+                        border-radius:6px;
+                        "
+                        onerror="this.style.display='none';"
+                    >
+
+                </div>
+
+
+                <div class="meta">
+
+                    <h4>
+
+                        ${escapeHtml(item.productName)}
+
+                        <span
+                            style="
+                            color:#666;
+                            font-weight:600;
+                            margin-left:4px;
+                            ">
+
+                            ${currency(item.subtotal)}
+
+                        </span>
+
+                    </h4>
+
+                    <p>
+                        🥤 Bebida
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="remove-item"
+                    data-id="${item.id}"
+                    type="button"
+                    style="
+                    background:#ff7f50;
+                    color:white;
+                    border:none;
+                    padding:6px;
+                    border-radius:7px;
+                    cursor:pointer;
+                    ">
+
+                    ✕
+
+                </button>
+
+            `;
+
+        }
+
+
+        /* PAN */
+
+        else{
+
+            const summary =
+            buildSummaryText(
+                item.selections
+            );
+
+            div.innerHTML = `
+
+                <div
+                    style="
+                    width:64px;
+                    height:56px;
+                    flex-shrink:0;
+                    ">
+
+                    <img
+                        src="${item.img}"
+                        alt="${escapeHtml(item.productName)}"
+                        style="
+                        width:64px;
+                        height:56px;
+                        object-fit:cover;
+                        border-radius:6px;
+                        "
+                        onerror="this.style.display='none';"
+                    >
+
+                </div>
+
+
+                <div class="meta">
+
+                    <h4>
+
+                        ${escapeHtml(item.productName)}
+
+                        <span
+                            style="
+                            color:#666;
+                            font-weight:600;
+                            margin-left:4px;
+                            ">
+
+                            ${currency(item.subtotal)}
+
+                        </span>
+
+                    </h4>
+
+
+                    <p>
+                        ${escapeHtml(summary)}
+                    </p>
+
+
+                    ${
+                        item.notes
+                        ?
+                        `
+                        <p style="margin-top:6px;">
+
+                            <strong>
+                                Notas:
+                            </strong>
+
+                            ${escapeHtml(item.notes)}
+
+                        </p>
+                        `
+                        :
+                        ""
+                    }
+
+                </div>
+
+
+                <button
+                    class="remove-item"
+                    data-id="${item.id}"
+                    type="button"
+                    style="
+                    background:#ff7f50;
+                    color:white;
+                    border:none;
+                    padding:6px;
+                    border-radius:7px;
+                    cursor:pointer;
+                    ">
+
+                    ✕
+
+                </button>
+
+            `;
+
+        }
+
+
+        cartBody.appendChild(div);
+
+    });
 
 
     cartSubtotalEl.textContent =
-      "$0.00";
-
-    return;
-
-  }
-
-
-  let total =
-    0;
-
-
-  CART.forEach(item => {
-
-    total +=
-      item.subtotal;
-
-
-    const div =
-      document.createElement("div");
-
-    div.className =
-      "cart-item";
-
-
-    /*
-       BEBIDA
-    */
-
-    if (
-      item.type ===
-      "beverage"
-    ) {
-
-      div.innerHTML = `
-
-        <div
-          style="
-            width:64px;
-            height:56px;
-            flex-shrink:0;
-          "
-        >
-
-          <img
-            src="${item.img}"
-            alt="${escapeHtml(item.productName)}"
-            style="
-              width:64px;
-              height:56px;
-              object-fit:cover;
-              border-radius:6px;
-            "
-          >
-
-        </div>
-
-
-        <div class="meta">
-
-          <h4>
-
-            ${escapeHtml(
-              item.productName
-            )}
-
-            <span
-              style="
-                color:#666;
-                font-weight:600;
-                margin-left:4px;
-              "
-            >
-              ${currency(item.subtotal)}
-            </span>
-
-          </h4>
-
-
-          <p>
-            🥤 Bebida
-          </p>
-
-        </div>
-
-
-        <button
-          class="remove-item"
-          data-id="${item.id}"
-          type="button"
-          style="
-            background:#ff7f50;
-            color:white;
-            border:none;
-            padding:6px;
-            border-radius:7px;
-            cursor:pointer;
-          "
-        >
-          ✕
-        </button>
-
-      `;
-
-    }
-
-
-    /*
-       PAN
-    */
-
-    else {
-
-      const summary =
-        buildSummaryText(
-          item.selections
-        );
-
-
-      div.innerHTML = `
-
-        <div
-          style="
-            width:64px;
-            height:56px;
-            flex-shrink:0;
-          "
-        >
-
-          <img
-            src="${item.img}"
-            alt="${escapeHtml(item.productName)}"
-            style="
-              width:64px;
-              height:56px;
-              object-fit:cover;
-              border-radius:6px;
-            "
-          >
-
-        </div>
-
-
-        <div class="meta">
-
-          <h4>
-
-            ${escapeHtml(
-              item.productName
-            )}
-
-            <span
-              style="
-                color:#666;
-                font-weight:600;
-                margin-left:4px;
-              "
-            >
-              ${currency(item.subtotal)}
-            </span>
-
-          </h4>
-
-
-          <p>
-            ${escapeHtml(summary)}
-          </p>
-
-
-          ${
-            item.notes
-              ?
-              `
-                <p
-                  style="
-                    margin-top:6px;
-                  "
-                >
-
-                  <strong>
-                    Notas:
-                  </strong>
-
-                  ${escapeHtml(
-                    item.notes
-                  )}
-
-                </p>
-              `
-              :
-              ""
-          }
-
-        </div>
-
-
-        <button
-          class="remove-item"
-          data-id="${item.id}"
-          type="button"
-          style="
-            background:#ff7f50;
-            color:white;
-            border:none;
-            padding:6px;
-            border-radius:7px;
-            cursor:pointer;
-          "
-        >
-          ✕
-        </button>
-
-      `;
-
-    }
-
-
-    cartBody.appendChild(div);
-
-  });
-
-
-  cartSubtotalEl.textContent =
     currency(total);
 
 
-  /*
-     BOTONES ELIMINAR
-  */
+    /* ELIMINAR */
 
-  cartBody
-    .querySelectorAll(
-      ".remove-item"
-    )
+    cartBody
+    .querySelectorAll(".remove-item")
     .forEach(button => {
 
-      button.addEventListener(
-        "click",
-        () => {
+        button.addEventListener(
+            "click",
+            () => {
 
-          CART =
-            CART.filter(
-              item =>
-                item.id !==
-                button.dataset.id
-            );
+                CART =
+                CART.filter(
+                    item =>
+                    item.id !==
+                    button.dataset.id
+                );
 
+                updateCartUI();
 
-          updateCartUI();
-
-        }
-      );
+            }
+        );
 
     });
 
@@ -3722,32 +2846,23 @@ function updateCartUI() {
    VACIAR CARRITO
 ===================================================== */
 
-function clearCart() {
+function clearCart(){
 
-  if (
-    CART.length === 0
-  ) {
+    if(CART.length === 0){
+        return;
+    }
 
-    return;
+    if(
+        !confirm(
+            "¿Vaciar todo el carrito?"
+        )
+    ){
+        return;
+    }
 
-  }
+    CART = [];
 
-
-  if (
-    !confirm(
-      "¿Vaciar todo el carrito?"
-    )
-  ) {
-
-    return;
-
-  }
-
-
-  CART = [];
-
-
-  updateCartUI();
+    updateCartUI();
 
 }
 
@@ -3756,47 +2871,30 @@ function clearCart() {
    ESCAPAR HTML
 ===================================================== */
 
-function escapeHtml(str) {
+function escapeHtml(str){
 
-  if (
-    str === null ||
-    str === undefined
-  ) {
-
-    return "";
-
-  }
-
-
-  return String(str).replace(
-    /[&<>"']/g,
-
-    char => {
-
-      const map = {
-
-        "&":
-          "&amp;",
-
-        "<":
-          "&lt;",
-
-        ">":
-          "&gt;",
-
-        '"':
-          "&quot;",
-
-        "'":
-          "&#39;"
-
-      };
-
-
-      return map[char];
-
+    if(str === null || str === undefined){
+        return "";
     }
-  );
+
+    return String(str).replace(
+        /[&<>"']/g,
+        char => {
+
+            const map = {
+
+                "&":"&amp;",
+                "<":"&lt;",
+                ">":"&gt;",
+                '"':"&quot;",
+                "'":"&#39;"
+
+            };
+
+            return map[char];
+
+        }
+    );
 
 }
 
@@ -3805,177 +2903,136 @@ function escapeHtml(str) {
    WHATSAPP
 ===================================================== */
 
-function sendCartWhatsApp() {
+function sendCartWhatsApp(){
 
-  if (
-    CART.length === 0
-  ) {
+    if(CART.length === 0){
 
-    alert(
-      "El carrito está vacío."
-    );
-
-    return;
-
-  }
-
-
-  if (
-    !/^\d{6,}$/.test(
-      WHATSAPP_NUMBER
-    )
-  ) {
-
-    alert(
-      "Revisa el número de WhatsApp."
-    );
-
-    return;
-
-  }
-
-
-  let total =
-    0;
-
-
-  const messageLines =
-    [];
-
-
-  messageLines.push(
-    "*PEDIDO GUATIQUESOS*"
-  );
-
-
-  messageLines.push("");
-
-
-  CART.forEach(
-    (item, index) => {
-
-      messageLines.push(
-        `*${index + 1}. ${item.productName}*`
-      );
-
-
-      if (
-        item.type ===
-        "beverage"
-      ) {
-
-        messageLines.push(
-          "Tipo: Bebida"
+        alert(
+            "El carrito está vacío."
         );
 
-      }
+        return;
+    }
 
 
-      messageLines.push(
-        `Precio: ${currency(item.subtotal)}`
-      );
+    if(!/^\d{6,}$/.test(
+        WHATSAPP_NUMBER
+    )){
+
+        alert(
+            "Revisa el número de WhatsApp."
+        );
+
+        return;
+    }
 
 
-      Object.entries(
-        item.selections
-      )
-      .forEach(
-        ([category, values]) => {
+    let total = 0;
+
+    const messageLines = [];
 
 
-          /*
-             EXTRAS
-          */
+    messageLines.push(
+        "*PEDIDO GUATIQUESOS*"
+    );
 
-          if (
-            category === "Extras"
-          ) {
+    messageLines.push("");
 
-            if (
-              values &&
-              values.length
-            ) {
 
-              values.forEach(extra => {
+    CART.forEach((item,index) => {
+
+        messageLines.push(
+            `*${index + 1}. ${item.productName}*`
+        );
+
+
+        if(item.type === "beverage"){
+
+            messageLines.push(
+                "Tipo: Bebida"
+            );
+
+        }
+
+
+        messageLines.push(
+            `Precio: ${currency(item.subtotal)}`
+        );
+
+
+        Object.entries(
+            item.selections
+        )
+        .forEach(([category,values]) => {
+
+            if(category === "Extras"){
+
+                if(values && values.length){
+
+                    values.forEach(extra => {
+
+                        messageLines.push(
+                            `Extra: ${extra.name} (+${currency(extra.price)})`
+                        );
+
+                    });
+
+                }
+
+                return;
+            }
+
+
+            if(values && values.length){
 
                 messageLines.push(
-                  `Extra: ${extra.name} (+${currency(extra.price)})`
+                    `${category}: ${values.join(", ")}`
                 );
-
-              });
 
             }
 
-            return;
-
-          }
+        });
 
 
-          /*
-             RESTO
-          */
-
-          if (
-            values &&
-            values.length
-          ) {
+        if(item.notes){
 
             messageLines.push(
-              `${category}: ${values.join(", ")}`
+                `Notas: ${item.notes}`
             );
 
-          }
-
         }
-      );
 
 
-      if (
-        item.notes
-      ) {
+        messageLines.push("");
 
-        messageLines.push(
-          `Notas: ${item.notes}`
-        );
+        total += Number(item.subtotal);
 
-      }
+    });
 
 
-      messageLines.push("");
+    messageLines.push(
+        `*TOTAL: ${currency(total)}*`
+    );
+
+    messageLines.push("");
+
+    messageLines.push(
+        "Por favor confirmar disponibilidad."
+    );
 
 
-      total +=
-        item.subtotal;
-
-    }
-  );
-
-
-  messageLines.push(
-    `*TOTAL: ${currency(total)}*`
-  );
-
-
-  messageLines.push("");
-
-
-  messageLines.push(
-    "Por favor confirmar disponibilidad."
-  );
-
-
-  const message =
+    const message =
     messageLines.join("\n");
 
 
-  const url =
+    const url =
     `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
 
-  window.open(
-    url,
-    "_blank"
-  );
+    window.open(
+        url,
+        "_blank"
+    );
 
 }
 
@@ -3984,136 +3041,169 @@ function sendCartWhatsApp() {
    EVENTOS
 ===================================================== */
 
-
-/* Cerrar modal */
-
 closePedido.addEventListener(
-  "click",
-  closePedidoModal
+    "click",
+    closePedidoModal
 );
 
-
-/* Agregar al carrito */
 
 addToCartBtn.addEventListener(
-  "click",
-  addCurrentToCart
+    "click",
+    addCurrentToCart
 );
 
-
-/* Abrir carrito */
 
 cartBtn.addEventListener(
-  "click",
-  () => {
+    "click",
+    () => {
 
-    cartPanel.classList.add(
-      "open"
-    );
+        cartPanel.classList.add("open");
 
-    cartPanel.setAttribute(
-      "aria-hidden",
-      "false"
-    );
+        cartPanel.setAttribute(
+            "aria-hidden",
+            "false"
+        );
 
-  }
+    }
 );
 
-
-/* Cerrar carrito */
 
 closeCartBtn.addEventListener(
-  "click",
-  () => {
+    "click",
+    () => {
 
-    cartPanel.classList.remove(
-      "open"
-    );
+        cartPanel.classList.remove("open");
 
-    cartPanel.setAttribute(
-      "aria-hidden",
-      "true"
-    );
+        cartPanel.setAttribute(
+            "aria-hidden",
+            "true"
+        );
 
-  }
+    }
 );
 
-
-/* Vaciar carrito */
 
 clearCartBtn.addEventListener(
-  "click",
-  clearCart
+    "click",
+    clearCart
 );
 
-
-/* WhatsApp */
 
 sendWhatsAppBtn.addEventListener(
-  "click",
-  sendCartWhatsApp
+    "click",
+    sendCartWhatsApp
 );
 
-
-/* Cerrar modal haciendo clic fuera */
 
 pedidoModal.addEventListener(
-  "click",
-  event => {
+    "click",
+    event => {
 
-    if (
-      event.target ===
-      pedidoModal
-    ) {
+        if(
+            event.target ===
+            pedidoModal
+        ){
 
-      closePedidoModal();
+            closePedidoModal();
+
+        }
 
     }
-
-  }
 );
 
 
-/* ESC */
-
 document.addEventListener(
-  "keydown",
-  event => {
+    "keydown",
+    event => {
 
-    if (
-      event.key ===
-      "Escape"
-    ) {
+        if(event.key === "Escape"){
 
-      closePedidoModal();
+            closePedidoModal();
 
-      cartPanel.classList.remove(
-        "open"
-      );
+            cartPanel.classList.remove(
+                "open"
+            );
 
-      cartPanel.setAttribute(
-        "aria-hidden",
-        "true"
-      );
+        }
 
     }
-
-  }
 );
 
 
 /* =====================================================
-   INICIAR
+   INICIAR PÁGINA
 ===================================================== */
 
-renderProducts();
+function iniciarPagina(){
 
-renderBeverages();
+    try{
 
-updateCartUI();
+        renderProducts();
+
+        renderBeverages();
+
+        updateCartUI();
+
+        console.log(
+            "Guatiquesos cargado correctamente."
+        );
+
+        console.log(
+            "Panes:",
+            PRODUCTS.length
+        );
+
+        console.log(
+            "Bebidas:",
+            BEVERAGES.length
+        );
+
+    }catch(error){
+
+        console.error(
+            "Error al cargar Guatiquesos:",
+            error
+        );
+
+        productosPanes.innerHTML = `
+
+            <p
+                style="
+                grid-column:1/-1;
+                text-align:center;
+                color:#b30000;
+                font-weight:bold;
+                ">
+
+                Ocurrió un error al cargar los productos.
+                Revisa la consola del navegador.
+
+            </p>
+
+        `;
+
+    }
+
+}
+
+
+if(
+    document.readyState === "loading"
+){
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        iniciarPagina
+    );
+
+}else{
+
+    iniciarPagina();
+
+}
 
 </script>
 
 </body>
-
 </html>
+```
