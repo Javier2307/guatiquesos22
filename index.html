@@ -1,33 +1,50 @@
 <!DOCTYPE html>
-
 <html lang="es">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Guatiquesos - Pedidos</title>
+
 
   <style>
 
     :root {
+
       --accent1: #ff7f50;
       --accent2: #ffce00;
       --bg: #fffbea;
       --green: #25D366;
       --dark: #222;
       --white: #fff;
+
     }
+
 
     * {
+
       box-sizing: border-box;
+
     }
+
 
     html {
+
       scroll-behavior: smooth;
+
     }
 
+
     body {
+
       margin: 0;
+
       font-family:
         Inter,
         ui-sans-serif,
@@ -40,14 +57,18 @@
         sans-serif;
 
       background: var(--bg);
+
       color: var(--dark);
+
     }
+
 
     /* =====================================================
        HEADER
     ===================================================== */
 
     header {
+
       background:
         linear-gradient(
           90deg,
@@ -56,38 +77,66 @@
         );
 
       text-align: center;
+
       padding: 1rem 0;
 
       box-shadow:
         0 2px 8px rgba(0,0,0,0.15);
+
     }
+
 
     .logo-header {
+
       height: 150px;
+
       max-width: 90%;
+
       object-fit: contain;
-      transition: transform .2s;
+
+      transition:
+        transform .2s;
+
     }
 
+
     .logo-header:hover {
-      transform: scale(1.05);
+
+      transform:
+        scale(1.05);
+
     }
+
 
     /* =====================================================
        CONTENIDO
     ===================================================== */
 
     main {
+
       max-width: 1100px;
-      margin: 18px auto;
-      padding: 0 12px;
+
+      margin:
+        18px auto;
+
+      padding:
+        0 12px;
+
     }
 
+
     h2 {
+
       text-align: center;
-      color: var(--accent1);
-      margin: 25px 0 18px;
+
+      color:
+        var(--accent1);
+
+      margin:
+        25px 0 18px;
+
     }
+
 
     /* =====================================================
        PRODUCTOS
@@ -95,6 +144,7 @@
 
     .productos,
     .bebidas-grid {
+
       display: grid;
 
       grid-template-columns:
@@ -104,165 +154,280 @@
         );
 
       gap: 14px;
+
     }
 
+
     .card {
-      background: var(--white);
-      border-radius: 12px;
-      padding: 12px;
+
+      background:
+        var(--white);
+
+      border-radius:
+        12px;
+
+      padding:
+        12px;
 
       box-shadow:
         0 6px 18px
         rgba(0,0,0,0.06);
 
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      justify-content:
+        space-between;
 
       transition:
         transform .15s,
         box-shadow .15s;
+
     }
 
+
     .card:hover {
-      transform: translateY(-6px);
+
+      transform:
+        translateY(-6px);
 
       box-shadow:
         0 10px 28px
         rgba(0,0,0,0.12);
+
     }
 
+
     .card img {
+
       width: 100%;
+
       height: 150px;
 
       object-fit: cover;
 
-      border-radius: 8px;
-      margin-bottom: 8px;
+      border-radius:
+        8px;
 
-      background: var(--bg);
+      margin-bottom:
+        8px;
+
+      background:
+        var(--bg);
+
     }
+
 
     .card h3 {
-      margin: 6px 0;
-      font-size: 1.02rem;
+
+      margin:
+        6px 0;
+
+      font-size:
+        1.02rem;
+
     }
+
 
     .precio {
-      color: var(--accent1);
-      font-weight: 800;
-      margin-bottom: 6px;
+
+      color:
+        var(--accent1);
+
+      font-weight:
+        800;
+
+      margin-bottom:
+        6px;
+
     }
+
 
     .descripcion-corta {
-      color: #555;
-      font-size: .92rem;
-      min-height: 40px;
-      margin-bottom: 8px;
+
+      color:
+        #555;
+
+      font-size:
+        .92rem;
+
+      min-height:
+        40px;
+
+      margin-bottom:
+        8px;
+
     }
+
 
     .card button {
-      background: var(--accent2);
-      border: none;
 
-      padding: 9px 10px;
+      background:
+        var(--accent2);
 
-      border-radius: 8px;
+      border:
+        none;
 
-      font-weight: 700;
+      padding:
+        9px 10px;
 
-      cursor: pointer;
+      border-radius:
+        8px;
 
-      transition: .2s;
+      font-weight:
+        700;
+
+      cursor:
+        pointer;
+
+      transition:
+        .2s;
+
     }
+
 
     .card button:hover {
-      background: var(--accent1);
-      color: white;
-      transform: scale(1.03);
+
+      background:
+        var(--accent1);
+
+      color:
+        white;
+
+      transform:
+        scale(1.03);
+
     }
+
 
     /* =====================================================
        BOTÓN CARRITO
     ===================================================== */
 
     .cart-btn {
-      position: fixed;
 
-      left: 18px;
-      bottom: 18px;
+      position:
+        fixed;
 
-      background: var(--green);
-      color: white;
+      left:
+        18px;
 
-      border: none;
+      bottom:
+        18px;
 
-      padding: 12px 14px;
+      background:
+        var(--green);
 
-      border-radius: 12px;
+      color:
+        white;
+
+      border:
+        none;
+
+      padding:
+        12px 14px;
+
+      border-radius:
+        12px;
 
       box-shadow:
         0 8px 20px
         rgba(0,0,0,0.2);
 
-      font-weight: 800;
+      font-weight:
+        800;
 
-      cursor: pointer;
+      cursor:
+        pointer;
 
-      z-index: 1200;
+      z-index:
+        1200;
+
     }
+
 
     /* =====================================================
        FOOTER
     ===================================================== */
 
     footer {
-      text-align: center;
 
-      padding: 12px;
+      text-align:
+        center;
 
-      margin-top: 25px;
+      padding:
+        12px;
 
-      background: var(--accent2);
+      margin-top:
+        25px;
 
-      font-weight: 700;
+      background:
+        var(--accent2);
+
+      font-weight:
+        700;
+
     }
+
 
     /* =====================================================
        MODAL
     ===================================================== */
 
     .modal {
-      display: none;
 
-      position: fixed;
+      display:
+        none;
 
-      inset: 0;
+      position:
+        fixed;
 
-      background: rgba(0,0,0,0.55);
+      inset:
+        0;
 
-      align-items: center;
-      justify-content: center;
+      background:
+        rgba(0,0,0,0.55);
 
-      padding: 18px;
+      align-items:
+        center;
 
-      z-index: 1100;
+      justify-content:
+        center;
+
+      padding:
+        18px;
+
+      z-index:
+        1100;
+
     }
 
+
     .modal-content {
-      width: 100%;
-      max-width: 640px;
 
-      max-height: 86vh;
+      width:
+        100%;
 
-      overflow-y: auto;
+      max-width:
+        640px;
 
-      background: var(--bg);
+      max-height:
+        86vh;
 
-      border-radius: 12px;
+      overflow-y:
+        auto;
 
-      padding: 14px;
+      background:
+        var(--bg);
+
+      border-radius:
+        12px;
+
+      padding:
+        14px;
 
       box-shadow:
         0 16px 40px
@@ -270,358 +435,582 @@
 
       animation:
         aparecer .25s ease;
+
     }
 
+
     @keyframes aparecer {
+
       from {
-        opacity: 0;
-        transform: scale(.92);
+
+        opacity:
+          0;
+
+        transform:
+          scale(.92);
+
       }
 
       to {
-        opacity: 1;
-        transform: scale(1);
+
+        opacity:
+          1;
+
+        transform:
+          scale(1);
+
       }
+
     }
+
 
     .modal-header {
-      display: flex;
 
-      gap: 12px;
+      display:
+        flex;
 
-      align-items: center;
+      gap:
+        12px;
+
+      align-items:
+        center;
+
     }
+
 
     .modal img {
-      width: 140px;
-      height: 110px;
 
-      object-fit: cover;
+      width:
+        140px;
 
-      border-radius: 8px;
+      height:
+        110px;
+
+      object-fit:
+        cover;
+
+      border-radius:
+        8px;
+
     }
+
 
     .modal h3 {
-      margin: 0;
-      font-size: 1.15rem;
+
+      margin:
+        0;
+
+      font-size:
+        1.15rem;
+
     }
 
+
     .modal .precio {
-      margin: 2px 0 0;
+
+      margin:
+        2px 0 0;
+
     }
+
 
     /* =====================================================
        GRUPOS
     ===================================================== */
 
     .group {
+
       background:
         rgba(255,255,255,.65);
 
-      padding: 10px;
+      padding:
+        10px;
 
-      border-radius: 8px;
+      border-radius:
+        8px;
 
-      margin-top: 10px;
+      margin-top:
+        10px;
 
       border:
         1px solid
         rgba(255,127,80,.15);
+
     }
+
 
     .group h4 {
-      margin: 5px 0 8px;
 
-      color: var(--accent1);
+      margin:
+        5px 0 8px;
 
-      font-size: .98rem;
+      color:
+        var(--accent1);
+
+      font-size:
+        .98rem;
+
     }
+
 
     .group-description {
-      font-size: .82rem;
-      color: #666;
-      margin-bottom: 6px;
+
+      font-size:
+        .82rem;
+
+      color:
+        #666;
+
+      margin-bottom:
+        6px;
+
     }
+
 
     label.inline {
-      display: flex;
 
-      gap: 8px;
+      display:
+        flex;
 
-      align-items: center;
+      gap:
+        8px;
 
-      padding: 5px 0;
+      align-items:
+        center;
 
-      cursor: pointer;
+      padding:
+        5px 0;
+
+      cursor:
+        pointer;
+
     }
+
 
     label.inline input {
-      cursor: pointer;
+
+      cursor:
+        pointer;
+
     }
+
 
     .extra-price {
-      margin-left: auto;
 
-      font-weight: 800;
+      margin-left:
+        auto;
 
-      color: var(--accent1);
+      font-weight:
+        800;
+
+      color:
+        var(--accent1);
+
     }
+
 
     /* =====================================================
        CONTADORES
     ===================================================== */
 
     .counter-info {
-      background: #fff8d7;
+
+      background:
+        #fff8d7;
 
       border:
         1px solid
         #ffe16b;
 
-      padding: 8px;
+      padding:
+        8px;
 
-      border-radius: 8px;
+      border-radius:
+        8px;
 
-      margin-bottom: 8px;
+      margin-bottom:
+        8px;
 
-      font-size: .88rem;
+      font-size:
+        .88rem;
 
-      font-weight: 700;
+      font-weight:
+        700;
+
     }
 
+
     .error-message {
-      display: none;
 
-      background: #ffe1e1;
+      display:
+        none;
 
-      color: #b30000;
+      background:
+        #ffe1e1;
+
+      color:
+        #b30000;
 
       border:
         1px solid
         #ff9d9d;
 
-      padding: 9px;
+      padding:
+        9px;
 
-      border-radius: 8px;
+      border-radius:
+        8px;
 
-      margin-top: 10px;
+      margin-top:
+        10px;
 
-      font-weight: 700;
+      font-weight:
+        700;
+
     }
+
 
     /* =====================================================
        COMENTARIOS
     ===================================================== */
 
     textarea {
-      width: 100%;
 
-      min-height: 66px;
+      width:
+        100%;
 
-      resize: none;
+      min-height:
+        66px;
 
-      padding: 8px;
+      resize:
+        none;
 
-      border-radius: 8px;
+      padding:
+        8px;
+
+      border-radius:
+        8px;
 
       border:
         1px solid
         #dcdcdc;
 
-      margin-top: 8px;
+      margin-top:
+        8px;
 
-      font-family: inherit;
+      font-family:
+        inherit;
+
     }
+
 
     /* =====================================================
        BOTONES MODAL
     ===================================================== */
 
     .modal-actions {
-      display: flex;
 
-      justify-content: space-between;
+      display:
+        flex;
 
-      gap: 8px;
+      justify-content:
+        space-between;
 
-      margin-top: 12px;
+      gap:
+        8px;
+
+      margin-top:
+        12px;
+
     }
+
 
     .btn-secondary {
-      background: var(--accent1);
 
-      color: white;
+      background:
+        var(--accent1);
 
-      border: none;
+      color:
+        white;
 
-      padding: 9px 12px;
+      border:
+        none;
 
-      border-radius: 8px;
+      padding:
+        9px 12px;
 
-      cursor: pointer;
+      border-radius:
+        8px;
 
-      font-weight: 700;
+      cursor:
+        pointer;
+
+      font-weight:
+        700;
+
     }
+
 
     .btn-primary {
-      background: var(--green);
 
-      color: white;
+      background:
+        var(--green);
 
-      border: none;
+      color:
+        white;
 
-      padding: 9px 12px;
+      border:
+        none;
 
-      border-radius: 8px;
+      padding:
+        9px 12px;
 
-      cursor: pointer;
+      border-radius:
+        8px;
 
-      font-weight: 800;
+      cursor:
+        pointer;
+
+      font-weight:
+        800;
+
     }
+
 
     .btn-secondary:hover,
     .btn-primary:hover {
-      transform: scale(1.03);
+
+      transform:
+        scale(1.03);
+
     }
+
 
     /* =====================================================
        CARRITO
     ===================================================== */
 
     .cart-panel {
-      position: fixed;
 
-      left: 0;
-      top: 0;
+      position:
+        fixed;
 
-      height: 100vh;
+      left:
+        0;
 
-      width: 360px;
+      top:
+        0;
 
-      max-width: 92%;
+      height:
+        100vh;
 
-      background: white;
+      width:
+        360px;
+
+      max-width:
+        92%;
+
+      background:
+        white;
 
       box-shadow:
         8px 0 30px
         rgba(0,0,0,.2);
 
-      z-index: 1300;
+      z-index:
+        1300;
 
-      transform: translateX(-100%);
+      transform:
+        translateX(-100%);
 
-      transition: transform .25s;
+      transition:
+        transform .25s;
 
-      display: flex;
+      display:
+        flex;
 
-      flex-direction: column;
+      flex-direction:
+        column;
+
     }
+
 
     .cart-panel.open {
-      transform: translateX(0);
+
+      transform:
+        translateX(0);
+
     }
 
+
     .cart-header {
-      padding: 12px;
+
+      padding:
+        12px;
 
       border-bottom:
         1px solid #eee;
 
-      display: flex;
+      display:
+        flex;
 
-      justify-content: space-between;
+      justify-content:
+        space-between;
 
-      align-items: center;
+      align-items:
+        center;
+
     }
+
 
     .cart-body {
-      padding: 12px;
 
-      overflow-y: auto;
+      padding:
+        12px;
 
-      flex: 1;
+      overflow-y:
+        auto;
+
+      flex:
+        1;
+
     }
+
 
     .cart-item {
-      display: flex;
 
-      gap: 8px;
+      display:
+        flex;
 
-      padding: 8px;
+      gap:
+        8px;
 
-      border-radius: 8px;
+      padding:
+        8px;
 
-      background: var(--bg);
+      border-radius:
+        8px;
 
-      margin-bottom: 8px;
+      background:
+        var(--bg);
 
-      align-items: flex-start;
+      margin-bottom:
+        8px;
+
+      align-items:
+        flex-start;
+
     }
+
 
     .cart-item .meta {
-      flex: 1;
+
+      flex:
+        1;
+
     }
+
 
     .cart-item h4 {
-      margin: 0 0 4px;
-      font-size: .96rem;
+
+      margin:
+        0 0 4px;
+
+      font-size:
+        .96rem;
+
     }
+
 
     .cart-item p {
-      margin: 0;
 
-      font-size: .88rem;
+      margin:
+        0;
 
-      color: #444;
+      font-size:
+        .88rem;
+
+      color:
+        #444;
+
     }
 
+
     .cart-footer {
-      padding: 12px;
+
+      padding:
+        12px;
 
       border-top:
         1px solid #eee;
 
-      display: flex;
+      display:
+        flex;
 
-      flex-direction: column;
+      flex-direction:
+        column;
 
-      gap: 8px;
+      gap:
+        8px;
+
     }
+
 
     .small-muted {
-      font-size: .9rem;
-      color: #666;
+
+      font-size:
+        .9rem;
+
+      color:
+        #666;
+
     }
+
 
     /* =====================================================
        TOTAL MODAL
     ===================================================== */
 
     .order-total {
-      margin-top: 12px;
 
-      padding: 10px;
+      margin-top:
+        12px;
 
-      border-radius: 8px;
+      padding:
+        10px;
 
-      background: #fff;
+      border-radius:
+        8px;
 
-      display: flex;
+      background:
+        #fff;
 
-      justify-content: space-between;
+      display:
+        flex;
 
-      align-items: center;
+      justify-content:
+        space-between;
 
-      font-weight: 800;
+      align-items:
+        center;
+
+      font-weight:
+        800;
+
     }
+
 
     /* =====================================================
        BEBIDAS
     ===================================================== */
 
     .bebidas-seccion {
-      margin-top: 45px;
+
+      margin-top:
+        45px;
+
     }
+
 
     /* =====================================================
        RESPONSIVE
@@ -630,52 +1019,90 @@
     @media (max-width: 520px) {
 
       .logo-header {
-        height: 110px;
+
+        height:
+          110px;
+
       }
+
 
       .modal img {
-        display: none;
+
+        display:
+          none;
+
       }
+
 
       .modal-header {
-        flex-direction: column;
 
-        align-items: flex-start;
+        flex-direction:
+          column;
 
-        gap: 6px;
+        align-items:
+          flex-start;
+
+        gap:
+          6px;
+
       }
+
 
       .cart-panel {
-        width: 100%;
-        max-width: 100%;
+
+        width:
+          100%;
+
+        max-width:
+          100%;
+
       }
 
+
       .modal-actions {
-        flex-direction: column;
+
+        flex-direction:
+          column;
+
       }
+
 
       .btn-secondary,
       .btn-primary {
-        width: 100%;
+
+        width:
+          100%;
+
       }
+
     }
 
   </style>
 
 </head>
 
+
 <body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header>
 
-<img
-src="Guatiquesos/images/SoloelContorno.png"
-alt="Guatiquesos"
-class="logo-header"
-
->
+  <img
+    src="Guatiquesos/images/SoloelContorno.png"
+    alt="Guatiquesos"
+    class="logo-header"
+  >
 
 </header>
+
+
+<!-- =====================================================
+     CONTENIDO
+===================================================== -->
 
 <main>
 
@@ -686,34 +1113,45 @@ class="logo-header"
     id="productosPanes"
   ></section>
 
+
   <section class="bebidas-seccion">
 
-```
-<h2>Bebidas</h2>
+    <h2>Bebidas</h2>
 
-<section
-  class="bebidas-grid"
-  id="productosBebidas"
-></section>
-```
+    <section
+      class="bebidas-grid"
+      id="productosBebidas"
+    ></section>
 
   </section>
 
 </main>
 
+
+<!-- =====================================================
+     BOTÓN CARRITO
+===================================================== -->
+
 <button
-class="cart-btn"
-id="openCart"
-type="button"
-
+  class="cart-btn"
+  id="openCart"
+  type="button"
 >
+  🛒 Ver carrito (0)
+</button>
 
-🛒 Ver carrito (0) </button>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
+
   © 2026 Guatiquesos -
   Hecho con amor y sabor 🧡
+
 </footer>
+
 
 <!-- =====================================================
      MODAL
@@ -731,91 +1169,102 @@ type="button"
     aria-modal="true"
   >
 
-```
-<div class="modal-header">
+    <div class="modal-header">
 
-  <img
-    id="pedidoImg"
-    src=""
-    alt=""
-  >
+      <img
+        id="pedidoImg"
+        src=""
+        alt=""
+      >
 
-  <div>
+      <div>
 
-    <h3 id="pedidoTitle">
-      Producto
-    </h3>
+        <h3 id="pedidoTitle">
+          Producto
+        </h3>
 
-    <div
-      id="pedidoPrice"
-      class="precio"
-    ></div>
+        <div
+          id="pedidoPrice"
+          class="precio"
+        >
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <form id="pedidoForm">
+
+      <div
+        id="ingredientesContainer"
+      ></div>
+
+
+      <div
+        id="errorMessage"
+        class="error-message"
+      ></div>
+
+
+      <div class="order-total">
+
+        <span>
+          Total del producto:
+        </span>
+
+        <span id="modalTotal">
+          $0.00
+        </span>
+
+      </div>
+
+
+      <label
+        style="
+          display:block;
+          margin-top:10px;
+        "
+      >
+
+        Comentarios adicionales
+
+      </label>
+
+
+      <textarea
+        id="pedidoNotas"
+        placeholder="Ej: sin cebolla, más salsa..."
+      ></textarea>
+
+
+      <div class="modal-actions">
+
+        <button
+          type="button"
+          class="btn-secondary"
+          id="closePedido"
+        >
+          Cancelar
+        </button>
+
+
+        <button
+          type="button"
+          class="btn-primary"
+          id="addToCartBtn"
+        >
+          Agregar al carrito
+        </button>
+
+      </div>
+
+    </form>
 
   </div>
 
 </div>
 
-<form id="pedidoForm">
-
-  <div id="ingredientesContainer"></div>
-
-  <div
-    id="errorMessage"
-    class="error-message"
-  ></div>
-
-  <div class="order-total">
-
-    <span>
-      Total del producto:
-    </span>
-
-    <span id="modalTotal">
-      $0.00
-    </span>
-
-  </div>
-
-  <label
-    style="
-      display:block;
-      margin-top:10px;
-    "
-  >
-    Comentarios adicionales
-  </label>
-
-  <textarea
-    id="pedidoNotas"
-    placeholder="Ej: sin cebolla, más salsa..."
-  ></textarea>
-
-  <div class="modal-actions">
-
-    <button
-      type="button"
-      class="btn-secondary"
-      id="closePedido"
-    >
-      Cancelar
-    </button>
-
-    <button
-      type="button"
-      class="btn-primary"
-      id="addToCartBtn"
-    >
-      Agregar al carrito
-    </button>
-
-  </div>
-
-</form>
-```
-
-  </div>
-
-</div>
 
 <!-- =====================================================
      CARRITO
@@ -829,124 +1278,120 @@ type="button"
 
   <div class="cart-header">
 
-```
-<strong>
-  🛒 Carrito de pedidos
-</strong>
+    <strong>
+      🛒 Carrito de pedidos
+    </strong>
 
-<button
-  id="closeCartBtn"
-  type="button"
-  style="
-    background:none;
-    border:none;
-    font-weight:800;
-    cursor:pointer;
-    font-size:18px;
-  "
->
-  ✕
-</button>
-```
+
+    <button
+      id="closeCartBtn"
+      type="button"
+      style="
+        background:none;
+        border:none;
+        font-weight:800;
+        cursor:pointer;
+        font-size:18px;
+      "
+    >
+      ✕
+    </button>
 
   </div>
+
 
   <div
     class="cart-body"
     id="cartBody"
   >
 
-```
-<p class="small-muted">
-  No hay pedidos aún.
-</p>
-```
+    <p class="small-muted">
+      No hay pedidos aún.
+    </p>
 
   </div>
+
 
   <div class="cart-footer">
 
-```
-<div
-  style="
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-  "
->
-
-  <div>
-
-    <div class="small-muted">
-      Total:
-    </div>
-
     <div
-      id="cartSubtotal"
       style="
-        font-weight:800;
-        font-size:1.05rem;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
       "
     >
-      $0.00
+
+      <div>
+
+        <div class="small-muted">
+          Total:
+        </div>
+
+        <div
+          id="cartSubtotal"
+          style="
+            font-weight:800;
+            font-size:1.05rem;
+          "
+        >
+          $0.00
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div
+      style="
+        display:flex;
+        gap:8px;
+        margin-top:8px;
+      "
+    >
+
+      <button
+        id="clearCart"
+        type="button"
+        style="
+          flex:1;
+          background:#ff7f50;
+          color:#fff;
+          border:none;
+          padding:10px;
+          border-radius:8px;
+          font-weight:800;
+          cursor:pointer;
+        "
+      >
+        Vaciar
+      </button>
+
+
+      <button
+        id="sendWhatsApp"
+        type="button"
+        style="
+          flex:1;
+          background:#25D366;
+          color:#fff;
+          border:none;
+          padding:10px;
+          border-radius:8px;
+          font-weight:900;
+          cursor:pointer;
+        "
+      >
+        WhatsApp
+      </button>
+
     </div>
 
   </div>
 
-  <div class="small-muted">
-    Extras: $1.00 / $1.50 / $3.00
-  </div>
-
 </div>
 
-<div
-  style="
-    display:flex;
-    gap:8px;
-    margin-top:8px;
-  "
->
-
-  <button
-    id="clearCart"
-    type="button"
-    style="
-      flex:1;
-      background:#ff7f50;
-      color:#fff;
-      border:none;
-      padding:10px;
-      border-radius:8px;
-      font-weight:800;
-      cursor:pointer;
-    "
-  >
-    Vaciar
-  </button>
-
-  <button
-    id="sendWhatsApp"
-    type="button"
-    style="
-      flex:1;
-      background:#25D366;
-      color:#fff;
-      border:none;
-      padding:10px;
-      border-radius:8px;
-      font-weight:900;
-      cursor:pointer;
-    "
-  >
-    WhatsApp
-  </button>
-
-</div>
-```
-
-  </div>
-
-</div>
 
 <script>
 
@@ -958,7 +1403,7 @@ const WHATSAPP_NUMBER = "584122492361";
 
 
 /* =====================================================
-   PRODUCTOS - PANES
+   PANES
 ===================================================== */
 
 const PRODUCTS = [
@@ -1016,7 +1461,8 @@ const PRODUCTS = [
     name: "Sanguinario",
     price: 6.50,
     image: "Guatiquesos/images/sanguinario.jpeg",
-    description: "Tres contornos: 1 queso + 1 jamón + 1 embutido/delicatessen."
+    description:
+      "Tres contornos: 1 queso + 1 jamón + 1 delicatessen."
   },
 
   {
@@ -1030,7 +1476,8 @@ const PRODUCTS = [
     name: "Doble Sanguinario",
     price: 6.50,
     image: "Guatiquesos/images/sanguinario.jpeg",
-    description: "Cuatro contornos: 1 queso + 1 jamón + 2 embutidos/delicatessen."
+    description:
+      "Cuatro contornos: 1 queso + 1 jamón + 2 delicatessen."
   },
 
   {
@@ -1044,7 +1491,8 @@ const PRODUCTS = [
     name: "Pesto Prime",
     price: 7.50,
     image: "Guatiquesos/images/pesto.jpeg",
-    description: "Mortadela italiana con pistacho, queso telita, tomates a la vinagreta, rúcula y pesto."
+    description:
+      "Mortadela italiana con pistacho, queso telita, tomates a la vinagreta, rúcula y pesto."
   },
 
   {
@@ -1072,7 +1520,8 @@ const PRODUCTS = [
     name: "Pollo & Mar",
     price: 8.80,
     image: "Guatiquesos/images/pollimar.jpeg",
-    description: "75 g de pollo, 75 g de camarón salteado y queso mozzarella."
+    description:
+      "75 g de pollo, 75 g de camarón salteado y queso mozzarella."
   },
 
   {
@@ -1086,28 +1535,32 @@ const PRODUCTS = [
     name: "Camaroncin",
     price: 8.00,
     image: "Guatiquesos/images/cama.jpeg",
-    description: "150 g de camarón al ajillo, queso crema, americano y pecorino."
+    description:
+      "150 g de camarón al ajillo, queso crema, americano y pecorino."
   },
 
   {
     name: "El Cesar",
     price: 8.00,
     image: "Guatiquesos/images/cesar.jpeg",
-    description: "Pollo crispy, tocineta, ensalada César, aceite de oliva y pan de sésamo negro."
+    description:
+      "Pollo crispy, tocineta, ensalada César, aceite de oliva y pan de sésamo negro."
   },
 
   {
     name: "Inquisidor",
     price: 10.50,
     image: "Guatiquesos/images/inqui.jpeg",
-    description: "Queso guayanés, jamón ahumado, chorizo de ajo, pollo, chuleta ahumada y tocineta."
+    description:
+      "Queso guayanés, jamón ahumado, chorizo de ajo, pollo, chuleta ahumada y tocineta."
   },
 
   {
     name: "Mar y Tierra",
     price: 9.00,
     image: "Guatiquesos/images/maritierra.jpeg",
-    description: "50 g de pollo, 50 g de carne, 50 g de camarón salteado y queso mozzarella."
+    description:
+      "50 g de pollo, 50 g de carne, 50 g de camarón salteado y queso mozzarella."
   },
 
   {
@@ -1121,28 +1574,32 @@ const PRODUCTS = [
     name: "Polli Carne",
     price: 8.00,
     image: "Guatiquesos/images/pollicarne.jpeg",
-    description: "75 g de pechuga de pollo, 75 g de carne y queso americano."
+    description:
+      "75 g de pechuga de pollo, 75 g de carne y queso americano."
   },
 
   {
     name: "Octopus",
     price: 12.50,
     image: "Guatiquesos/images/octo.jpeg",
-    description: "150 g de pulpo, queso mozzarella, miel picante y Siracha."
+    description:
+      "150 g de pulpo, queso mozzarella, miel picante y Siracha."
   },
 
   {
     name: "Pulpo Camarón",
     price: 9.00,
     image: "Guatiquesos/images/pulpocamaron.jpeg",
-    description: "80 g de camarón salteado, 50 g de pulpo y queso mozzarella."
+    description:
+      "80 g de camarón salteado, 50 g de pulpo y queso mozzarella."
   },
 
   {
     name: "Salmoncin",
     price: 10.50,
     image: "Guatiquesos/images/salmon.jpeg",
-    description: "100 g de salmón fresco y queso crema."
+    description:
+      "100 g de salmón fresco y queso crema."
   }
 
 ];
@@ -1172,7 +1629,7 @@ const BEVERAGES = [
     name: "Refresco de 2L",
     price: 1.50,
     image: "Guatiquesos/images/2L.png",
-    description: "Agua mineral."
+    description: "Refresco de 2 litros."
   }
 
 ];
@@ -1188,7 +1645,6 @@ const CATEGORIES = [
     title: "Tipo de Pan",
     name: "tipo_pan",
     type: "radio",
-
     items: [
       "Blanco",
       "Avena",
@@ -1202,7 +1658,6 @@ const CATEGORIES = [
     title: "Vegetales",
     name: "vegetales",
     type: "checkbox",
-
     items: [
       "Lechuga",
       "Tomate",
@@ -1216,7 +1671,6 @@ const CATEGORIES = [
     title: "Salsas",
     name: "salsas",
     type: "checkbox",
-
     items: [
       "Mayonesa",
       "Mostaza",
@@ -1242,14 +1696,15 @@ const CATEGORIES = [
   },
 
   /*
-     SOLO UN QUESO
+     QUESOS SIEMPRE RADIO.
+
+     SOLO SE PUEDE ELEGIR UN QUESO.
   */
 
   {
     title: "Quesos",
     name: "quesos",
     type: "radio",
-
     items: [
       "Amarillo",
       "Mozzarella",
@@ -1260,15 +1715,10 @@ const CATEGORIES = [
     ]
   },
 
-  /*
-     SOLO UN JAMÓN
-  */
-
   {
     title: "Jamones",
     name: "jamones",
     type: "radio",
-
     items: [
       "Pierna",
       "Ahumado",
@@ -1308,7 +1758,6 @@ const EXTRA_GROUPS = [
   {
     title: "Sencillos",
     price: 1.00,
-
     items: [
       "Aceitunas Negras",
       "Aceitunas Verdes",
@@ -1320,7 +1769,6 @@ const EXTRA_GROUPS = [
   {
     title: "No tan sencillos",
     price: 1.50,
-
     items: [
       "Queso",
       "Jamón",
@@ -1336,7 +1784,6 @@ const EXTRA_GROUPS = [
   {
     title: "Deliciosos",
     price: 3.00,
-
     items: [
       "Atún Margarita",
       "Diablitos Underwood",
@@ -1359,6 +1806,7 @@ const EXTRA_GROUPS = [
 ===================================================== */
 
 let CART = [];
+
 let currentProduct = null;
 
 
@@ -1430,23 +1878,25 @@ const errorMessage =
 
 function currency(number) {
 
-  return "$" + Number(number).toFixed(2);
+  return "$" +
+    Number(number).toFixed(2);
 
 }
 
 
 /* =====================================================
-   SANGUINARIO
+   IDENTIFICAR SANGUINARIOS
 ===================================================== */
 
 function isSanguinario(product) {
 
+  if (!product) {
+    return false;
+  }
+
   return (
-    product &&
-    (
-      product.name === "Sanguinario" ||
-      product.name === "Doble Sanguinario"
-    )
+    product.name === "Sanguinario" ||
+    product.name === "Doble Sanguinario"
   );
 
 }
@@ -1462,15 +1912,24 @@ function getRequiredContours(product) {
     return 0;
   }
 
-  if (product.name === "Sanguinario") {
+  if (
+    product.name === "Sanguinario"
+  ) {
+
     return 3;
+
   }
 
-  if (product.name === "Doble Sanguinario") {
+  if (
+    product.name === "Doble Sanguinario"
+  ) {
+
     return 4;
+
   }
 
   return 0;
+
 }
 
 
@@ -1539,7 +1998,9 @@ function renderBeverages() {
 
   productosBebidas.innerHTML = "";
 
-  if (BEVERAGES.length === 0) {
+  if (
+    BEVERAGES.length === 0
+  ) {
 
     productosBebidas.innerHTML = `
 
@@ -1557,7 +2018,9 @@ function renderBeverages() {
     `;
 
     return;
+
   }
+
 
   BEVERAGES.forEach(beverage => {
 
@@ -1620,17 +2083,21 @@ function addBeverageToCart(beverage) {
       .toString(36)
       .substring(2, 8);
 
+
   CART.push({
 
-    id,
+    id: id,
 
     type: "beverage",
 
-    productName: beverage.name,
+    productName:
+      beverage.name,
 
-    basePrice: beverage.price,
+    basePrice:
+      beverage.price,
 
-    img: beverage.image,
+    img:
+      beverage.image,
 
     selections: {},
 
@@ -1638,27 +2105,36 @@ function addBeverageToCart(beverage) {
 
     extrasTotal: 0,
 
-    subtotal: beverage.price
+    subtotal:
+      beverage.price
 
   });
 
+
   updateCartUI();
 
-  alert("¡Bebida agregada al carrito! 🥤");
+  alert(
+    "¡Bebida agregada al carrito! 🥤"
+  );
 
 }
 
 
 /* =====================================================
-   ABRIR MODAL
+   ABRIR MODAL DEL PAN
 ===================================================== */
 
 function openPedidoModal(product) {
 
-  currentProduct = product;
+  currentProduct =
+    product;
 
-  pedidoImg.src = product.image;
-  pedidoImg.alt = product.name;
+
+  pedidoImg.src =
+    product.image;
+
+  pedidoImg.alt =
+    product.name;
 
   pedidoTitle.textContent =
     product.name;
@@ -1666,128 +2142,60 @@ function openPedidoModal(product) {
   pedidoPrice.textContent =
     currency(product.price);
 
-  ingredientesContainer.innerHTML = "";
 
-  errorMessage.style.display = "none";
-  errorMessage.textContent = "";
+  ingredientesContainer.innerHTML =
+    "";
+
+  errorMessage.style.display =
+    "none";
+
+  errorMessage.textContent =
+    "";
+
+  pedidoNotas.value =
+    "";
+
 
   /*
      CATEGORÍAS NORMALES
   */
 
-  CATEGORIES.forEach(category => {
-
-    const group =
-      document.createElement("div");
-
-    group.className = "group";
-
-    const title =
-      document.createElement("h4");
-
-    title.textContent =
-      category.title;
-
-    group.appendChild(title);
-
-    category.items.forEach(item => {
-
-      const label =
-        document.createElement("label");
-
-      label.className = "inline";
-
-      const input =
-        document.createElement("input");
-
-      input.type =
-        category.type;
-
-      input.name =
-        category.name;
-
-      input.value =
-        item;
-
-      input.addEventListener(
-        "change",
-        updateModalTotal
-      );
-
-      const span =
-        document.createElement("span");
-
-      span.textContent =
-        item;
-
-      label.appendChild(input);
-      label.appendChild(span);
-
-      group.appendChild(label);
-
-    });
-
-    ingredientesContainer.appendChild(group);
-
-  });
+  createNormalCategories();
 
 
   /*
-     SANGUINARIO / DOBLE SANGUINARIO
+     SANGUINARIO Y DOBLE SANGUINARIO
   */
 
-  if (isSanguinario(product)) {
+  if (
+    isSanguinario(product)
+  ) {
 
-    const required =
-      getRequiredContours(product);
+    createSanguinarioInfo();
 
-    const info =
-      document.createElement("div");
-
-    info.className =
-      "counter-info";
-
-    info.innerHTML = `
-
-      <strong>${escapeHtml(product.name)}</strong>
-
-      <br><br>
-
-      Debes seleccionar exactamente
-      <strong>${required} contornos</strong> en total.
-
-      <br><br>
-
-      1 queso + 1 jamón +
-      ${
-        required === 3
-          ? "1 embutido/delicatessen"
-          : "2 embutidos/delicatessen"
-      }
-
-      <br><br>
-
-      <strong>Roast Beef, Selva Negra y Pastrami están incluidos GRATIS.</strong>
-
-    `;
-
-    ingredientesContainer.appendChild(info);
-
-    createSpecialDelicatessen(product);
+    createSpecialDelicatessen();
 
   }
 
 
   /*
      EXTRAS
+
+     IMPORTANTE:
+     El apartado de delicatessen
+     PAGADA NO se crea aquí.
+
+     Solo aparecerá cuando
+     el cliente marque el extra
+     "Delicatessen".
   */
 
   createExtras();
 
-  pedidoNotas.value = "";
 
   modalTotal.textContent =
     currency(product.price);
+
 
   pedidoModal.style.display =
     "flex";
@@ -1801,10 +2209,137 @@ function openPedidoModal(product) {
 
 
 /* =====================================================
-   DELICATESSEN GRATIS
+   CATEGORÍAS NORMALES
 ===================================================== */
 
-function createSpecialDelicatessen(product) {
+function createNormalCategories() {
+
+  CATEGORIES.forEach(category => {
+
+    const group =
+      document.createElement("div");
+
+    group.className =
+      "group";
+
+
+    const title =
+      document.createElement("h4");
+
+    title.textContent =
+      category.title;
+
+    group.appendChild(title);
+
+
+    category.items.forEach(item => {
+
+      const label =
+        document.createElement("label");
+
+      label.className =
+        "inline";
+
+
+      const input =
+        document.createElement("input");
+
+      input.type =
+        category.type;
+
+      input.name =
+        category.name;
+
+      input.value =
+        item;
+
+
+      input.addEventListener(
+        "change",
+        updateModalTotal
+      );
+
+
+      const span =
+        document.createElement("span");
+
+      span.textContent =
+        item;
+
+
+      label.appendChild(input);
+
+      label.appendChild(span);
+
+      group.appendChild(label);
+
+    });
+
+
+    ingredientesContainer.appendChild(group);
+
+  });
+
+}
+
+
+/* =====================================================
+   INFORMACIÓN SANGUINARIO
+===================================================== */
+
+function createSanguinarioInfo() {
+
+  const required =
+    getRequiredContours(
+      currentProduct
+    );
+
+
+  const info =
+    document.createElement("div");
+
+  info.className =
+    "counter-info";
+
+
+  info.innerHTML = `
+
+    <strong>${escapeHtml(currentProduct.name)}</strong>
+
+    <br><br>
+
+    Debes seleccionar exactamente
+    <strong>${required} contornos</strong> en total.
+
+    <br><br>
+
+    1 queso + 1 jamón +
+    ${
+      required - 2
+    }
+    delicatessen.
+
+    <br><br>
+
+    <strong>
+      Roast Beef, Selva Negra y Pastrami
+      están incluidos GRATIS.
+    </strong>
+
+  `;
+
+
+  ingredientesContainer.appendChild(info);
+
+}
+
+
+/* =====================================================
+   DELICATESSEN GRATIS
+   SOLO PARA SANGUINARIO Y DOBLE
+===================================================== */
+
+function createSpecialDelicatessen() {
 
   const group =
     document.createElement("div");
@@ -1813,7 +2348,8 @@ function createSpecialDelicatessen(product) {
     "group";
 
   group.id =
-    "includedDelicatessenGroup";
+    "freeDelicatessenGroup";
+
 
   const title =
     document.createElement("h4");
@@ -1823,6 +2359,7 @@ function createSpecialDelicatessen(product) {
 
   group.appendChild(title);
 
+
   const description =
     document.createElement("div");
 
@@ -1830,7 +2367,7 @@ function createSpecialDelicatessen(product) {
     "group-description";
 
   description.textContent =
-    "Selecciona el embutido que ocupará uno de tus contornos. No tiene costo adicional.";
+    "Selecciona la delicatessen que ocupará tus contornos. No tiene costo adicional.";
 
   group.appendChild(description);
 
@@ -1842,6 +2379,7 @@ function createSpecialDelicatessen(product) {
 
     label.className =
       "inline";
+
 
     const input =
       document.createElement("input");
@@ -1855,16 +2393,19 @@ function createSpecialDelicatessen(product) {
     input.value =
       item;
 
+
     input.addEventListener(
       "change",
       handleContourSelection
     );
+
 
     const span =
       document.createElement("span");
 
     span.textContent =
       item;
+
 
     const price =
       document.createElement("span");
@@ -1875,13 +2416,17 @@ function createSpecialDelicatessen(product) {
     price.textContent =
       "GRATIS";
 
+
     label.appendChild(input);
+
     label.appendChild(span);
+
     label.appendChild(price);
 
     group.appendChild(label);
 
   });
+
 
   ingredientesContainer.appendChild(group);
 
@@ -1901,7 +2446,8 @@ function createExtras() {
     "group";
 
   extrasMainGroup.id =
-    "extrasMainGroup";
+    "extrasGroup";
+
 
   const extrasTitle =
     document.createElement("h4");
@@ -1909,7 +2455,9 @@ function createExtras() {
   extrasTitle.textContent =
     "Extras";
 
-  extrasMainGroup.appendChild(extrasTitle);
+  extrasMainGroup.appendChild(
+    extrasTitle
+  );
 
 
   EXTRA_GROUPS.forEach(groupData => {
@@ -1919,6 +2467,7 @@ function createExtras() {
 
     subgroup.style.marginTop =
       "10px";
+
 
     const subgroupTitle =
       document.createElement("strong");
@@ -1932,7 +2481,10 @@ function createExtras() {
     subgroupTitle.textContent =
       `${groupData.title} — ${currency(groupData.price)}`;
 
-    subgroup.appendChild(subgroupTitle);
+
+    subgroup.appendChild(
+      subgroupTitle
+    );
 
 
     groupData.items.forEach(item => {
@@ -1942,6 +2494,7 @@ function createExtras() {
 
       label.className =
         "inline";
+
 
       const input =
         document.createElement("input");
@@ -1958,16 +2511,19 @@ function createExtras() {
       input.dataset.price =
         groupData.price;
 
+
       input.addEventListener(
         "change",
         handleExtraChange
       );
+
 
       const span =
         document.createElement("span");
 
       span.textContent =
         item;
+
 
       const price =
         document.createElement("span");
@@ -1978,15 +2534,21 @@ function createExtras() {
       price.textContent =
         `+${currency(groupData.price)}`;
 
+
       label.appendChild(input);
+
       label.appendChild(span);
+
       label.appendChild(price);
 
       subgroup.appendChild(label);
 
     });
 
-    extrasMainGroup.appendChild(subgroup);
+
+    extrasMainGroup.appendChild(
+      subgroup
+    );
 
   });
 
@@ -1999,32 +2561,38 @@ function createExtras() {
 
 
 /* =====================================================
-   CAMBIO DE EXTRA
+   CAMBIO DE EXTRAS
 ===================================================== */
 
 function handleExtraChange(event) {
 
   /*
-     DELICATESSEN EXTRA
+     DELICATESSEN PAGADA
 
-     Solamente al seleccionar
-     el extra Delicatessen se
-     muestra el apartado.
+     Solo aparece cuando se marca
+     el extra Delicatessen.
   */
 
-  if (event.target.value === "Delicatessen") {
+  if (
+    event.target.value ===
+    "Delicatessen"
+  ) {
 
-    if (event.target.checked) {
+    if (
+      event.target.checked
+    ) {
 
       showPaidDelicatessen();
 
-    } else {
+    }
+    else {
 
       hidePaidDelicatessen();
 
     }
 
   }
+
 
   updateModalTotal();
 
@@ -2038,7 +2606,7 @@ function handleExtraChange(event) {
 function showPaidDelicatessen() {
 
   /*
-     Evitar duplicados
+     Si ya existe, no hacer nada.
   */
 
   if (
@@ -2066,7 +2634,7 @@ function showPaidDelicatessen() {
     document.createElement("h4");
 
   title.textContent =
-    "Delicatessen extra";
+    "Delicatessen";
 
   group.appendChild(title);
 
@@ -2095,11 +2663,6 @@ function showPaidDelicatessen() {
     const input =
       document.createElement("input");
 
-    /*
-       Solo una delicatessen
-       para el extra.
-    */
-
     input.type =
       "radio";
 
@@ -2117,19 +2680,9 @@ function showPaidDelicatessen() {
       item;
 
 
-    const price =
-      document.createElement("span");
-
-    price.className =
-      "extra-price";
-
-    price.textContent =
-      "INCLUIDO EN EXTRA";
-
-
     label.appendChild(input);
+
     label.appendChild(span);
-    label.appendChild(price);
 
     group.appendChild(label);
 
@@ -2137,25 +2690,25 @@ function showPaidDelicatessen() {
 
 
   /*
-     IMPORTANTE:
-
-     Se coloca inmediatamente
-     después del grupo de Extras.
+     Colocar el apartado
+     inmediatamente DESPUÉS
+     de Extras.
   */
 
   const extrasGroup =
     document.getElementById(
-      "extrasMainGroup"
+      "extrasGroup"
     );
 
-  if (extrasGroup) {
 
-    extrasGroup.insertAdjacentElement(
-      "afterend",
-      group
-    );
+  if (
+    extrasGroup
+  ) {
 
-  } else {
+    extrasGroup.after(group);
+
+  }
+  else {
 
     ingredientesContainer.appendChild(
       group
@@ -2167,7 +2720,7 @@ function showPaidDelicatessen() {
 
 
 /* =====================================================
-   OCULTAR DELICATESSEN EXTRA
+   OCULTAR DELICATESSEN PAGADA
 ===================================================== */
 
 function hidePaidDelicatessen() {
@@ -2177,7 +2730,10 @@ function hidePaidDelicatessen() {
       "paidDelicatessenGroup"
     );
 
-  if (group) {
+
+  if (
+    group
+  ) {
 
     group.remove();
 
@@ -2187,22 +2743,30 @@ function hidePaidDelicatessen() {
 
 
 /* =====================================================
-   SELECCIÓN DEL CONTORNO GRATIS
+   SELECCIÓN DELICATESSEN SANGUINARIO
 ===================================================== */
 
 function handleContourSelection(event) {
 
-  if (!currentProduct) {
+  if (
+    !currentProduct ||
+    !isSanguinario(currentProduct)
+  ) {
+
     return;
+
   }
+
 
   const required =
     getRequiredContours(
       currentProduct
     );
 
-  const maxDelicatessen =
+
+  const maxDeli =
     required - 2;
+
 
   const selected =
     document.querySelectorAll(
@@ -2212,17 +2776,19 @@ function handleContourSelection(event) {
 
   if (
     selected.length >
-    maxDelicatessen
+    maxDeli
   ) {
 
     event.target.checked =
       false;
 
+
     alert(
-      `Este pan solo permite ${maxDelicatessen} embutido(s)/delicatessen gratis.`
+      `${currentProduct.name} solo permite ${maxDeli} delicatessen como contorno(s) incluido(s).`
     );
 
   }
+
 
   updateModalTotal();
 
@@ -2230,7 +2796,7 @@ function handleContourSelection(event) {
 
 
 /* =====================================================
-   SABER SI MARCÓ DELICATESSEN EXTRA
+   SABER SI SE MARCÓ DELICATESSEN COMO EXTRA
 ===================================================== */
 
 function getSelectedExtraDelicatessen() {
@@ -2239,6 +2805,7 @@ function getSelectedExtraDelicatessen() {
     document.querySelector(
       'input[name="extras"][value="Delicatessen"]'
     );
+
 
   return !!(
     input &&
@@ -2254,17 +2821,24 @@ function getSelectedExtraDelicatessen() {
 
 function calculateModalTotal() {
 
-  if (!currentProduct) {
+  if (
+    !currentProduct
+  ) {
+
     return 0;
+
   }
+
 
   let total =
     currentProduct.price;
+
 
   const selectedExtras =
     document.querySelectorAll(
       'input[name="extras"]:checked'
     );
+
 
   selectedExtras.forEach(extra => {
 
@@ -2274,6 +2848,7 @@ function calculateModalTotal() {
       );
 
   });
+
 
   return Number(
     total.toFixed(2)
@@ -2297,26 +2872,33 @@ function updateModalTotal() {
 
 
 /* =====================================================
-   VALIDAR PEDIDO
+   VALIDAR PRODUCTO
 ===================================================== */
 
 function validateCurrentProduct() {
 
-  if (!currentProduct) {
+  if (
+    !currentProduct
+  ) {
 
     return {
+
       valid: false,
+
       message:
         "No se ha seleccionado ningún producto."
+
     };
 
   }
 
 
   /*
-     TODOS LOS PANES:
+     TODOS LOS PANES
 
-     Solo un queso.
+     Máximo 1 queso.
+     El radio ya impide
+     seleccionar más de uno.
   */
 
   const selectedCheese =
@@ -2324,14 +2906,19 @@ function validateCurrentProduct() {
       'input[name="quesos"]:checked'
     );
 
+
   if (
-    selectedCheese.length > 1
+    selectedCheese.length >
+    1
   ) {
 
     return {
+
       valid: false,
+
       message:
         "Solo puedes seleccionar un tipo de queso."
+
     };
 
   }
@@ -2371,37 +2958,49 @@ function validateCurrentProduct() {
       ).length;
 
 
-    const totalContours =
-      cheeseCount +
-      hamCount +
-      deliCount;
-
+    /*
+       QUESO
+    */
 
     if (
       cheeseCount !== 1
     ) {
 
       return {
+
         valid: false,
+
         message:
           `${currentProduct.name} requiere exactamente 1 tipo de queso.`
+
       };
 
     }
 
+
+    /*
+       JAMÓN
+    */
 
     if (
       hamCount !== 1
     ) {
 
       return {
+
         valid: false,
+
         message:
           `${currentProduct.name} requiere exactamente 1 tipo de jamón.`
+
       };
 
     }
 
+
+    /*
+       DELICATESSEN
+    */
 
     if (
       deliCount !==
@@ -2409,12 +3008,25 @@ function validateCurrentProduct() {
     ) {
 
       return {
+
         valid: false,
+
         message:
-          `${currentProduct.name} requiere exactamente ${required} contornos: 1 queso + 1 jamón + ${required - 2} embutido(s)/delicatessen.`
+          `${currentProduct.name} requiere exactamente ${required - 2} delicatessen como contorno(s) incluido(s).`
+
       };
 
     }
+
+
+    /*
+       TOTAL DE CONTORNOS
+    */
+
+    const totalContours =
+      cheeseCount +
+      hamCount +
+      deliCount;
 
 
     if (
@@ -2423,9 +3035,46 @@ function validateCurrentProduct() {
     ) {
 
       return {
+
         valid: false,
+
         message:
           `${currentProduct.name} requiere exactamente ${required} contornos.`
+
+      };
+
+    }
+
+  }
+
+
+  /*
+     SI SE SELECCIONÓ EL EXTRA
+     DELICATESSEN, DEBE ELEGIR
+     UNA DELICATESSEN.
+  */
+
+  if (
+    getSelectedExtraDelicatessen()
+  ) {
+
+    const paidDeli =
+      document.querySelectorAll(
+        'input[name="delicatessen_extra"]:checked'
+      );
+
+
+    if (
+      paidDeli.length !== 1
+    ) {
+
+      return {
+
+        valid: false,
+
+        message:
+          "Selecciona una delicatessen para el extra que agregaste."
+
       };
 
     }
@@ -2434,15 +3083,18 @@ function validateCurrentProduct() {
 
 
   return {
+
     valid: true,
+
     message: ""
+
   };
 
 }
 
 
 /* =====================================================
-   ERROR
+   MOSTRAR ERROR
 ===================================================== */
 
 function showError(message) {
@@ -2485,7 +3137,10 @@ function addCurrentToCart() {
   const validation =
     validateCurrentProduct();
 
-  if (!validation.valid) {
+
+  if (
+    !validation.valid
+  ) {
 
     showError(
       validation.message
@@ -2509,6 +3164,7 @@ function addCurrentToCart() {
       document.querySelectorAll(
         `input[name="${category.name}"]:checked`
       );
+
 
     selections[
       category.title
@@ -2537,23 +3193,22 @@ function addCurrentToCart() {
         'input[name="contorno_deli"]:checked'
       );
 
+
     selections[
       "Embutidos / Delicatessen incluidos GRATIS"
     ] =
-      Array.from(selectedDeli)
-        .map(
-          input =>
-            input.value
-        );
+      Array.from(
+        selectedDeli
+      ).map(
+        input =>
+          input.value
+      );
 
   }
 
 
   /*
-     DELICATESSEN EXTRA
-
-     Solo se guarda si
-     el extra fue seleccionado.
+     DELICATESSEN PAGADA
   */
 
   if (
@@ -2565,20 +3220,16 @@ function addCurrentToCart() {
         'input[name="delicatessen_extra"]:checked'
       );
 
-    if (
-      selectedPaidDeli.length
-    ) {
 
-      selections[
-        "Delicatessen extra"
-      ] =
-        Array.from(selectedPaidDeli)
-          .map(
-            input =>
-              input.value
-          );
-
-    }
+    selections[
+      "Delicatessen extra"
+    ] =
+      Array.from(
+        selectedPaidDeli
+      ).map(
+        input =>
+          input.value
+      );
 
   }
 
@@ -2592,9 +3243,11 @@ function addCurrentToCart() {
       'input[name="extras"]:checked'
     );
 
+
   const extras = [];
 
-  let extrasTotal = 0;
+  let extrasTotal =
+    0;
 
 
   selectedExtras.forEach(input => {
@@ -2603,6 +3256,7 @@ function addCurrentToCart() {
       Number(
         input.dataset.price || 0
       );
+
 
     extras.push({
 
@@ -2613,6 +3267,7 @@ function addCurrentToCart() {
         price
 
     });
+
 
     extrasTotal +=
       price;
@@ -2662,9 +3317,11 @@ function addCurrentToCart() {
 
   CART.push({
 
-    id,
+    id:
+      id,
 
-    type: "bread",
+    type:
+      "bread",
 
     productName:
       currentProduct.name,
@@ -2675,13 +3332,17 @@ function addCurrentToCart() {
     img:
       currentProduct.image,
 
-    selections,
+    selections:
+      selections,
 
-    notes,
+    notes:
+      notes,
 
-    extrasTotal,
+    extrasTotal:
+      extrasTotal,
 
-    subtotal
+    subtotal:
+      subtotal
 
   });
 
@@ -2689,6 +3350,7 @@ function addCurrentToCart() {
   updateCartUI();
 
   closePedidoModal();
+
 
   alert(
     "¡Producto agregado al carrito! 🛒"
@@ -2705,53 +3367,68 @@ function buildSummaryText(selections) {
 
   const lines = [];
 
-  Object.entries(selections)
-    .forEach(
-      ([category, values]) => {
 
-        if (
-          category === "Extras"
-        ) {
+  Object.entries(
+    selections
+  ).forEach(
+    ([category, values]) => {
 
-          if (
-            values &&
-            values.length
-          ) {
 
-            const extraText =
-              values
-                .map(
-                  extra =>
-                    `${extra.name} (+${currency(extra.price)})`
-                )
-                .join(", ");
+      /*
+         EXTRAS
+      */
 
-            lines.push(
-              `Extras: ${extraText}`
-            );
-
-          }
-
-          return;
-
-        }
-
+      if (
+        category === "Extras"
+      ) {
 
         if (
           values &&
           values.length
         ) {
 
+          const extraText =
+            values
+              .map(
+                extra =>
+                  `${extra.name} (+${currency(extra.price)})`
+              )
+              .join(", ");
+
+
           lines.push(
-            `${category}: ${values.join(", ")}`
+            `Extras: ${extraText}`
           );
 
         }
 
-      }
-    );
+        return;
 
-  return lines.join(" • ");
+      }
+
+
+      /*
+         RESTO
+      */
+
+      if (
+        values &&
+        values.length
+      ) {
+
+        lines.push(
+          `${category}: ${values.join(", ")}`
+        );
+
+      }
+
+    }
+  );
+
+
+  return lines.join(
+    " • "
+  );
 
 }
 
@@ -2765,7 +3442,9 @@ function updateCartUI() {
   cartBtn.textContent =
     `🛒 Ver carrito (${CART.length})`;
 
-  cartBody.innerHTML = "";
+
+  cartBody.innerHTML =
+    "";
 
 
   if (
@@ -2780,6 +3459,7 @@ function updateCartUI() {
 
     `;
 
+
     cartSubtotalEl.textContent =
       "$0.00";
 
@@ -2788,13 +3468,14 @@ function updateCartUI() {
   }
 
 
-  let total = 0;
+  let total =
+    0;
 
 
   CART.forEach(item => {
 
     total +=
-      Number(item.subtotal || 0);
+      item.subtotal;
 
 
     const div =
@@ -2809,7 +3490,8 @@ function updateCartUI() {
     */
 
     if (
-      item.type === "beverage"
+      item.type ===
+      "beverage"
     ) {
 
       div.innerHTML = `
@@ -2835,6 +3517,7 @@ function updateCartUI() {
 
         </div>
 
+
         <div class="meta">
 
           <h4>
@@ -2855,11 +3538,13 @@ function updateCartUI() {
 
           </h4>
 
+
           <p>
             🥤 Bebida
           </p>
 
         </div>
+
 
         <button
           class="remove-item"
@@ -2917,6 +3602,7 @@ function updateCartUI() {
 
         </div>
 
+
         <div class="meta">
 
           <h4>
@@ -2937,9 +3623,11 @@ function updateCartUI() {
 
           </h4>
 
+
           <p>
             ${escapeHtml(summary)}
           </p>
+
 
           ${
             item.notes
@@ -2966,6 +3654,7 @@ function updateCartUI() {
           }
 
         </div>
+
 
         <button
           class="remove-item"
@@ -2998,11 +3687,13 @@ function updateCartUI() {
 
 
   /*
-     ELIMINAR
+     BOTONES ELIMINAR
   */
 
   cartBody
-    .querySelectorAll(".remove-item")
+    .querySelectorAll(
+      ".remove-item"
+    )
     .forEach(button => {
 
       button.addEventListener(
@@ -3015,6 +3706,7 @@ function updateCartUI() {
                 item.id !==
                 button.dataset.id
             );
+
 
           updateCartUI();
 
@@ -3040,6 +3732,7 @@ function clearCart() {
 
   }
 
+
   if (
     !confirm(
       "¿Vaciar todo el carrito?"
@@ -3050,7 +3743,9 @@ function clearCart() {
 
   }
 
+
   CART = [];
+
 
   updateCartUI();
 
@@ -3072,6 +3767,7 @@ function escapeHtml(str) {
 
   }
 
+
   return String(str).replace(
     /[&<>"']/g,
 
@@ -3079,13 +3775,23 @@ function escapeHtml(str) {
 
       const map = {
 
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
+        "&":
+          "&amp;",
+
+        "<":
+          "&lt;",
+
+        ">":
+          "&gt;",
+
+        '"':
+          "&quot;",
+
+        "'":
+          "&#39;"
 
       };
+
 
       return map[char];
 
@@ -3129,14 +3835,18 @@ function sendCartWhatsApp() {
   }
 
 
-  let total = 0;
+  let total =
+    0;
 
-  const messageLines = [];
+
+  const messageLines =
+    [];
 
 
   messageLines.push(
     "*PEDIDO GUATIQUESOS*"
   );
+
 
   messageLines.push("");
 
@@ -3150,7 +3860,8 @@ function sendCartWhatsApp() {
 
 
       if (
-        item.type === "beverage"
+        item.type ===
+        "beverage"
       ) {
 
         messageLines.push(
@@ -3171,6 +3882,11 @@ function sendCartWhatsApp() {
       .forEach(
         ([category, values]) => {
 
+
+          /*
+             EXTRAS
+          */
+
           if (
             category === "Extras"
           ) {
@@ -3180,15 +3896,13 @@ function sendCartWhatsApp() {
               values.length
             ) {
 
-              values.forEach(
-                extra => {
+              values.forEach(extra => {
 
-                  messageLines.push(
-                    `Extra: ${extra.name} (+${currency(extra.price)})`
-                  );
+                messageLines.push(
+                  `Extra: ${extra.name} (+${currency(extra.price)})`
+                );
 
-                }
-              );
+              });
 
             }
 
@@ -3196,6 +3910,10 @@ function sendCartWhatsApp() {
 
           }
 
+
+          /*
+             RESTO
+          */
 
           if (
             values &&
@@ -3225,8 +3943,9 @@ function sendCartWhatsApp() {
 
       messageLines.push("");
 
+
       total +=
-        Number(item.subtotal || 0);
+        item.subtotal;
 
     }
   );
@@ -3236,7 +3955,9 @@ function sendCartWhatsApp() {
     `*TOTAL: ${currency(total)}*`
   );
 
+
   messageLines.push("");
+
 
   messageLines.push(
     "Por favor confirmar disponibilidad."
@@ -3263,11 +3984,16 @@ function sendCartWhatsApp() {
    EVENTOS
 ===================================================== */
 
+
+/* Cerrar modal */
+
 closePedido.addEventListener(
   "click",
   closePedidoModal
 );
 
+
+/* Agregar al carrito */
 
 addToCartBtn.addEventListener(
   "click",
@@ -3275,11 +4001,15 @@ addToCartBtn.addEventListener(
 );
 
 
+/* Abrir carrito */
+
 cartBtn.addEventListener(
   "click",
   () => {
 
-    cartPanel.classList.add("open");
+    cartPanel.classList.add(
+      "open"
+    );
 
     cartPanel.setAttribute(
       "aria-hidden",
@@ -3290,11 +4020,15 @@ cartBtn.addEventListener(
 );
 
 
+/* Cerrar carrito */
+
 closeCartBtn.addEventListener(
   "click",
   () => {
 
-    cartPanel.classList.remove("open");
+    cartPanel.classList.remove(
+      "open"
+    );
 
     cartPanel.setAttribute(
       "aria-hidden",
@@ -3305,17 +4039,23 @@ closeCartBtn.addEventListener(
 );
 
 
+/* Vaciar carrito */
+
 clearCartBtn.addEventListener(
   "click",
   clearCart
 );
 
 
+/* WhatsApp */
+
 sendWhatsAppBtn.addEventListener(
   "click",
   sendCartWhatsApp
 );
 
+
+/* Cerrar modal haciendo clic fuera */
 
 pedidoModal.addEventListener(
   "click",
@@ -3334,18 +4074,26 @@ pedidoModal.addEventListener(
 );
 
 
+/* ESC */
+
 document.addEventListener(
   "keydown",
   event => {
 
     if (
-      event.key === "Escape"
+      event.key ===
+      "Escape"
     ) {
 
       closePedidoModal();
 
       cartPanel.classList.remove(
         "open"
+      );
+
+      cartPanel.setAttribute(
+        "aria-hidden",
+        "true"
       );
 
     }
@@ -3367,4 +4115,5 @@ updateCartUI();
 </script>
 
 </body>
+
 </html>
