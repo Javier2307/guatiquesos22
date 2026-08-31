@@ -1,14 +1,13 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Guatiquesos - Pedidos</title>
 
   <style>
-
     :root {
       --accent1: #ff7f50;
       --accent2: #ffce00;
@@ -33,7 +32,6 @@
       background: var(--bg);
       color: var(--dark);
     }
-
 
     /* =========================
        HEADER
@@ -63,7 +61,6 @@
       transform: scale(1.05);
     }
 
-
     /* =========================
        CONTENIDO
     ========================= */
@@ -79,7 +76,6 @@
       color: var(--accent1);
       margin: 25px 0 18px;
     }
-
 
     /* =========================
        PRODUCTOS
@@ -179,7 +175,6 @@
       transform: scale(1.03);
     }
 
-
     /* =========================
        BOTÓN CARRITO
     ========================= */
@@ -210,7 +205,6 @@
       z-index: 1200;
     }
 
-
     /* =========================
        FOOTER
     ========================= */
@@ -226,7 +220,6 @@
 
       font-weight: 700;
     }
-
 
     /* =========================
        MODAL PEDIDO
@@ -282,7 +275,6 @@
         opacity: 1;
         transform: scale(1);
       }
-
     }
 
     .modal-header {
@@ -311,7 +303,6 @@
     .modal .precio {
       margin: 2px 0 0;
     }
-
 
     /* =========================
        GRUPOS
@@ -369,6 +360,17 @@
       color: var(--accent1);
     }
 
+    /* =========================
+       DELICATESSEN OCULTO
+    ========================= */
+
+    #delicatessenGroup {
+      display: none;
+    }
+
+    #delicatessenGroup.visible {
+      display: block;
+    }
 
     /* =========================
        COMENTARIOS
@@ -391,7 +393,6 @@
 
       font-family: inherit;
     }
-
 
     /* =========================
        BOTONES MODAL
@@ -443,7 +444,6 @@
     .btn-primary:hover {
       transform: scale(1.03);
     }
-
 
     /* =========================
        CARRITO
@@ -556,7 +556,6 @@
       color: #666;
     }
 
-
     /* =========================
        RESUMEN PRECIO MODAL
     ========================= */
@@ -578,7 +577,6 @@
 
       font-weight: 800;
     }
-
 
     /* =========================
        RESPONSIVE
@@ -613,16 +611,11 @@
       .btn-primary {
         width: 100%;
       }
-
     }
-
   </style>
-
 </head>
 
-
 <body>
-
 
 <!-- =====================================================
      HEADER
@@ -673,9 +666,7 @@
 ===================================================== -->
 
 <footer>
-
   © 2026 Guatiquesos - Hecho con amor y sabor 🧡
-
 </footer>
 
 
@@ -745,9 +736,7 @@
           margin-top:10px;
         "
       >
-
         Comentarios adicionales
-
       </label>
 
 
@@ -920,7 +909,6 @@
 ===================================================== -->
 
 <script>
-
 
 /* =====================================================
    CONFIGURACIÓN
@@ -1121,10 +1109,14 @@ const PRODUCTS = [
 
 
 /* =====================================================
-   CATEGORÍAS
+   CATEGORÍAS DEL PEDIDO
 ===================================================== */
 
 const CATEGORIES = [
+
+  /* -------------------------
+     TIPO DE PAN
+  ------------------------- */
 
   {
     title: "Tipo de Pan",
@@ -1141,6 +1133,10 @@ const CATEGORIES = [
   },
 
 
+  /* -------------------------
+     VEGETALES
+  ------------------------- */
+
   {
     title: "Vegetales",
     name: "vegetales",
@@ -1155,6 +1151,10 @@ const CATEGORIES = [
     ]
   },
 
+
+  /* -------------------------
+     SALSAS
+  ------------------------- */
 
   {
     title: "Salsas",
@@ -1186,6 +1186,11 @@ const CATEGORIES = [
   },
 
 
+  /* -------------------------
+     QUESOS
+     SOLO UNO
+  ------------------------- */
+
   {
     title: "Quesos",
     name: "quesos",
@@ -1202,6 +1207,11 @@ const CATEGORIES = [
   },
 
 
+  /* -------------------------
+     JAMONES
+     SOLO UNO
+  ------------------------- */
+
   {
     title: "Jamones",
     name: "jamones",
@@ -1210,28 +1220,8 @@ const CATEGORIES = [
     items: [
       "Pierna",
       "Ahumado",
-      "Pechuga de Pavo",
-      "Pechuga de Pavo Ahumado",
-      "Pechuga de Pollo"
-    ]
-  },
-
-
-  {
-    title: "Delicatessen",
-    name: "delicatessen",
-    type: "radio",
-
-    items: [
-      "Salami",
-      "Salchichón",
-      "Chorizo Seco",
-      "Selva Negra",
-      "Roast Beef",
-      "Pepperoni",
-      "Pastrami",
-      "Granjero",
-      "Tapara"
+      "Pavo",
+      "Pavo Ahumado"
     ]
   }
 
@@ -1239,45 +1229,24 @@ const CATEGORIES = [
 
 
 /* =====================================================
-   OPCIONES ÚNICAS DE SANGUINARIO
+   DELICATESSEN
+   SOLO APARECE SI SE SELECCIONA
+   EL EXTRA "DELICATESSEN"
 ===================================================== */
 
-const SANGUINARIO_OPTIONS = {
+const DELICATESSEN_ITEMS = [
 
-  "Sanguinario": {
+  "Salami",
+  "Salchichón",
+  "Chorizo Seco",
+  "Selva Negra",
+  "Roast Beef",
+  "Pepperoni",
+  "Pastrami",
+  "Granjero",
+  "Tapara"
 
-    embutidos: [
-      "Salami",
-      "Salchichón",
-      "Chorizo Seco",
-      "Pepperoni",
-      "Roast Beef",
-      "Selva Negra",
-      "Pastrami"
-    ],
-
-    cantidadEmbutidos: 1
-
-  },
-
-
-  "Doble Sanguinario": {
-
-    embutidos: [
-      "Salami",
-      "Salchichón",
-      "Chorizo Seco",
-      "Pepperoni",
-      "Roast Beef",
-      "Selva Negra",
-      "Pastrami"
-    ],
-
-    cantidadEmbutidos: 2
-
-  }
-
-};
+];
 
 
 /* =====================================================
@@ -1328,6 +1297,7 @@ const EXTRA_GROUPS = [
       "Pastrami",
       "Granjero",
       "Pernil",
+      "Pechuga de Pollo",
       "Carne",
       "Cochino Fresco"
     ]
@@ -1402,43 +1372,13 @@ const sendWhatsAppBtn =
 
 
 /* =====================================================
-   FORMATO MONEDA
+   FORMATO DE MONEDA
 ===================================================== */
 
 function currency(number) {
 
   return "$" +
     Number(number).toFixed(2);
-
-}
-
-
-/* =====================================================
-   ¿ES SANGUINARIO?
-===================================================== */
-
-function isSanguinario(product) {
-
-  return product &&
-    (
-      product.name === "Sanguinario" ||
-      product.name === "Doble Sanguinario"
-    );
-
-}
-
-
-/* =====================================================
-   ¿CATEGORÍA GRATIS?
-===================================================== */
-
-function isFreeSanguinarioCategory(categoryName) {
-
-  return (
-    categoryName === "quesos" ||
-    categoryName === "jamones" ||
-    categoryName === "delicatessen"
-  );
 
 }
 
@@ -1504,6 +1444,152 @@ function renderProducts() {
 
 
 /* =====================================================
+   CREAR CATEGORÍA
+===================================================== */
+
+function createCategoryGroup(category) {
+
+  const group =
+    document.createElement("div");
+
+  group.className =
+    "group";
+
+
+  const title =
+    document.createElement("h4");
+
+  title.textContent =
+    category.title;
+
+
+  group.appendChild(title);
+
+
+  category.items.forEach(item => {
+
+    const label =
+      document.createElement("label");
+
+    label.className =
+      "inline";
+
+
+    const input =
+      document.createElement("input");
+
+    input.type =
+      category.type;
+
+    input.name =
+      category.name;
+
+    input.value =
+      item;
+
+
+    input.addEventListener(
+      "change",
+      updateModalTotal
+    );
+
+
+    const span =
+      document.createElement("span");
+
+    span.textContent =
+      item;
+
+
+    label.appendChild(input);
+
+    label.appendChild(span);
+
+    group.appendChild(label);
+
+  });
+
+
+  return group;
+
+}
+
+
+/* =====================================================
+   CREAR DELICATESSEN
+===================================================== */
+
+function createDelicatessenGroup() {
+
+  const group =
+    document.createElement("div");
+
+  group.className =
+    "group";
+
+  group.id =
+    "delicatessenGroup";
+
+
+  const title =
+    document.createElement("h4");
+
+  title.textContent =
+    "Delicatessen";
+
+  group.appendChild(title);
+
+
+  DELICATESSEN_ITEMS.forEach(item => {
+
+    const label =
+      document.createElement("label");
+
+    label.className =
+      "inline";
+
+
+    const input =
+      document.createElement("input");
+
+    input.type =
+      "radio";
+
+    input.name =
+      "delicatessen";
+
+    input.value =
+      item;
+
+
+    input.addEventListener(
+      "change",
+      updateModalTotal
+    );
+
+
+    const span =
+      document.createElement("span");
+
+    span.textContent =
+      item;
+
+
+    label.appendChild(input);
+
+    label.appendChild(span);
+
+    group.appendChild(label);
+
+  });
+
+
+  return group;
+
+}
+
+
+/* =====================================================
    ABRIR MENÚ DE PEDIDO
 ===================================================== */
 
@@ -1529,285 +1615,34 @@ function openPedidoModal(product) {
     "";
 
 
-  const esSanguinario =
-    isSanguinario(product);
-
-
-  /* =====================================================
-     CATEGORÍAS
-  ===================================================== */
+  /* -------------------------
+     CATEGORÍAS NORMALES
+  ------------------------- */
 
   CATEGORIES.forEach(category => {
 
-    const group =
-      document.createElement("div");
-
-    group.className =
-      "group";
-
-
-    const title =
-      document.createElement("h4");
-
-    title.textContent =
-      category.title;
-
-
-    group.appendChild(title);
-
-
-    category.items.forEach(item => {
-
-      const label =
-        document.createElement("label");
-
-      label.className =
-        "inline";
-
-
-      const input =
-        document.createElement("input");
-
-      input.type =
-        category.type;
-
-      input.name =
-        category.name;
-
-      input.value =
-        item;
-
-
-      /*
-       * PARA SANGUINARIO:
-       *
-       * QUESO = GRATIS
-       * JAMÓN = GRATIS
-       * DELICATESSEN = GRATIS
-       */
-
-      let price = 0;
-
-
-      if (
-        !esSanguinario ||
-        !isFreeSanguinarioCategory(category.name)
-      ) {
-
-        price = 0;
-
-      }
-
-
-      input.dataset.price =
-        price;
-
-
-      input.addEventListener(
-        "change",
-        updateModalTotal
-      );
-
-
-      const span =
-        document.createElement("span");
-
-      span.textContent =
-        item;
-
-
-      label.appendChild(input);
-
-      label.appendChild(span);
-
-
-      /*
-       * Mostrar GRATIS para Sanguinario
-       */
-
-      if (
-        esSanguinario &&
-        isFreeSanguinarioCategory(category.name)
-      ) {
-
-        const priceLabel =
-          document.createElement("span");
-
-        priceLabel.className =
-          "extra-price";
-
-        priceLabel.textContent =
-          "GRATIS ($0.00)";
-
-
-        label.appendChild(
-          priceLabel
-        );
-
-      }
-
-
-      group.appendChild(label);
-
-    });
-
-
-    ingredientesContainer
-      .appendChild(group);
+    ingredientesContainer.appendChild(
+      createCategoryGroup(category)
+    );
 
   });
 
 
-  /* =====================================================
-     EMBUTIDOS ESPECIALES
-  ===================================================== */
+  /* -------------------------
+     DELICATESSEN OCULTO
+  ------------------------- */
 
-  if (esSanguinario) {
+  const delicatessenGroup =
+    createDelicatessenGroup();
 
-    const config =
-      SANGUINARIO_OPTIONS[
-        product.name
-      ];
-
-
-    const group =
-      document.createElement("div");
-
-    group.className =
-      "group";
+  ingredientesContainer.appendChild(
+    delicatessenGroup
+  );
 
 
-    const title =
-      document.createElement("h4");
-
-    title.textContent =
-      "Embutidos incluidos";
-
-
-    group.appendChild(title);
-
-
-    const description =
-      document.createElement("div");
-
-    description.className =
-      "group-description";
-
-
-    if (
-      product.name === "Sanguinario"
-    ) {
-
-      description.textContent =
-        "Selecciona 1 embutido. Todos están incluidos en el precio.";
-
-    } else {
-
-      description.textContent =
-        "Selecciona 2 embutidos. Ambos están incluidos en el precio.";
-
-    }
-
-
-    group.appendChild(
-      description
-    );
-
-
-    config.embutidos.forEach(item => {
-
-      const label =
-        document.createElement("label");
-
-      label.className =
-        "inline";
-
-
-      const input =
-        document.createElement("input");
-
-
-      /*
-       * SANGUINARIO:
-       * SOLO UNO
-       *
-       * DOBLE SANGUINARIO:
-       * DOS
-       */
-
-      if (
-        product.name === "Sanguinario"
-      ) {
-
-        input.type =
-          "radio";
-
-        input.name =
-          "embutido_sanguinario";
-
-      } else {
-
-        input.type =
-          "checkbox";
-
-        input.name =
-          "embutidos_doble_sanguinario";
-
-      }
-
-
-      input.value =
-        item;
-
-      input.dataset.price =
-        "0";
-
-
-      input.addEventListener(
-        "change",
-        updateModalTotal
-      );
-
-
-      const span =
-        document.createElement("span");
-
-      span.textContent =
-        item;
-
-
-      label.appendChild(input);
-
-      label.appendChild(span);
-
-
-      const price =
-        document.createElement("span");
-
-      price.className =
-        "extra-price";
-
-      price.textContent =
-        "GRATIS ($0.00)";
-
-
-      label.appendChild(price);
-
-
-      group.appendChild(label);
-
-    });
-
-
-    ingredientesContainer
-      .appendChild(group);
-
-  }
-
-
-  /* =====================================================
+  /* -------------------------
      EXTRAS
-  ===================================================== */
+  ------------------------- */
 
   const extrasMainGroup =
     document.createElement("div");
@@ -1825,21 +1660,6 @@ function openPedidoModal(product) {
 
   extrasMainGroup.appendChild(
     extrasTitle
-  );
-
-
-  const extrasDescription =
-    document.createElement("div");
-
-  extrasDescription.className =
-    "group-description";
-
-  extrasDescription.textContent =
-    "Los productos de esta sección sí tienen costo adicional.";
-
-
-  extrasMainGroup.appendChild(
-    extrasDescription
   );
 
 
@@ -1897,7 +1717,13 @@ function openPedidoModal(product) {
 
       input.addEventListener(
         "change",
-        updateModalTotal
+        () => {
+
+          updateDelicatessenVisibility();
+
+          updateModalTotal();
+
+        }
       );
 
 
@@ -1958,11 +1784,80 @@ function openPedidoModal(product) {
     "false"
   );
 
+
+  /* Asegurarnos de que Delicatessen
+     comience oculto */
+
+  updateDelicatessenVisibility();
+
 }
 
 
 /* =====================================================
-   CALCULAR TOTAL
+   MOSTRAR / OCULTAR DELICATESSEN
+===================================================== */
+
+function updateDelicatessenVisibility() {
+
+  const delicatessenGroup =
+    document.getElementById(
+      "delicatessenGroup"
+    );
+
+
+  if (!delicatessenGroup) {
+    return;
+  }
+
+
+  const delicatessenExtra =
+    Array.from(
+      document.querySelectorAll(
+        'input[name="extras"]'
+      )
+    ).find(
+      input =>
+        input.value === "Delicatessen"
+    );
+
+
+  if (
+    delicatessenExtra &&
+    delicatessenExtra.checked
+  ) {
+
+    delicatessenGroup.classList.add(
+      "visible"
+    );
+
+  } else {
+
+    delicatessenGroup.classList.remove(
+      "visible"
+    );
+
+
+    /* Si se desmarca el extra,
+       también eliminamos cualquier
+       delicatessen seleccionado */
+
+    delicatessenGroup
+      .querySelectorAll(
+        'input[name="delicatessen"]'
+      )
+      .forEach(input => {
+
+        input.checked = false;
+
+      });
+
+  }
+
+}
+
+
+/* =====================================================
+   CALCULAR TOTAL DEL MODAL
 ===================================================== */
 
 function calculateModalTotal() {
@@ -1976,31 +1871,18 @@ function calculateModalTotal() {
     currentProduct.price;
 
 
-  /*
-   * SOLO SE SUMAN LOS INPUTS
-   * QUE TENGAN PRECIO MAYOR A 0.
-   *
-   * QUESOS, JAMONES, DELICATESSEN
-   * Y EMBUTIDOS DE SANGUINARIO
-   * TIENEN PRECIO 0.
-   */
-
-  const selectedInputs =
+  const selectedExtras =
     document.querySelectorAll(
-      '#ingredientesContainer input[data-price]:checked'
+      'input[name="extras"]:checked'
     );
 
 
-  selectedInputs.forEach(input => {
-
-    const price =
-      Number(
-        input.dataset.price || 0
-      );
-
+  selectedExtras.forEach(extra => {
 
     total +=
-      price;
+      Number(
+        extra.dataset.price || 0
+      );
 
   });
 
@@ -2042,8 +1924,7 @@ function closePedidoModal() {
   );
 
 
-  currentProduct =
-    null;
+  currentProduct = null;
 
 }
 
@@ -2067,9 +1948,9 @@ function addCurrentToCart() {
   const selections = {};
 
 
-  /* =====================================================
-     CATEGORÍAS
-  ===================================================== */
+  /* -------------------------
+     CATEGORÍAS NORMALES
+  ------------------------- */
 
   CATEGORIES.forEach(category => {
 
@@ -2081,82 +1962,32 @@ function addCurrentToCart() {
 
     selections[category.title] =
       Array.from(selected)
-        .map(input => ({
-
-          name:
-            input.value,
-
-          price:
-            Number(
-              input.dataset.price || 0
-            )
-
-        }));
+        .map(input => input.value);
 
   });
 
 
-  /* =====================================================
-     EMBUTIDOS SANGUINARIO
-  ===================================================== */
+  /* -------------------------
+     DELICATESSEN
+  ------------------------- */
 
-  if (
-    currentProduct.name === "Sanguinario"
-  ) {
-
-    const selected =
-      document.querySelectorAll(
-        'input[name="embutido_sanguinario"]:checked'
-      );
+  const selectedDelicatessen =
+    document.querySelectorAll(
+      'input[name="delicatessen"]:checked'
+    );
 
 
-    selections["Embutidos"] =
-      Array.from(selected)
-        .map(input => ({
-
-          name:
-            input.value,
-
-          price:
-            0
-
-        }));
-
-  }
+  selections["Delicatessen"] =
+    Array.from(
+      selectedDelicatessen
+    ).map(
+      input => input.value
+    );
 
 
-  /* =====================================================
-     EMBUTIDOS DOBLE SANGUINARIO
-  ===================================================== */
-
-  if (
-    currentProduct.name === "Doble Sanguinario"
-  ) {
-
-    const selected =
-      document.querySelectorAll(
-        'input[name="embutidos_doble_sanguinario"]:checked'
-      );
-
-
-    selections["Embutidos"] =
-      Array.from(selected)
-        .map(input => ({
-
-          name:
-            input.value,
-
-          price:
-            0
-
-        }));
-
-  }
-
-
-  /* =====================================================
-     EXTRAS
-  ===================================================== */
+  /* -------------------------
+     EXTRAS CON PRECIO
+  ------------------------- */
 
   const selectedExtras =
     document.querySelectorAll(
@@ -2166,8 +1997,7 @@ function addCurrentToCart() {
 
   const extras = [];
 
-  let extrasTotal =
-    0;
+  let extrasTotal = 0;
 
 
   selectedExtras.forEach(input => {
@@ -2180,11 +2010,9 @@ function addCurrentToCart() {
 
     extras.push({
 
-      name:
-        input.value,
+      name: input.value,
 
-      price:
-        price
+      price: price
 
     });
 
@@ -2199,9 +2027,9 @@ function addCurrentToCart() {
     extras;
 
 
-  /* =====================================================
+  /* -------------------------
      TOTAL
-  ===================================================== */
+  ------------------------- */
 
   const subtotal =
     Number(
@@ -2212,17 +2040,17 @@ function addCurrentToCart() {
     );
 
 
-  /* =====================================================
+  /* -------------------------
      NOTAS
-  ===================================================== */
+  ------------------------- */
 
   const notes =
     pedidoNotas.value.trim();
 
 
-  /* =====================================================
-     ID
-  ===================================================== */
+  /* -------------------------
+     CREAR ID
+  ------------------------- */
 
   const id =
     Date.now() +
@@ -2231,14 +2059,13 @@ function addCurrentToCart() {
       .substring(2, 8);
 
 
-  /* =====================================================
+  /* -------------------------
      GUARDAR
-  ===================================================== */
+  ------------------------- */
 
   CART.push({
 
-    id:
-      id,
+    id: id,
 
     productName:
       currentProduct.name,
@@ -2291,9 +2118,9 @@ function buildSummaryText(selections) {
     ([category, values]) => {
 
 
-      /* =================================================
+      /* -------------------------
          EXTRAS
-      ================================================= */
+      ------------------------- */
 
       if (
         category === "Extras"
@@ -2320,49 +2147,43 @@ function buildSummaryText(selections) {
         }
 
         return;
-
       }
 
 
-      /* =================================================
+      /* -------------------------
+         DELICATESSEN
+      ------------------------- */
+
+      if (
+        category === "Delicatessen"
+      ) {
+
+        if (
+          values &&
+          values.length
+        ) {
+
+          lines.push(
+            `Delicatessen: ${values.join(", ")}`
+          );
+
+        }
+
+        return;
+      }
+
+
+      /* -------------------------
          RESTO
-      ================================================= */
+      ------------------------- */
 
       if (
         values &&
         values.length
       ) {
 
-        const text =
-          values
-            .map(item => {
-
-              if (
-                typeof item === "object"
-              ) {
-
-                if (
-                  Number(item.price) === 0
-                ) {
-
-                  return `${item.name} (GRATIS)`;
-
-                }
-
-
-                return `${item.name} (+${currency(item.price)})`;
-
-              }
-
-
-              return item;
-
-            })
-            .join(", ");
-
-
         lines.push(
-          `${category}: ${text}`
+          `${category}: ${values.join(", ")}`
         );
 
       }
@@ -2390,9 +2211,7 @@ function updateCartUI() {
     "";
 
 
-  if (
-    CART.length === 0
-  ) {
+  if (CART.length === 0) {
 
     cartBody.innerHTML =
       `
@@ -2407,7 +2226,6 @@ function updateCartUI() {
 
 
     return;
-
   }
 
 
@@ -2447,7 +2265,7 @@ function updateCartUI() {
 
         <img
           src="${item.img}"
-          alt="${escapeHtml(item.productName)}"
+          alt="${item.productName}"
           style="
             width:64px;
             height:56px;
@@ -2463,7 +2281,7 @@ function updateCartUI() {
 
         <h4>
 
-          ${escapeHtml(item.productName)}
+          ${item.productName}
 
           <span
             style="
@@ -2479,7 +2297,7 @@ function updateCartUI() {
 
 
         <p>
-          ${escapeHtml(summary)}
+          ${summary}
         </p>
 
 
@@ -2492,13 +2310,8 @@ function updateCartUI() {
                   margin-top:6px;
                 "
               >
-
-                <strong>
-                  Notas:
-                </strong>
-
+                <strong>Notas:</strong>
                 ${escapeHtml(item.notes)}
-
               </p>
             `
             :
@@ -2536,9 +2349,9 @@ function updateCartUI() {
     currency(total);
 
 
-  /* =====================================================
+  /* -------------------------
      ELIMINAR
-  ===================================================== */
+  ------------------------- */
 
   cartBody
     .querySelectorAll(".remove-item")
@@ -2575,9 +2388,7 @@ function clearCart() {
   if (
     CART.length === 0
   ) {
-
     return;
-
   }
 
 
@@ -2586,9 +2397,7 @@ function clearCart() {
       "¿Vaciar todo el carrito?"
     )
   ) {
-
     return;
-
   }
 
 
@@ -2611,7 +2420,7 @@ function escapeHtml(str) {
   }
 
 
-  return String(str).replace(
+  return str.replace(
     /[&<>"']/g,
 
     char => {
@@ -2650,7 +2459,6 @@ function sendCartWhatsApp() {
     );
 
     return;
-
   }
 
 
@@ -2665,7 +2473,6 @@ function sendCartWhatsApp() {
     );
 
     return;
-
   }
 
 
@@ -2703,9 +2510,9 @@ function sendCartWhatsApp() {
         ([category, values]) => {
 
 
-          /* =============================================
+          /* -------------------------
              EXTRAS
-          ============================================= */
+          ------------------------- */
 
           if (
             category === "Extras"
@@ -2729,49 +2536,43 @@ function sendCartWhatsApp() {
             }
 
             return;
-
           }
 
 
-          /* =============================================
+          /* -------------------------
+             DELICATESSEN
+          ------------------------- */
+
+          if (
+            category === "Delicatessen"
+          ) {
+
+            if (
+              values &&
+              values.length
+            ) {
+
+              messageLines.push(
+                `Delicatessen: ${values.join(", ")}`
+              );
+
+            }
+
+            return;
+          }
+
+
+          /* -------------------------
              RESTO
-          ============================================= */
+          ------------------------- */
 
           if (
             values &&
             values.length
           ) {
 
-            const text =
-              values
-                .map(item => {
-
-                  if (
-                    typeof item === "object"
-                  ) {
-
-                    if (
-                      Number(item.price) === 0
-                    ) {
-
-                      return `${item.name} (GRATIS)`;
-
-                    }
-
-
-                    return `${item.name} (+${currency(item.price)})`;
-
-                  }
-
-
-                  return item;
-
-                })
-                .join(", ");
-
-
             messageLines.push(
-              `${category}: ${text}`
+              `${category}: ${values.join(", ")}`
             );
 
           }
@@ -2780,9 +2581,7 @@ function sendCartWhatsApp() {
       );
 
 
-      if (
-        item.notes
-      ) {
+      if (item.notes) {
 
         messageLines.push(
           `Notas: ${item.notes}`
@@ -2835,7 +2634,7 @@ function sendCartWhatsApp() {
 ===================================================== */
 
 
-/* CANCELAR */
+/* Botón cancelar */
 
 closePedido.addEventListener(
   "click",
@@ -2843,7 +2642,7 @@ closePedido.addEventListener(
 );
 
 
-/* AGREGAR AL CARRITO */
+/* Agregar al carrito */
 
 addToCartBtn.addEventListener(
   "click",
@@ -2851,7 +2650,7 @@ addToCartBtn.addEventListener(
 );
 
 
-/* ABRIR CARRITO */
+/* Abrir carrito */
 
 cartBtn.addEventListener(
   "click",
@@ -2860,7 +2659,6 @@ cartBtn.addEventListener(
     cartPanel.classList.add(
       "open"
     );
-
 
     cartPanel.setAttribute(
       "aria-hidden",
@@ -2871,7 +2669,7 @@ cartBtn.addEventListener(
 );
 
 
-/* CERRAR CARRITO */
+/* Cerrar carrito */
 
 closeCartBtn.addEventListener(
   "click",
@@ -2880,7 +2678,6 @@ closeCartBtn.addEventListener(
     cartPanel.classList.remove(
       "open"
     );
-
 
     cartPanel.setAttribute(
       "aria-hidden",
@@ -2891,7 +2688,7 @@ closeCartBtn.addEventListener(
 );
 
 
-/* VACIAR */
+/* Vaciar */
 
 clearCartBtn.addEventListener(
   "click",
@@ -2899,7 +2696,7 @@ clearCartBtn.addEventListener(
 );
 
 
-/* WHATSAPP */
+/* WhatsApp */
 
 sendWhatsAppBtn.addEventListener(
   "click",
@@ -2907,7 +2704,7 @@ sendWhatsAppBtn.addEventListener(
 );
 
 
-/* CERRAR MODAL FUERA */
+/* Cerrar modal haciendo clic fuera */
 
 pedidoModal.addEventListener(
   "click",
@@ -2926,7 +2723,7 @@ pedidoModal.addEventListener(
 );
 
 
-/* ESC */
+/* ESC para cerrar */
 
 document.addEventListener(
   "keydown",
@@ -2937,7 +2734,6 @@ document.addEventListener(
     ) {
 
       closePedidoModal();
-
 
       cartPanel.classList.remove(
         "open"
@@ -2961,3 +2757,4 @@ updateCartUI();
 
 </body>
 </html>
+```
