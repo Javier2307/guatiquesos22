@@ -7,6 +7,7 @@
 <title>Guatiquesos - Pedidos</title>
 
 <style>
+
 :root{
     --accent1:#ff7f50;
     --accent2:#ffce00;
@@ -31,9 +32,10 @@ body{
     color:var(--dark);
 }
 
-/* =========================
+
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
 header{
     background:linear-gradient(
@@ -43,6 +45,7 @@ header{
     );
 
     min-height:185px;
+
     display:flex;
     justify-content:center;
     align-items:center;
@@ -59,27 +62,34 @@ header{
     object-fit:contain;
 }
 
-/* =========================
+
+/* =====================================================
    CONTENIDO
-========================= */
+===================================================== */
 
 main{
     width:100%;
     max-width:1200px;
+
     margin:0 auto;
+
     padding:20px 15px 100px;
 }
 
 h2{
     text-align:center;
+
     color:var(--accent1);
+
     font-size:26px;
+
     margin:20px 0 25px;
 }
 
-/* =========================
+
+/* =====================================================
    PRODUCTOS
-========================= */
+===================================================== */
 
 .productos{
     display:grid;
@@ -120,6 +130,7 @@ h2{
 
 .card img{
     width:100%;
+
     height:180px;
 
     object-fit:cover;
@@ -189,9 +200,10 @@ h2{
     transform:scale(1.02);
 }
 
-/* =========================
+
+/* =====================================================
    CARRITO
-========================= */
+===================================================== */
 
 .cart-btn{
     position:fixed;
@@ -398,9 +410,10 @@ h2{
     color:white;
 }
 
-/* =========================
+
+/* =====================================================
    MODAL
-========================= */
+===================================================== */
 
 .modal{
     position:fixed;
@@ -511,12 +524,6 @@ h2{
     font-weight:700;
 
     font-size:12px;
-}
-
-.extra-price{
-    color:#777;
-
-    font-size:12px;
 
     margin-left:auto;
 }
@@ -573,9 +580,10 @@ textarea{
     color:white;
 }
 
-/* =========================
+
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 footer{
     text-align:center;
@@ -587,9 +595,10 @@ footer{
     font-weight:800;
 }
 
-/* =========================
+
+/* =====================================================
    RESPONSIVE
-========================= */
+===================================================== */
 
 @media(max-width:600px){
 
@@ -620,6 +629,7 @@ footer{
 
     .modal-header{
         flex-direction:column;
+
         align-items:flex-start;
     }
 
@@ -637,21 +647,19 @@ footer{
         max-width:100%;
     }
 }
+
 </style>
 </head>
 
+
 <body>
+
 
 <!-- =====================================================
      HEADER
 ===================================================== -->
 
 <header>
-
-    <!-- IMPORTANTE:
-         Si tu carpeta images está al lado de index.html,
-         utiliza images/SoloelContorno.png
-    -->
 
     <img
         src="Guatiquesos/images/SoloelContorno.png"
@@ -662,7 +670,9 @@ footer{
 </header>
 
 
+
 <main>
+
 
 <!-- =====================================================
      PANES
@@ -670,679 +680,1045 @@ footer{
 
 <h2>Pancitos</h2>
 
-<section class="productos" id="productosPanes">
+
+<section
+    class="productos"
+    id="productosPanes"
+>
 
 
-<!-- GEMINI -->
+<!-- =====================================================
+     GEMINI
+===================================================== -->
 
-<div class="card"
-     data-name="Gemini"
-     data-price="3.50"
-     data-img="images/gemini.jpg.jpeg">
+<div
+    class="card"
+    data-name="Gemini"
+    data-price="3.50"
+    data-img="Guatiquesos/images/gemini.jpg.jpeg"
+>
 
-    <img src="images/gemini.jpg.jpeg" alt="Gemini">
+    <img
+        src="Guatiquesos/images/gemini.jpg.jpeg"
+        alt="Gemini"
+    >
 
     <h3>Gemini</h3>
 
-    <div class="precio">$3.50</div>
+    <div class="precio">
+        $3.50
+    </div>
 
     <div class="descripcion-corta">
         Queso a elección y jamón a elección.
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- ODIOSITO -->
 
-<div class="card"
-     data-name="El Odiosito"
-     data-price="5.50"
-     data-img="images/odiosito.jpeg">
+<!-- =====================================================
+     EL ODIOSITO
+===================================================== -->
 
-    <img src="images/odiosito.jpeg" alt="El Odiosito">
+<div
+    class="card"
+    data-name="El Odiosito"
+    data-price="5.50"
+    data-img="Guatiquesos/images/odiosito.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/odiosito.jpeg"
+        alt="El Odiosito"
+    >
 
     <h3>El Odiosito</h3>
 
-    <div class="precio">$5.50</div>
-
-    <div class="descripcion-corta">
-        Queso amarillo a elección, chorizo seco o salchichón.
+    <div class="precio">
+        $5.50
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <div class="descripcion-corta">
+        Queso amarillo a elección,
+        chorizo seco o salchichón.
+    </div>
+
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- ITALIANO -->
 
-<div class="card"
-     data-name="Italiano"
-     data-price="5.50"
-     data-img="images/italiano.jpg.jpeg">
+<!-- =====================================================
+     ITALIANO
+===================================================== -->
 
-    <img src="images/italiano.jpg.jpeg" alt="Italiano">
+<div
+    class="card"
+    data-name="Italiano"
+    data-price="5.50"
+    data-img="Guatiquesos/images/italiano.jpg.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/italiano.jpg.jpeg"
+        alt="Italiano"
+    >
 
     <h3>Italiano</h3>
 
-    <div class="precio">$5.50</div>
-
-    <div class="descripcion-corta">
-        Queso mozzarella, peperoni y pan de orégano.
+    <div class="precio">
+        $5.50
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <div class="descripcion-corta">
+        Queso mozzarella, peperoni
+        y pan de orégano.
+    </div>
+
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- MARINO -->
 
-<div class="card"
-     data-name="Marino"
-     data-price="6.00"
-     data-img="images/marino.jpeg">
+<!-- =====================================================
+     MARINO
+===================================================== -->
 
-    <img src="images/marino.jpeg" alt="Marino">
+<div
+    class="card"
+    data-name="Marino"
+    data-price="6.00"
+    data-img="Guatiquesos/images/marino.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/marino.jpeg"
+        alt="Marino"
+    >
 
     <h3>Marino</h3>
 
-    <div class="precio">$6.00</div>
-
-    <div class="descripcion-corta">
-        Queso crema y una lata de atún Margarita.
+    <div class="precio">
+        $6.00
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <div class="descripcion-corta">
+        Queso crema y una lata
+        de atún Margarita.
+    </div>
+
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- ENDIABLADO -->
 
-<div class="card"
-     data-name="Endiablado"
-     data-price="6.00"
-     data-img="images/diblo.jpeg">
+<!-- =====================================================
+     ENDIABLADO
+===================================================== -->
 
-    <img src="images/diblo.jpeg" alt="Endiablado">
+<div
+    class="card"
+    data-name="Endiablado"
+    data-price="6.00"
+    data-img="Guatiquesos/images/diblo.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/diblo.jpeg"
+        alt="Endiablado"
+    >
 
     <h3>Endiablado</h3>
 
-    <div class="precio">$6.00</div>
-
-    <div class="descripcion-corta">
-        Una lata de Diablitos Underwood y queso a elección.
+    <div class="precio">
+        $6.00
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <div class="descripcion-corta">
+        Una lata de Diablitos Underwood
+        y queso a elección.
+    </div>
+
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- CHORIZON -->
 
-<div class="card"
-     data-name="Chorizon"
-     data-price="6.00"
-     data-img="images/chorison.jpeg">
+<!-- =====================================================
+     CHORIZON
+===================================================== -->
 
-    <img src="images/chorison.jpeg" alt="Chorizon">
+<div
+    class="card"
+    data-name="Chorizon"
+    data-price="6.00"
+    data-img="Guatiquesos/images/chorison.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/chorison.jpeg"
+        alt="Chorizon"
+    >
 
     <h3>Chorizon</h3>
 
-    <div class="precio">$6.00</div>
-
-    <div class="descripcion-corta">
-        Chorizo de ajo, picante o ahumado y queso a elección.
+    <div class="precio">
+        $6.00
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <div class="descripcion-corta">
+        Chorizo de ajo, picante o ahumado
+        y queso a elección.
+    </div>
+
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- GUATIDINO -->
 
-<div class="card"
-     data-name="Guatidino"
-     data-price="6.50"
-     data-img="images/guatidino.jpeg">
+<!-- =====================================================
+     GUATIDINO
+===================================================== -->
 
-    <img src="images/guatidino.jpeg" alt="Guatidino">
+<div
+    class="card"
+    data-name="Guatidino"
+    data-price="6.50"
+    data-img="Guatiquesos/images/guatidino.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/guatidino.jpeg"
+        alt="Guatidino"
+    >
 
     <h3>Guatidino</h3>
 
-    <div class="precio">$6.50</div>
-
-    <div class="descripcion-corta">
-        Granjero de pollo, queso americano y jamón ahumado.
+    <div class="precio">
+        $6.50
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <div class="descripcion-corta">
+        Granjero de pollo, queso americano
+        y jamón ahumado.
+    </div>
+
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- SANGUINARIO -->
 
-<div class="card"
-     data-name="Sanguinario"
-     data-price="6.50"
-     data-img="images/sanguinario.jpeg">
+<!-- =====================================================
+     SANGUINARIO
+===================================================== -->
 
-    <img src="images/sanguinario.jpeg" alt="Sanguinario">
+<div
+    class="card"
+    data-name="Sanguinario"
+    data-price="6.50"
+    data-img="Guatiquesos/images/sanguinario.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/sanguinario.jpeg"
+        alt="Sanguinario"
+    >
 
     <h3>Sanguinario</h3>
 
-    <div class="precio">$6.50</div>
-
-    <div class="descripcion-corta">
-        Queso a elección, jamón a elección y tercer embutido a elección.
+    <div class="precio">
+        $6.50
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <div class="descripcion-corta">
+        Queso a elección, jamón a elección
+        y tercer embutido a elección.
+    </div>
+
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- CHULETAZO -->
 
-<div class="card"
-     data-name="Chuletazo"
-     data-price="6.50"
-     data-img="images/chuletaso.jpeg">
+<!-- =====================================================
+     CHULETAZO
+===================================================== -->
 
-    <img src="images/chuletaso.jpeg" alt="Chuletazo">
+<div
+    class="card"
+    data-name="Chuletazo"
+    data-price="6.50"
+    data-img="Guatiquesos/images/chuletaso.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/chuletaso.jpeg"
+        alt="Chuletazo"
+    >
 
     <h3>Chuletazo</h3>
 
-    <div class="precio">$6.50</div>
-
-    <div class="descripcion-corta">
-        100 g de chuleta ahumada y queso americano.
+    <div class="precio">
+        $6.50
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <div class="descripcion-corta">
+        100 g de chuleta ahumada
+        y queso americano.
+    </div>
+
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- DOBLE SANGUINARIO -->
 
-<div class="card"
-     data-name="Doble Sanguinario"
-     data-price="6.50"
-     data-img="images/sanguinario.jpeg">
+<!-- =====================================================
+     DOBLE SANGUINARIO
+===================================================== -->
 
-    <img src="images/sanguinario.jpeg" alt="Doble Sanguinario">
+<div
+    class="card"
+    data-name="Doble Sanguinario"
+    data-price="6.50"
+    data-img="Guatiquesos/images/sanguinario.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/sanguinario.jpeg"
+        alt="Doble Sanguinario"
+    >
 
     <h3>Doble Sanguinario</h3>
 
-    <div class="precio">$6.50</div>
-
-    <div class="descripcion-corta">
-        Queso a elección, jamón a elección, tercer y cuarto embutido a elección.
+    <div class="precio">
+        $6.50
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <div class="descripcion-corta">
+        Queso a elección, jamón a elección,
+        tercer y cuarto embutido a elección.
+    </div>
+
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- POLLONEITOR -->
 
-<div class="card"
-     data-name="Polloneitor"
-     data-price="7.50"
-     data-img="images/pollineitor.jpg.jpeg">
+<!-- =====================================================
+     POLLONEITOR
+===================================================== -->
 
-    <img src="images/pollineitor.jpg.jpeg" alt="Polloneitor">
+<div
+    class="card"
+    data-name="Polloneitor"
+    data-price="7.50"
+    data-img="Guatiquesos/images/pollineitor.jpg.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/pollineitor.jpg.jpeg"
+        alt="Polloneitor"
+    >
 
     <h3>Polloneitor</h3>
 
-    <div class="precio">$7.50</div>
-
-    <div class="descripcion-corta">
-        200 g de pechuga de pollo y queso amarillo.
+    <div class="precio">
+        $7.50
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <div class="descripcion-corta">
+        200 g de pechuga de pollo
+        y queso amarillo.
+    </div>
+
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- PESTO PRIME -->
 
-<div class="card"
-     data-name="Pesto Prime"
-     data-price="7.50"
-     data-img="images/pesto.jpeg">
+<!-- =====================================================
+     PESTO PRIME
+===================================================== -->
 
-    <img src="images/pesto.jpeg" alt="Pesto Prime">
+<div
+    class="card"
+    data-name="Pesto Prime"
+    data-price="7.50"
+    data-img="Guatiquesos/images/pesto.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/pesto.jpeg"
+        alt="Pesto Prime"
+    >
 
     <h3>Pesto Prime</h3>
 
-    <div class="precio">$7.50</div>
-
-    <div class="descripcion-corta">
-        Mortadela italiana con pistacho, queso telita,
-        tomates a la vinagreta, rúcula y pesto.
+    <div class="precio">
+        $7.50
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <div class="descripcion-corta">
+        Mortadela italiana con pistacho,
+        queso telita, tomates a la vinagreta,
+        rúcula y pesto.
+    </div>
+
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- BACON BITE -->
 
-<div class="card"
-     data-name="Bacon Bite"
-     data-price="6.50"
-     data-img="images/baconbite.jpeg">
+<!-- =====================================================
+     BACON BITE
+===================================================== -->
 
-    <img src="images/baconbite.jpeg" alt="Bacon Bite">
+<div
+    class="card"
+    data-name="Bacon Bite"
+    data-price="6.50"
+    data-img="Guatiquesos/images/baconbite.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/baconbite.jpeg"
+        alt="Bacon Bite"
+    >
 
     <h3>Bacon Bite</h3>
 
-    <div class="precio">$6.50</div>
-
-    <div class="descripcion-corta">
-        Queso a elección y 70 g de tocineta Plumrose.
+    <div class="precio">
+        $6.50
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <div class="descripcion-corta">
+        Queso a elección y
+        70 g de tocineta Plumrose.
+    </div>
+
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- ROAST BEEF -->
 
-<div class="card"
-     data-name="Roast Beef"
-     data-price="7.50"
-     data-img="images/roast.jpeg">
+<!-- =====================================================
+     ROAST BEEF
+===================================================== -->
 
-    <img src="images/roast.jpeg" alt="Roast Beef">
+<div
+    class="card"
+    data-name="Roast Beef"
+    data-price="7.50"
+    data-img="Guatiquesos/images/roast.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/roast.jpeg"
+        alt="Roast Beef"
+    >
 
     <h3>Roast Beef</h3>
 
-    <div class="precio">$7.50</div>
-
-    <div class="descripcion-corta">
-        100 g de roast beef y queso americano.
+    <div class="precio">
+        $7.50
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <div class="descripcion-corta">
+        100 g de roast beef
+        y queso americano.
+    </div>
+
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- SELVA NEGRA -->
 
-<div class="card"
-     data-name="Selva Negra"
-     data-price="7.50"
-     data-img="images/selva.jpeg">
+<!-- =====================================================
+     SELVA NEGRA
+===================================================== -->
 
-    <img src="images/selva.jpeg" alt="Selva Negra">
+<div
+    class="card"
+    data-name="Selva Negra"
+    data-price="7.50"
+    data-img="Guatiquesos/images/selva.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/selva.jpeg"
+        alt="Selva Negra"
+    >
 
     <h3>Selva Negra</h3>
 
-    <div class="precio">$7.50</div>
-
-    <div class="descripcion-corta">
-        100 g de selva negra y queso americano.
+    <div class="precio">
+        $7.50
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <div class="descripcion-corta">
+        100 g de selva negra
+        y queso americano.
+    </div>
+
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- POLLO & MAR -->
 
-<div class="card"
-     data-name="Pollo & Mar"
-     data-price="8.80"
-     data-img="images/pollimar.jpeg">
+<!-- =====================================================
+     POLLO & MAR
+===================================================== -->
 
-    <img src="images/pollimar.jpeg" alt="Pollo & Mar">
+<div
+    class="card"
+    data-name="Pollo & Mar"
+    data-price="8.80"
+    data-img="Guatiquesos/images/pollimar.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/pollimar.jpeg"
+        alt="Pollo & Mar"
+    >
 
     <h3>Pollo & Mar</h3>
 
-    <div class="precio">$8.80</div>
+    <div class="precio">
+        $8.80
+    </div>
 
     <div class="descripcion-corta">
-        75 g de pollo, 75 g de camarón salteado
+        75 g de pollo,
+        75 g de camarón salteado
         y queso mozzarella.
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- PASTRAMI -->
 
-<div class="card"
-     data-name="Pastrami"
-     data-price="8.00"
-     data-img="images/pastrami.jpeg">
+<!-- =====================================================
+     PASTRAMI
+===================================================== -->
 
-    <img src="images/pastrami.jpeg" alt="Pastrami">
+<div
+    class="card"
+    data-name="Pastrami"
+    data-price="8.00"
+    data-img="Guatiquesos/images/pastrami.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/pastrami.jpeg"
+        alt="Pastrami"
+    >
 
     <h3>Pastrami</h3>
 
-    <div class="precio">$8.00</div>
-
-    <div class="descripcion-corta">
-        100 g de pastrami y queso americano.
+    <div class="precio">
+        $8.00
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <div class="descripcion-corta">
+        100 g de pastrami
+        y queso americano.
+    </div>
+
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- CAMARONCIN -->
 
-<div class="card"
-     data-name="Camaroncin"
-     data-price="8.00"
-     data-img="images/cama.jpeg">
+<!-- =====================================================
+     CAMARONCIN
+===================================================== -->
 
-    <img src="images/cama.jpeg" alt="Camaroncin">
+<div
+    class="card"
+    data-name="Camaroncin"
+    data-price="8.00"
+    data-img="Guatiquesos/images/cama.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/cama.jpeg"
+        alt="Camaroncin"
+    >
 
     <h3>Camaroncin</h3>
 
-    <div class="precio">$8.00</div>
+    <div class="precio">
+        $8.00
+    </div>
 
     <div class="descripcion-corta">
         150 g de camarón al ajillo,
         queso crema, americano y pecorino.
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- EL CESAR -->
 
-<div class="card"
-     data-name="El Cesar"
-     data-price="8.00"
-     data-img="images/cesar.jpeg">
+<!-- =====================================================
+     EL CESAR
+===================================================== -->
 
-    <img src="images/cesar.jpeg" alt="El Cesar">
+<div
+    class="card"
+    data-name="El Cesar"
+    data-price="8.00"
+    data-img="Guatiquesos/images/cesar.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/cesar.jpeg"
+        alt="El Cesar"
+    >
 
     <h3>El Cesar</h3>
 
-    <div class="precio">$8.00</div>
-
-    <div class="descripcion-corta">
-        Pollo crispy, tocineta, ensalada César,
-        aceite de oliva y pan de sésamo negro.
+    <div class="precio">
+        $8.00
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <div class="descripcion-corta">
+        Pollo crispy, tocineta,
+        ensalada César, aceite de oliva
+        y pan de sésamo negro.
+    </div>
+
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- INQUISIDOR -->
 
-<div class="card"
-     data-name="Inquisidor"
-     data-price="10.50"
-     data-img="images/inqui.jpeg">
+<!-- =====================================================
+     INQUISIDOR
+===================================================== -->
 
-    <img src="images/inqui.jpeg" alt="Inquisidor">
+<div
+    class="card"
+    data-name="Inquisidor"
+    data-price="10.50"
+    data-img="Guatiquesos/images/inqui.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/inqui.jpeg"
+        alt="Inquisidor"
+    >
 
     <h3>Inquisidor</h3>
 
-    <div class="precio">$10.50</div>
-
-    <div class="descripcion-corta">
-        Queso guayanés, jamón ahumado, chorizo de ajo,
-        pollo, chuleta ahumada y tocineta.
+    <div class="precio">
+        $10.50
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <div class="descripcion-corta">
+        Queso guayanés, jamón ahumado,
+        chorizo de ajo, pollo,
+        chuleta ahumada y tocineta.
+    </div>
+
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- MAR Y TIERRA -->
 
-<div class="card"
-     data-name="Mar y Tierra"
-     data-price="9.00"
-     data-img="images/maritierra.jpeg">
+<!-- =====================================================
+     MAR Y TIERRA
+===================================================== -->
 
-    <img src="images/maritierra.jpeg" alt="Mar y Tierra">
+<div
+    class="card"
+    data-name="Mar y Tierra"
+    data-price="9.00"
+    data-img="Guatiquesos/images/maritierra.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/maritierra.jpeg"
+        alt="Mar y Tierra"
+    >
 
     <h3>Mar y Tierra</h3>
 
-    <div class="precio">$9.00</div>
-
-    <div class="descripcion-corta">
-        50 g de pollo, 50 g de carne,
-        50 g de camarón salteado y queso mozzarella.
+    <div class="precio">
+        $9.00
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <div class="descripcion-corta">
+        50 g de pollo,
+        50 g de carne,
+        50 g de camarón salteado
+        y queso mozzarella.
+    </div>
+
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- COMETE ESTE -->
 
-<div class="card"
-     data-name="Comete Este"
-     data-price="8.00"
-     data-img="images/comete_este.jpg.jpeg">
+<!-- =====================================================
+     COMETE ESTE
+===================================================== -->
 
-    <img src="images/comete_este.jpg.jpeg" alt="Comete Este">
+<div
+    class="card"
+    data-name="Comete Este"
+    data-price="8.00"
+    data-img="Guatiquesos/images/comete_este.jpg.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/comete_este.jpg.jpeg"
+        alt="Comete Este"
+    >
 
     <h3>Comete Este</h3>
 
-    <div class="precio">$8.00</div>
-
-    <div class="descripcion-corta">
-        120 g de pernil y queso americano.
+    <div class="precio">
+        $8.00
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <div class="descripcion-corta">
+        120 g de pernil
+        y queso americano.
+    </div>
+
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- POLLI CARNE -->
 
-<div class="card"
-     data-name="Polli Carne"
-     data-price="8.00"
-     data-img="images/pollicarne.jpeg">
+<!-- =====================================================
+     POLLI CARNE
+===================================================== -->
 
-    <img src="images/pollicarne.jpeg" alt="Polli Carne">
+<div
+    class="card"
+    data-name="Polli Carne"
+    data-price="8.00"
+    data-img="Guatiquesos/images/pollicarne.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/pollicarne.jpeg"
+        alt="Polli Carne"
+    >
 
     <h3>Polli Carne</h3>
 
-    <div class="precio">$8.00</div>
+    <div class="precio">
+        $8.00
+    </div>
 
     <div class="descripcion-corta">
         75 g de pechuga de pollo,
-        75 g de carne y queso americano.
+        75 g de carne
+        y queso americano.
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- OCTOPUS -->
 
-<div class="card"
-     data-name="Octopus"
-     data-price="12.50"
-     data-img="images/octo.jpeg">
+<!-- =====================================================
+     OCTOPUS
+===================================================== -->
 
-    <img src="images/octo.jpeg" alt="Octopus">
+<div
+    class="card"
+    data-name="Octopus"
+    data-price="12.50"
+    data-img="Guatiquesos/images/octo.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/octo.jpeg"
+        alt="Octopus"
+    >
 
     <h3>Octopus</h3>
 
-    <div class="precio">$12.50</div>
+    <div class="precio">
+        $12.50
+    </div>
 
     <div class="descripcion-corta">
-        150 g de pulpo, queso mozzarella,
+        150 g de pulpo,
+        queso mozzarella,
         miel picante y Siracha.
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- PULPO CAMARON -->
 
-<div class="card"
-     data-name="Pulpo Camarón"
-     data-price="9.00"
-     data-img="images/pulpocamaron.jpeg">
+<!-- =====================================================
+     PULPO CAMARÓN
+===================================================== -->
 
-    <img src="images/pulpocamaron.jpeg" alt="Pulpo Camarón">
+<div
+    class="card"
+    data-name="Pulpo Camarón"
+    data-price="9.00"
+    data-img="Guatiquesos/images/pulpocamaron.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/pulpocamaron.jpeg"
+        alt="Pulpo Camarón"
+    >
 
     <h3>Pulpo Camarón</h3>
 
-    <div class="precio">$9.00</div>
+    <div class="precio">
+        $9.00
+    </div>
 
     <div class="descripcion-corta">
         80 g de camarón salteado,
-        50 g de pulpo y queso mozzarella.
+        50 g de pulpo
+        y queso mozzarella.
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
 
-<!-- SALMONCIN -->
 
-<div class="card"
-     data-name="Salmoncin"
-     data-price="10.50"
-     data-img="images/salmon.jpeg">
+<!-- =====================================================
+     SALMONCIN
+===================================================== -->
 
-    <img src="images/salmon.jpeg" alt="Salmoncin">
+<div
+    class="card"
+    data-name="Salmoncin"
+    data-price="10.50"
+    data-img="Guatiquesos/images/salmon.jpeg"
+>
+
+    <img
+        src="Guatiquesos/images/salmon.jpeg"
+        alt="Salmoncin"
+    >
 
     <h3>Salmoncin</h3>
 
-    <div class="precio">$10.50</div>
-
-    <div class="descripcion-corta">
-        100 g de salmón fresco y queso crema.
+    <div class="precio">
+        $10.50
     </div>
 
-    <button type="button" onclick="openProduct(this)">
+    <div class="descripcion-corta">
+        100 g de salmón fresco
+        y queso crema.
+    </div>
+
+    <button
+        type="button"
+        onclick="openProduct(this)"
+    >
         Pedir
     </button>
 
 </div>
 
+
 </section>
+
 
 
 <!-- =====================================================
      BEBIDAS
 ===================================================== -->
 
-<h2 id="bebidasTitulo">Bebidas</h2>
+<h2 id="bebidasTitulo">
+    Bebidas
+</h2>
 
-<section class="productos" id="productosBebidas">
 
-    <!--
-        DEJO ESTA SECCIÓN PREPARADA PARA LAS BEBIDAS.
-
-        IMPORTANTE:
-        Como en el archivo anterior que tenemos guardado
-        no aparecen los nombres/precios de las bebidas,
-        no voy a inventarlos.
-
-        Cuando me pases los nombres y precios exactos,
-        se agregan aquí.
-    -->
+<section
+    class="productos"
+    id="productosBebidas"
+>
 
     <div class="card">
 
-        <div style="
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            height:200px;
-            background:#fffbea;
-            border-radius:10px;
-            font-size:60px;
-        ">
+        <div
+            style="
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                height:200px;
+                background:#fffbea;
+                border-radius:10px;
+                font-size:60px;
+            "
+        >
             🥤
         </div>
 
-        <h3>Próximamente</h3>
+        <h3>
+            Próximamente
+        </h3>
 
         <div class="descripcion-corta">
             Las bebidas estarán disponibles próximamente.
@@ -1352,7 +1728,9 @@ footer{
 
 </section>
 
+
 </main>
+
 
 
 <!-- =====================================================
@@ -1368,6 +1746,7 @@ footer{
 </button>
 
 
+
 <!-- =====================================================
      FOOTER
 ===================================================== -->
@@ -1375,6 +1754,7 @@ footer{
 <footer>
     © 2026 Guatiquesos - Hecho con amor y sabor 🧡
 </footer>
+
 
 
 <!-- =====================================================
@@ -1387,6 +1767,7 @@ footer{
 >
 
     <div class="modal-content">
+
 
         <div class="modal-header">
 
@@ -1414,12 +1795,17 @@ footer{
         </div>
 
 
-        <div id="ingredientesContainer"></div>
+        <div
+            id="ingredientesContainer"
+        ></div>
 
 
         <label>
-            <strong>Comentarios adicionales</strong>
+            <strong>
+                Comentarios adicionales
+            </strong>
         </label>
+
 
         <textarea
             id="pedidoNotas"
@@ -1447,9 +1833,11 @@ footer{
 
         </div>
 
+
     </div>
 
 </div>
+
 
 
 <!-- =====================================================
@@ -1494,7 +1882,9 @@ footer{
 
         <div class="total">
 
-            <span>Total:</span>
+            <span>
+                Total:
+            </span>
 
             <span id="cartSubtotal">
                 $0.00
@@ -1528,25 +1918,18 @@ footer{
 </div>
 
 
+
 <script>
+
 
 /* =====================================================
    CONFIGURACIÓN
 ===================================================== */
 
-/*
-   Número de WhatsApp de Guatiquesos.
-   Solo números, sin + ni espacios.
-*/
-
 const WHATSAPP_NUMBER = "584122492361";
 
-
-/*
-   Precio de cada extra que tenga costo.
-*/
-
 const EXTRA_COST = 1.50;
+
 
 
 /* =====================================================
@@ -1555,6 +1938,11 @@ const EXTRA_COST = 1.50;
 
 const CATEGORIES = {
 
+
+    /* -------------------------------------------------
+       TIPO DE PAN
+    ------------------------------------------------- */
+
     "Tipo de Pan": {
 
         type:"radio",
@@ -1562,15 +1950,21 @@ const CATEGORIES = {
         name:"tipo_pan",
 
         items:[
+
             "Blanco",
             "Avena",
             "Orégano",
             "Sésamo Negro",
             "Ajonjolí"
+
         ]
 
     },
 
+
+    /* -------------------------------------------------
+       VEGETALES
+    ------------------------------------------------- */
 
     "Vegetales": {
 
@@ -1579,15 +1973,21 @@ const CATEGORIES = {
         name:"vegetales",
 
         items:[
+
             "Lechuga",
             "Tomate",
             "Cebolla",
             "Alfalfa",
             "Maíz"
+
         ]
 
     },
 
+
+    /* -------------------------------------------------
+       SALSAS
+    ------------------------------------------------- */
 
     "Salsas": {
 
@@ -1596,6 +1996,7 @@ const CATEGORIES = {
         name:"salsas",
 
         items:[
+
             "Mayonesa",
             "Mostaza",
             "BBQ",
@@ -1616,17 +2017,17 @@ const CATEGORIES = {
             "Pimentón Ahumado",
             "Maíz",
             "Guasacaca"
+
         ]
 
     },
 
 
-    /*
+    /* -------------------------------------------------
        QUESOS
-
-       Son gratis mientras no se seleccione
-       un extra con costo.
-    */
+       
+       GRATIS
+    ------------------------------------------------- */
 
     "Quesos": {
 
@@ -1635,6 +2036,7 @@ const CATEGORIES = {
         name:"quesos",
 
         items:[
+
             "Americano",
             "Mozzarella",
             "Guayanés",
@@ -1643,6 +2045,7 @@ const CATEGORIES = {
             "Pecorino",
             "Crema",
             "Parmesano"
+
         ],
 
         free:true
@@ -1650,11 +2053,11 @@ const CATEGORIES = {
     },
 
 
-    /*
+    /* -------------------------------------------------
        JAMONES
 
-       También aparecen como GRATIS.
-    */
+       GRATIS
+    ------------------------------------------------- */
 
     "Jamones": {
 
@@ -1663,11 +2066,13 @@ const CATEGORIES = {
         name:"jamones",
 
         items:[
+
             "Jamón de pierna",
             "Jamón ahumado",
             "Pechuga de Pavo",
             "Pechuga de Pavo Ahumado",
             "Pechuga de Pollo"
+
         ],
 
         free:true
@@ -1675,12 +2080,11 @@ const CATEGORIES = {
     },
 
 
-    /*
-       EMBUTIDOS
+    /* -------------------------------------------------
+       DELICATESSEN
 
-       Estos son especialmente importantes
-       para Sanguinario y Doble Sanguinario.
-    */
+       GRATIS
+    ------------------------------------------------- */
 
     "Delicatessen": {
 
@@ -1689,10 +2093,12 @@ const CATEGORIES = {
         name:"delicatessen",
 
         items:[
+
             "Chorizo de Ajo",
             "Chorizo Picante",
             "Chorizo Ahumado",
             "Salchichón"
+
         ],
 
         free:true
@@ -1700,9 +2106,9 @@ const CATEGORIES = {
     },
 
 
-    /*
+    /* -------------------------------------------------
        EXTRAS SENCILLOS
-    */
+    ------------------------------------------------- */
 
     "Extras Sencillos": {
 
@@ -1711,18 +2117,20 @@ const CATEGORIES = {
         name:"extras_sencillos",
 
         items:[
+
             "Aceitunas negras",
             "Aceitunas verdes",
             "Pepinillos",
             "Vegetales"
+
         ]
 
     },
 
 
-    /*
+    /* -------------------------------------------------
        EXTRAS NO TAN SENCILLOS
-    */
+    ------------------------------------------------- */
 
     "Extras No Tan Sencillos": {
 
@@ -1731,20 +2139,22 @@ const CATEGORIES = {
         name:"extras_no_tan_sencillos",
 
         items:[
+
             "Queso",
             "Jamón",
             "Delicatessen",
             "Chorizo",
             "Tocineta",
             "Chuleta Ahumada"
+
         ]
 
     },
 
 
-    /*
+    /* -------------------------------------------------
        EXTRAS DELICIOSOS
-    */
+    ------------------------------------------------- */
 
     "Extras Deliciosos": {
 
@@ -1753,6 +2163,7 @@ const CATEGORIES = {
         name:"extras_deliciosos",
 
         items:[
+
             "Atún Margarita",
             "Diablitos Underwood",
             "Roast Beef",
@@ -1763,11 +2174,13 @@ const CATEGORIES = {
             "Pechuga de pollo",
             "Carne",
             "Cochino Fresco"
+
         ]
 
     }
 
 };
+
 
 
 /* =====================================================
@@ -1777,6 +2190,7 @@ const CATEGORIES = {
 let CART = [];
 
 let currentProduct = null;
+
 
 
 /* =====================================================
@@ -1796,37 +2210,58 @@ const pedidoPrice =
     document.getElementById("pedidoPrice");
 
 const ingredientesContainer =
-    document.getElementById("ingredientesContainer");
+    document.getElementById(
+        "ingredientesContainer"
+    );
 
 const pedidoNotas =
     document.getElementById("pedidoNotas");
 
 const addToCartBtn =
-    document.getElementById("addToCartBtn");
+    document.getElementById(
+        "addToCartBtn"
+    );
 
 const closePedido =
-    document.getElementById("closePedido");
+    document.getElementById(
+        "closePedido"
+    );
 
 const cartBtn =
-    document.getElementById("openCart");
+    document.getElementById(
+        "openCart"
+    );
 
 const cartPanel =
-    document.getElementById("cartPanel");
+    document.getElementById(
+        "cartPanel"
+    );
 
 const closeCartBtn =
-    document.getElementById("closeCartBtn");
+    document.getElementById(
+        "closeCartBtn"
+    );
 
 const cartBody =
-    document.getElementById("cartBody");
+    document.getElementById(
+        "cartBody"
+    );
 
 const cartSubtotal =
-    document.getElementById("cartSubtotal");
+    document.getElementById(
+        "cartSubtotal"
+    );
 
 const clearCartBtn =
-    document.getElementById("clearCart");
+    document.getElementById(
+        "clearCart"
+    );
 
 const sendWhatsAppBtn =
-    document.getElementById("sendWhatsApp");
+    document.getElementById(
+        "sendWhatsApp"
+    );
+
 
 
 /* =====================================================
@@ -1839,6 +2274,7 @@ function currency(value){
         Number(value).toFixed(2);
 
 }
+
 
 
 /* =====================================================
@@ -1896,32 +2332,42 @@ function openProduct(button){
     createIngredientOptions();
 
 
-    pedidoModal.classList.add("open");
+    pedidoModal.classList.add(
+        "open"
+    );
 
 }
 
 
+
 /* =====================================================
-   CREAR INGREDIENTES
+   CREAR OPCIONES DE INGREDIENTES
 ===================================================== */
 
 function createIngredientOptions(){
 
-    ingredientesContainer.innerHTML = "";
+    ingredientesContainer.innerHTML =
+        "";
 
 
     Object.entries(CATEGORIES)
-    .forEach(([category,data]) => {
+    .forEach(
+        ([category,data]) => {
+
 
         const group =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         group.className =
             "group";
 
 
         const title =
-            document.createElement("h4");
+            document.createElement(
+                "h4"
+            );
 
         title.textContent =
             category;
@@ -1930,43 +2376,41 @@ function createIngredientOptions(){
         group.appendChild(title);
 
 
-        data.items.forEach((item,index) => {
+        data.items.forEach(
+            (item,index) => {
+
 
             const label =
-                document.createElement("label");
+                document.createElement(
+                    "label"
+                );
 
             label.className =
                 "option";
 
 
             const input =
-                document.createElement("input");
+                document.createElement(
+                    "input"
+                );
+
 
             input.type =
                 data.type;
 
+
             input.name =
                 data.name;
+
 
             input.value =
                 item;
 
 
-            /*
-               Permitimos elegir un solo pan,
-               queso, jamón y delicatessen.
-            */
-
-            if(data.type === "radio"){
-
-                input.name =
-                    data.name;
-
-            }
-
-
             const span =
-                document.createElement("span");
+                document.createElement(
+                    "span"
+                );
 
             span.textContent =
                 item;
@@ -1978,14 +2422,16 @@ function createIngredientOptions(){
 
 
             /*
-               Mostrar GRATIS para quesos,
-               jamones y delicatessen.
+               Quesos, jamones y delicatessen
+               son gratis.
             */
 
             if(data.free){
 
                 const free =
-                    document.createElement("span");
+                    document.createElement(
+                        "span"
+                    );
 
                 free.className =
                     "free";
@@ -1993,22 +2439,28 @@ function createIngredientOptions(){
                 free.textContent =
                     "GRATIS";
 
-                label.appendChild(free);
+                label.appendChild(
+                    free
+                );
 
             }
 
 
-            group.appendChild(label);
+            group.appendChild(
+                label
+            );
 
         });
 
 
-        ingredientesContainer
-            .appendChild(group);
+        ingredientesContainer.appendChild(
+            group
+        );
 
     });
 
 }
+
 
 
 /* =====================================================
@@ -2023,7 +2475,9 @@ function getSelections(){
 
 
     Object.entries(CATEGORIES)
-    .forEach(([category,data]) => {
+    .forEach(
+        ([category,data]) => {
+
 
         const checked =
             document.querySelectorAll(
@@ -2033,7 +2487,10 @@ function getSelections(){
 
         const values =
             Array.from(checked)
-            .map(input => input.value);
+            .map(
+                input =>
+                    input.value
+            );
 
 
         selections[category] =
@@ -2041,13 +2498,25 @@ function getSelections(){
 
 
         /*
-           Solo los extras tienen costo.
+           Solo los tres grupos
+           de extras tienen costo.
         */
 
         if(
-            category === "Extras Sencillos" ||
-            category === "Extras No Tan Sencillos" ||
-            category === "Extras Deliciosos"
+
+            category ===
+            "Extras Sencillos"
+
+            ||
+
+            category ===
+            "Extras No Tan Sencillos"
+
+            ||
+
+            category ===
+            "Extras Deliciosos"
+
         ){
 
             extrasCount +=
@@ -2067,6 +2536,7 @@ function getSelections(){
     };
 
 }
+
 
 
 /* =====================================================
@@ -2112,7 +2582,9 @@ function addCurrentToCart(){
             currentProduct.price,
 
         total:
-            Number(total.toFixed(2)),
+            Number(
+                total.toFixed(2)
+            ),
 
         img:
             currentProduct.img,
@@ -2145,17 +2617,19 @@ function addCurrentToCart(){
 }
 
 
+
 /* =====================================================
-   CERRAR PRODUCTO
+   CERRAR MODAL
 ===================================================== */
 
 function closeProduct(){
 
-    pedidoModal
-        .classList
-        .remove("open");
+    pedidoModal.classList.remove(
+        "open"
+    );
 
 }
+
 
 
 /* =====================================================
@@ -2189,30 +2663,42 @@ function updateCart(){
         0;
 
 
-    CART.forEach(item => {
+    CART.forEach(
+        item => {
+
 
         total +=
             item.total;
 
 
         const div =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         div.className =
             "cart-item";
 
 
-        let selectionsText = "";
+        let selectionsText =
+            "";
 
 
-        Object.entries(item.selections)
-        .forEach(([category,values]) => {
+        Object.entries(
+            item.selections
+        )
+        .forEach(
+            ([category,values]) => {
+
 
             if(values.length > 0){
 
                 selectionsText +=
+
                     `<strong>${category}:</strong> ` +
+
                     values.join(", ") +
+
                     "<br>";
 
             }
@@ -2240,10 +2726,12 @@ function updateCart(){
                 ${
                     item.notes
                     ?
-                    `<p>
+                    `
+                    <p>
                         <strong>Notas:</strong>
                         ${escapeHtml(item.notes)}
-                    </p>`
+                    </p>
+                    `
                     :
                     ""
                 }
@@ -2267,7 +2755,9 @@ function updateCart(){
         `;
 
 
-        cartBody.appendChild(div);
+        cartBody.appendChild(
+            div
+        );
 
     });
 
@@ -2278,6 +2768,7 @@ function updateCart(){
 }
 
 
+
 /* =====================================================
    ELIMINAR ITEM
 ===================================================== */
@@ -2286,13 +2777,15 @@ function removeItem(id){
 
     CART =
         CART.filter(
-            item => item.id !== id
+            item =>
+                item.id !== id
         );
 
 
     updateCart();
 
 }
+
 
 
 /* =====================================================
@@ -2311,7 +2804,9 @@ function clearCart(){
             "¿Seguro que deseas vaciar el carrito?"
         )
     ){
+
         return;
+
     }
 
 
@@ -2323,6 +2818,7 @@ function clearCart(){
 }
 
 
+
 /* =====================================================
    ESCAPAR HTML
 ===================================================== */
@@ -2330,13 +2826,34 @@ function clearCart(){
 function escapeHtml(text){
 
     return String(text)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
+
 
 
 /* =====================================================
@@ -2364,22 +2881,33 @@ function sendWhatsApp(){
         0;
 
 
-    CART.forEach((item,index) => {
+    CART.forEach(
+        (item,index) => {
+
 
         message +=
+
             `*${index + 1}. ${encodeURIComponent(item.name)}*%0A`;
 
+
         message +=
+
             `Precio: ${encodeURIComponent(currency(item.total))}%0A`;
 
 
-        Object.entries(item.selections)
-        .forEach(([category,values]) => {
+        Object.entries(
+            item.selections
+        )
+        .forEach(
+            ([category,values]) => {
+
 
             if(values.length > 0){
 
                 message +=
+
                     `${encodeURIComponent(category)}: ` +
+
                     `${encodeURIComponent(values.join(", "))}%0A`;
 
             }
@@ -2390,7 +2918,9 @@ function sendWhatsApp(){
         if(item.notes){
 
             message +=
+
                 `Notas: ` +
+
                 `${encodeURIComponent(item.notes)}%0A`;
 
         }
@@ -2407,13 +2937,16 @@ function sendWhatsApp(){
 
 
     message +=
+
         `*TOTAL: ${encodeURIComponent(currency(total))}*%0A%0A`;
+
 
     message +=
         "Por favor confirmar disponibilidad.";
 
 
     const url =
+
         `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
 
 
@@ -2423,6 +2956,7 @@ function sendWhatsApp(){
     );
 
 }
+
 
 
 /* =====================================================
@@ -2445,9 +2979,9 @@ cartBtn.addEventListener(
     "click",
     () => {
 
-        cartPanel
-            .classList
-            .add("open");
+        cartPanel.classList.add(
+            "open"
+        );
 
     }
 );
@@ -2457,9 +2991,9 @@ closeCartBtn.addEventListener(
     "click",
     () => {
 
-        cartPanel
-            .classList
-            .remove("open");
+        cartPanel.classList.remove(
+            "open"
+        );
 
     }
 );
@@ -2477,10 +3011,9 @@ sendWhatsAppBtn.addEventListener(
 );
 
 
-/*
-   Cerrar modal al hacer clic
-   fuera del contenido.
-*/
+/* =====================================================
+   CERRAR MODAL HACIENDO CLIC AFUERA
+===================================================== */
 
 pedidoModal.addEventListener(
     "click",
@@ -2499,9 +3032,9 @@ pedidoModal.addEventListener(
 );
 
 
-/*
-   Inicializar carrito.
-*/
+/* =====================================================
+   INICIAR CARRITO
+===================================================== */
 
 updateCart();
 
